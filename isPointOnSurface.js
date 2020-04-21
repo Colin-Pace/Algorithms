@@ -13,7 +13,7 @@ For example,
   then,
     the function would return true;
 
-So too,
+Also,
   if,
     the rectangle or square were to have,
       the coordinates of [[0, 0], [5, 0], [5, 10], [0, 10]],
