@@ -1,3 +1,5 @@
+// Rotate an NxN matrix by 90 degrees
+
 let matrix = [
   [1, 1, 1, 1, 1],
   [2, 2, 2, 2, 2],

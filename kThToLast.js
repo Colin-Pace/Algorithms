@@ -1,3 +1,5 @@
+// Return the kTh to last element of a linked list
+
 class Node {
   constructor(data, next) {
     this.data = data;

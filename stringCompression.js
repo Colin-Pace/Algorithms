@@ -1,3 +1,5 @@
+// Compress a string such that the number of letters of consecutive letters follows the letter; if the compressed string is longer than the original, return the original 
+
 function stringCompression(str) {
   let result = "";
   let count = 1;
