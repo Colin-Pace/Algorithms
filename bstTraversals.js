@@ -34,7 +34,7 @@ class BinarySearchTree {
       let result = [];
       const traversal = function(node) {
         node.left && traversal(node.left);
-        result.push(" " + node.data);
+        result.push(` ${node.data}`);
         node.right && traversal(node.right);
       }
       traversal(this.root);
@@ -47,7 +47,7 @@ class BinarySearchTree {
     else {
       let result = [];
       const traversal = function(node) {
-        result.push(" " + node.data);
+        result.push(` ${node.data}`);
         node.left && traversal(node.left);
         node.right && traversal(node.right);
       }
@@ -63,7 +63,7 @@ class BinarySearchTree {
       const traversal = function(node) {
         node.left && traversal(node.left);
         node.right && traversal(node.right);
-        result.push(" " + node.data);
+        result.push(` ${node.data}`);
       }
       traversal(this.root);
       return result;
@@ -76,8 +76,8 @@ class BinarySearchTree {
     if (this.root) {
       q.push(this.root);
       while(q.length) {
-        let node = q.shift();
-        result.push(" " + node.data);
+        const node = q.shift();
+        result.push(` ${node.data}`);
         if (node.left) q.push(node.left);
         if (node.right) q.push(node.right);
       }
@@ -92,4 +92,4 @@ integers.forEach(integer => numbers.add(integer));
 console.log(`In order: ${numbers.inOrder()}`);
 console.log(`Pre order: ${numbers.preOrder()}`);
 console.log(`Post order: ${numbers.postOrder()}`);
-console.log(`Level order: ${numbers.levelOrder()}`)
+console.log(`Level order: ${numbers.levelOrder()}`);
