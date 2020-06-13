@@ -21,11 +21,10 @@ e.adj = [c, d];
 let visited = [];
 function route(start, end) {
   if (start === end) return true;
-  let q = [];
+  let q = [], node = undefined;
   q.push(start);
   visited.push(start);
-  let node = undefined;
-  
+
   while (q.length) {
     node = q.shift();
     for (let i = 0; i < node['adj'].length; i++) {
