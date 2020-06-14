@@ -48,9 +48,9 @@ class LinkedList {
     let fast = this.head;
     let slow = this.head;
 
-    while (fast != null && fast.next != null) {
+    while (fast !== null && fast.next !== null) {
       slow = slow.next;
-      fast = fast.next.next
+      fast = fast.next.next;
       if (slow === fast) break;
     }
 
@@ -69,4 +69,4 @@ class LinkedList {
 const alphabetical = new LinkedList;
 let letters = ['a', 'b', 'c', 'd', 'e'];
 alphabetical.add(letters);
-console.log(alphabetical.head.data);
+console.log(alphabetical.loopDetection());

@@ -1,18 +1,18 @@
 // Quick sort and binary search
 
-let array = [4, 1, 8, 2, 6, 10, 3, 9, 5, 7];
-function quickSort(array) {
-  if (array.length <= 1) return array;
+let integers = [4, 1, 8, 2, 6, 10, 3, 9, 5, 7];
+function quickSort(ints) {
+  if (ints.length <= 1) return ints;
   else {
-    let left = [], right = [], result = [], pivot = array.pop();
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] <= pivot) left.push(array[i]);
-      else right.push(array[i]);
+    let left = [], right = [], result = [], pivot = ints.pop();
+    for (let i = 0; i < ints.length; i++) {
+      if (ints[i] <= pivot) left.push(ints[i]);
+      else right.push(ints[i]);
     }
     return result.concat(quickSort(left), pivot, quickSort(right));
   }
 }
-const sorted = quickSort(array);
+const sorted = quickSort(integers);
 console.log(sorted);
 
 function binarySearch(array, x, start, end) {
