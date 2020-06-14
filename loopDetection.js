@@ -36,7 +36,6 @@ class LinkedList {
     }
     fast.next = new Node(data);
 
-
     let mid = Math.floor((count / 2) + 1);
     while (mid != 1) {
       slow = slow.next;
