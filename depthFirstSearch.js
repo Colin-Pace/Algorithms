@@ -33,6 +33,5 @@ function depth(node) {
   }
 }
 
-const start = a;
-depth(start);
+depth(a);
 console.log(order);
