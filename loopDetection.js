@@ -13,39 +13,47 @@ class LinkedList {
   }
 
   add(data) {
-    let node = this.head;
-    if (!node) this.head = new Node(data);
+    if (!this.head) this.head = new Node(data);
     else {
       let runner = this.head;
       while (runner.next) runner = runner.next;
       runner.next = new Node(data);
+
+      if (runner.next.data === 'e') {
+        let fast = this.head;
+        let slow = this.head;
+        while (fast.next) fast = fast.next;
+        if (fast.data === 'e') {
+          while (slow.data != 'c') slow = slow.next;
+          fast.next = slow;
+        }
+      }
     }
   }
 
-  loopDetection(list) {
-    let fast = list.head.next.next;
-    let slow = list.head;
+  loopDetection() {
+    let fast = this.head;
+    let slow = this.head;
 
-    while (fast !== slow) {
-      fast = fast.next.next;
+    while (fast != null && fast.next != null) {
       slow = slow.next;
+      fast = fast.next.next
+      if (slow === fast) break;
     }
 
-    slow = list.head;
-    while (fast !== slow) {
-      fast = fast.next;
-      slow = slow.next;
+    if (fast === null || fast.next === null) return null;
+    else {
+      slow = this.head;
+      while (slow != fast) {
+        slow = slow.next;
+        fast = fast.next;
+      }
+      return fast.data;
     }
-
-    return fast;
   }
 }
 
-const circle = new LinkedList;
-circle.add('A');
-circle.add('B');
-circle.add('C');
-circle.add('D');
-circle.add('E');
-circle.head.next.next.next.next = circle.head.next.next;
-console.log(circle.loopDetection(circle));
+const alphabetical = new LinkedList;
+let letters = ['a', 'b', 'c', 'd', 'e'];
+letters.forEach(letter => alphabetical.add(letter));
+console.log(alphabetical.loopDetection());
