@@ -12,23 +12,37 @@ class LinkedList {
     this.head = null;
   }
 
-  add(data) {
+  add(letters) {
+    for (let i = 0; i < letters.length - 1; i++) this.add_(letters[i]);
+    this.addLast(letters[letters.length - 1]);
+  }
+
+  add_(data) {
     if (!this.head) this.head = new Node(data);
     else {
       let runner = this.head;
       while (runner.next) runner = runner.next;
       runner.next = new Node(data);
-
-      if (runner.next.data === 'e') {
-        let fast = this.head;
-        let slow = this.head;
-        while (fast.next) fast = fast.next;
-        if (fast.data === 'e') {
-          while (slow.data != 'c') slow = slow.next;
-          fast.next = slow;
-        }
-      }
     }
+  }
+
+  addLast(data){
+    let count = 1;
+    let fast = this.head;
+    let slow = this.head;
+    while (fast.next) {
+      fast = fast.next;
+      count++;
+    }
+    fast.next = new Node(data);
+
+
+    let mid = Math.floor((count / 2) + 1);
+    while (mid != 1) {
+      slow = slow.next;
+      mid--;
+    }
+    fast.next.next = slow;
   }
 
   loopDetection() {
@@ -55,5 +69,5 @@ class LinkedList {
 
 const alphabetical = new LinkedList;
 let letters = ['a', 'b', 'c', 'd', 'e'];
-letters.forEach(letter => alphabetical.add(letter));
-console.log(alphabetical.loopDetection());
+alphabetical.add(letters);
+console.log(alphabetical.head.data);
