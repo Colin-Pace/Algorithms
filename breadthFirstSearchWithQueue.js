@@ -1,36 +1,22 @@
+// Find the traversal order of a graph by a breadth first search
+
 class Node {
-  constructor(data, next, adjacents) {
+  constructor(data, adj = undefined) {
     this.data = data;
-    this.next = next;
-    this.adjacents = null;
   }
 }
 
-const A = new Node(0);
-const B = new Node(1);
-const C = new Node(2);
-const D = new Node(3);
-const E = new Node(4);
-const F = new Node(5);
-const G = new Node(6);
-const H = new Node(7);
-const I = new Node(8);
-const J = new Node(9);
-const K = new Node(10);
-const L = new Node(11);
+const a = new Node('a');
+const b = new Node('b');
+const c = new Node('c');
+const d = new Node('d');
+const e = new Node('e');
 
-A.adjacents = [B, J];
-B.adjacents = [A, I];
-C.adjacents = [D];
-D.adjacents = [C, E, H];
-E.adjacents = [D];
-F.adjacents = [G];
-G.adjacents = [F, H];
-H.adjacents = [D, G, I, K, L];
-I.adjacents = [B, H, J];
-J.adjacents = [A, I];
-K.adjacents = [H];
-L.adjacents = [H];
+a.adj = [b];
+b.adj = [a, c, d];
+c.adj = [b, e];
+d.adj = [b, e];
+e.adj = [c, d];
 
 
 class Queue {
@@ -51,9 +37,8 @@ class Queue {
   }
 
   dequeue() {
-    if (!this.head) {
-      throw "No items in queue."
-    } else {
+    if (!this.head) throw "No items in queue."
+    else {
       let node = this.head;
       this.head = node.next;
       return node;
@@ -63,25 +48,24 @@ class Queue {
 
 let queue = new Queue;
 let visited = [];
-let result = [];
-function breadthFirstSearch(startNode) {
-  queue.enqueue(startNode);
-  visited.push(startNode);
+let order = [];
+function breadthFirstSearch(node) {
+  visited.push(node);
+  queue.enqueue(node);
 
-  while (queue.head !== undefined) {
-    let node = queue.dequeue();
-    for (let i = 0; i < node.data.adjacents.length; i++) {
-      if (!visited.includes(node.data.adjacents[i])) {
-        visited.push(node.data.adjacents[i]);
-        queue.enqueue(node.data.adjacents[i]);
+  while (queue.head) {
+    node = queue.dequeue().data;
+    order.push(node.data);
+    for (let i = 0; i < node['adj'].length; i++) {
+      const neighbor = node['adj'][i];
+      if (!visited.includes(neighbor)) {
+        visited.push(neighbor);
+        queue.enqueue(neighbor);
       }
     }
+    visited.push(node);
   }
-
-  for (let i = 0; i < visited.length; i++) {
-    result.push(visited[i].data);
-  }
-  return result;
 }
 
-console.log(breadthFirstSearch(A));
+breadthFirstSearch(a);
+console.log(order);
