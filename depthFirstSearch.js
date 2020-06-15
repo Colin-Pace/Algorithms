@@ -14,24 +14,23 @@ const e = new Node('e');
 
 a.adj = [b];
 b.adj = [a, c, d];
-c.adj = [b, e];
+c.adj = [b];
 d.adj = [b, e];
 e.adj = [c, d];
 
 let visited = [];
 let order = [];
-function depth(node) {
+function search(node) {
   if (visited.includes(node)) return;
   else {
     visited.push(node);
     order.push(node.data);
-  }
-
-  const neighbors = node.adj;
-  for (let i = 0; i < neighbors.length; i++) {
-    depth(neighbors[i]);
+    const neighbors = node.adj;
+    for (let i = 0; i < neighbors.length; i++) {
+      search(neighbors[i]);
+    }
+    return order;
   }
 }
 
-depth(a);
-console.log(order);
+console.log(search(a));

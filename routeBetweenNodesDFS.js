@@ -19,20 +19,18 @@ d.adj = [b, e];
 e.adj = [c, d];
 
 let visited = [];
-let result = [];
-function route(start, end) {
+function search(start, end) {
   if (start === end) return true;
-  else if (visited.includes(start)) return;
-  else {
-    visited.push(start);
-    const neighbors = start.adj;
-    for (let i = 0; i < neighbors.length; i++) {
-      result.push(neighbors[i].data);
-      route(neighbors[i], end);
-    }
+  if (visited.includes(start)) return;
+
+  visited.push(start);
+  const neighbors = start.adj;
+  for (let i = 0; i < neighbors.length; i++) {
+    if (search(neighbors[i], end) === true) return true;
+    else search(neighbors[i], end);
   }
-  if (result.includes(end.data)) return true;
-  else return false;
+
+  return false;
 }
 
-console.log(route(a, e));
+console.log(search(a, e));
