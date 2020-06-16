@@ -49,6 +49,7 @@ class Queue {
 let queue = new Queue;
 let visited = [];
 let order = [];
+
 function breadthFirstSearch(node) {
   visited.push(node);
   queue.enqueue(node);
@@ -56,7 +57,9 @@ function breadthFirstSearch(node) {
   while (queue.head) {
     node = queue.dequeue().data;
     order.push(node.data);
-    for (let i = 0; i < node['adj'].length; i++) {
+
+    const l = node['adj'].length;
+    for (let i = 0; i < l; i++) {
       const neighbor = node['adj'][i];
       if (!visited.includes(neighbor)) {
         visited.push(neighbor);
@@ -65,7 +68,7 @@ function breadthFirstSearch(node) {
     }
     visited.push(node);
   }
+  return order;
 }
 
-breadthFirstSearch(a);
-console.log(order);
+console.log(breadthFirstSearch(a));

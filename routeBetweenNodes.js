@@ -1,7 +1,7 @@
 // Find if there is a route between two nodes in a graph
 
 class Node {
-  constructor(data, adj = undefined) {
+  constructor(data, adj = null) {
     this.data = data;
   }
 }
@@ -27,7 +27,8 @@ function route(start, end) {
 
   while (q.length) {
     node = q.shift();
-    for (let i = 0; i < node['adj'].length; i++) {
+    const l = node['adj'].length;
+    for (let i = 0; i < l; i++) {
       const neighbor = node['adj'][i];
       if (!visited.includes(neighbor)) {
         if (neighbor === end) return true;

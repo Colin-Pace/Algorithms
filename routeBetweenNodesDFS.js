@@ -1,7 +1,7 @@
 // Use a depth first search to find if a graph has a route between two nodes
 
 class Node {
-  constructor(data, adj = undefined) {
+  constructor(data, adj = null) {
     this.data = data;
   }
 }
@@ -25,7 +25,8 @@ function search(start, end) {
 
   visited.push(start);
   const neighbors = start.adj;
-  for (let i = 0; i < neighbors.length; i++) {
+  const l = neighbors.length;
+  for (let i = 0; i < l; i++) {
     if (search(neighbors[i], end) === true) return true;
     else search(neighbors[i], end);
   }
