@@ -18,8 +18,8 @@ c.adj = [b, e];
 d.adj = [b, e];
 e.adj = [c, d];
 
-let visited = [];
-let order = [];
+const visited = [];
+const order = [];
 function route(node) {
   if (visited.includes(node)) return;
   else {

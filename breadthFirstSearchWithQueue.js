@@ -47,8 +47,8 @@ class Queue {
 }
 
 let queue = new Queue;
-let visited = [];
-let order = [];
+const visited = [];
+const order = [];
 
 function breadthFirstSearch(node) {
   visited.push(node);

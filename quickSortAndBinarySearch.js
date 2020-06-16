@@ -3,7 +3,7 @@
 function quickSort(ints) {
   if (ints.length <= 1) return ints;
   else {
-    let left = [], right = [], result = [], pivot = ints.pop();
+    const left = [], right = [], result = [], pivot = ints.pop();
     const l = ints.length;
     for (let i = 0; i < l; i++) {
       if (ints[i] <= pivot) left.push(ints[i]);

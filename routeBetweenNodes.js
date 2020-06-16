@@ -18,29 +18,31 @@ c.adj = [b, e];
 d.adj = [b, e];
 e.adj = [c, d];
 
-let visited = [];
+const visited = [];
 function route(start, end) {
   if (start === end) return true;
-  let q = [], node = undefined;
-  q.push(start);
-  visited.push(start);
-
-  while (q.length) {
-    node = q.shift();
-    const l = node['adj'].length;
-    for (let i = 0; i < l; i++) {
-      const neighbor = node['adj'][i];
-      if (!visited.includes(neighbor)) {
-        if (neighbor === end) return true;
-        else {
-          visited.push(neighbor);
-          q.push(neighbor);
+  else if (!start || !end) return null;
+  else {
+    let q = [], node = null;
+    visited.push(start);
+    q.push(start);
+    
+    while (q.length) {
+      node = q.shift();
+      let l = node['adj'].length
+      for (let i = 0; i < l; i++) {
+        const neighbor = node['adj'][i];
+        if (!visited.includes(neighbor)) {
+          if (neighbor === end) return true;
+          else {
+            visited.push(neighbor);
+            q.push(neighbor);
+          }
         }
       }
+      visited.push(node);
     }
-    visited.push(node);
+    return false;
   }
-  return false;
 }
-
 console.log(route(a, e));

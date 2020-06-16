@@ -18,7 +18,7 @@ c.adj = [b, e];
 d.adj = [b, e];
 e.adj = [c, d];
 
-let visited = [];
+const visited = [];
 function search(start, end) {
   if (start === end) return true;
   if (visited.includes(start)) return;
