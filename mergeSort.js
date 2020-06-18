@@ -7,7 +7,7 @@ function sort(integers) {
     const left = sort(integers.slice(0, mid));
     const right = sort(integers.slice(mid));
 
-    function merge(left, right) {
+    const merge = function(left, right) {
       const result = [];
       while (left.length && right.length) {
         result.push(left[0] < right[0] ? left.shift() : right.shift());
