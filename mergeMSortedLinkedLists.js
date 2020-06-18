@@ -1,4 +1,4 @@
-// Merge k sorted linked lists
+// Merge m sorted linked lists
 
 class Node {
   constructor(data, next) {
@@ -29,7 +29,7 @@ class LinkedList {
     while (array.length) {
       fast = firstList.head;
       slow = firstList.head;
-      let currentList = array.shift()
+      let currentList = array.shift();
       let current = currentList.head;
       let last = false;
 
