@@ -1,70 +1,25 @@
-/*
-Smallest difference
+// Given two arrays, find the pair of values (one from each array) with the smallest, non-negative difference, and return the difference
 
-1. Given two arrays of integers, compute the pair of values,
-    one from each array, with the smallest non-negative difference;
-    return the difference
-2. E.g.,
+function findSmallestDifference(array1, array2) {
+  array1.sort(function(a, b) {return a - b});
+  array2.sort(function(a, b) {return a - b});
+  let a = 0;
+  let b = 0;
+  let difference = Number.MAX_VALUE;
+  const l = array1.length;
+  const l2 = array2.length;
 
-      Input:
-
-            [1, 3, 15, 11, 2]
-            [23, 127, 235, 19, 8]
-
-
-      Output: 3 (from pair 11, 8)
-*/
-let one = [1, 3, 15, 11, 2];
-let two = [23, 127, 235, 19, 8];
-function smallestDifference(x, y) {
-  let xBig = Math.max(...x);
-  let xSmall = Math.min(...x);
-  let yBig = Math.max(...y);
-  let ySmall = Math.min(...y);
-
-  let greater;
-  let lesser;
-  if (xBig > yBig) {
-    greater = x;
-    lesser = y;
-  } else {
-    greater = y;
-    lesser = x;
-  }
-
-  if (xSmall > yBig) {
-    return xSmall - yBig;
-  } else if (ySmall > xBig) {
-    return ySmall - xBig;
-  } else {
-    let xCommon = [];
-    let yCommon = [];
-
-    if (x === greater) {
-      for (let i = 0; i < x.length; i++) {
-        if (x[i] <= yBig) {
-          xCommon.push(x[i]);
-        }
-      }
-      for (let i = 0; i < y.length; i++) {
-        if (y[i] >= xSmall) {
-          yCommon.push(y[i]);
-        }
-      }
-    } else {
-      for (let i = 0; i < x.length; i++) {
-        if (x[i] >= ySmall) {
-          xCommon.push(x[i]);
-        }
-      }
-      for (let i = 0; i < y.length; i++) {
-        if (y[i] <= xBig) {
-          yCommon.push(y[i]);
-        }
-      }
+  while (a < l && b < l2) {
+    if (Math.abs(array1[a] - array2[b]) < difference) {
+      difference = Math.abs(array1[a] - array2[b]);
     }
 
-    return console.log(smallestDifference(xCommon, yCommon));
+    if (array1[a] < array2[b]) a++;
+    else b++
   }
+
+  return difference;
 }
-smallestDifference(one, two);
+const array1 = [1, 11, 2, 15];
+const array2 = [4, 12, 19, 23, 127, 235];
+console.log(findSmallestDifference(array1, array2));
