@@ -1,16 +1,9 @@
 /*
-Write a function that returns true,
-  if there is a substring of the format "r",
-  then some other character,
-    then another "r"
+Write a function that returns true if there is a substring of the format "r" then some other character, then another "r"
 
-For instance, valid true returns,
-  would be for "ror", "r2rcl90",
-  "123r7r"
+For instance, valid true returns would be for "ror", "r2rcl90", "123r7r"
 
-Valid false returns would be for,
-  the string "r3c", "81rla",
-  "2r2", "ewe", "rzzr"
+Valid false returns would be for the string "r3c", "81rla", "2r2", "ewe", "rzzr"
 */
 let stringOne = 'ror';
 let stringTwo = 'r2rcl90';

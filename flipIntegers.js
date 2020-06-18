@@ -1,8 +1,5 @@
 /*
-Write a function that,
-  reverses and returns,
-    the first integers,
-      of an array
+Write a function that reverses and returns, the first integers of an array
 */
 let inputOne = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let inputTwo = [10, 4, 8, 5, 7, 2, 1, 7, 8];
@@ -21,10 +18,7 @@ console.log(flipIntegers(inputOne, inputThree));
 console.log(flipIntegers(inputTwo, inputThree));
 
 /*
-Write a function that,
-  reverses and returns,
-    the first integers,
-      of an array -- without a new array
+Write a function that reverses and returns the first integers of an array -- without a new array
 */
 function sameDataStructure(array, index) {
   let length = array.length;

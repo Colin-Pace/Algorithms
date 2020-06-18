@@ -1,7 +1,5 @@
 /*
-Write a function that accepts an object and a number;
-  the object represents coins,
-  and the number is an amount in change.
+Write a function that accepts an object and a number. The object represents coins, and the number is an amount in change.
 
 Find if the coins can create exact change for the number given.
 

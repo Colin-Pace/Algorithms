@@ -13,7 +13,7 @@ Collection of numbers _______
       a given search number (later: ... return a Boolean)
 
 
-2. E.g.,
+2. Example:
 
   a. Failing
 

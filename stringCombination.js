@@ -1,10 +1,5 @@
 /*
-Write a function that, given two strings, a and b,
-  creates a bigger string made of the first character of a,
-  the first character of b, the second character of a,
-  the second character of b, and so on; any leftover characters
-  go at the end of the array; for instance, if the input
-  were "hello" and "123", the output would be: "h1e2l3lo"
+Write a function that, given two strings, a and b creates a bigger string made of the first character of a, the first character of b, the second character of a, the second character of b, and so on; any leftover characters go at the end of the array; for instance, if the input were "hello" and "123", the output would be: "h1e2l3lo"
 */
 let strOne = 'hello';
 let strTwo = '123';

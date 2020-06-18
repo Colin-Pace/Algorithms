@@ -1,12 +1,7 @@
 /*
-Write a function that returns true,
-  if the string "cat" and "dog",
-  appear the same number of times;
+Write a function that returns true if the string "cat" and "dog" appear the same number of times;
 
-For example, return true for,
-  an input of "cat//dog........catdog"
-  and you'd return false for an input
-  of "cat//dog............catcow"
+For example, return true for an input of "cat//dog........catdog" and you'd return false for an input of "cat//dog............catcow"
 */
 let stringTrue = "cat//dog........catdog";
 let stringFalse = "cat//dog........catcow";

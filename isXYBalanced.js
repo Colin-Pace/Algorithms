@@ -1,16 +1,11 @@
 /*
-A string is "xy-balanced,"
-  if a 'y' character follows
-    all the 'x' characters
+A string is "xy-balanced" if a 'y' character follows all the 'x' characters.
 
-One 'y' can balance multiple 'x's;
+One 'y' can balance multiple 'x's.
 
-Return true if,
-  the given string is xy-balanced;
+Return true if the given string is xy-balanced.
 
-For instance,
-  "xxy" is balanced,
-  but "xyx" is not
+For instance "xxy" is balanced but "xyx" is not
 */
 let stringOne = 'xxy';
 let stringTwo = 'xyx';
@@ -25,5 +20,5 @@ function isXYBalanced(str) {
   }
   return balanced;
 }
-// console.log(isXYBalanced(stringOne));
-// console.log(isXYBalanced(stringTwo));
+console.log(isXYBalanced(stringOne));
+console.log(isXYBalanced(stringTwo));

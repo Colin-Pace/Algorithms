@@ -1,16 +1,9 @@
 /*
-Write a function that,
-  has an array of numbers as input, and,
-  returns an array that,
-    has the exact same numbers, but,
-      rearranged so that
-        all the even numbers
-        come before all the odd numbers;
+Write a function that, has an array of numbers as input, and returns an array that has the exact same numbers, but rearranged so that all the even numbers come before all the odd numbers.
 
-The numbers can be in any order;
+The numbers can be in any order.
 
-Either the input array can be modified and returned,
-  or a new one can be made
+Either the input array can be modified and returned, or a new one can be made
 */
 function evensBeforeOdds(array) {
   let evensResult = [];

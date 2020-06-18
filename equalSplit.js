@@ -1,11 +1,5 @@
 /*
-Write a function that,
-  given a non-empty array,
-  returns true if there is a place,
-    to split the array such that,
-    the sum of the numbers on one side,
-    is equal to the sum
-      of the numbers on the other side;
+Write a function that, given a non-empty array, returns true if there is a place, to split the array such that, the sum of the numbers on one side, is equal to the sum of the numbers on the other side;
 
 Return true for [44, 44] and [44, 22, 22],
   for instance, but not [44, 22, 23]

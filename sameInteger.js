@@ -1,11 +1,5 @@
 /*
-Write a function that,
-  given two integers,
-    each in the range 10 to 99,
-  returns true if there is an integer that,
-    appears in both numbers,
-      such as the 2 in 12 and 23,
-  and returns false otherwise
+Write a function that given two integers, each in the range 10 to 99, returns true if there is an integer that appears in both numbers such as the 2 in 12 and 23, and returns false otherwise
 */
 let testIntOne = 12;
 let testIntTwo = 23;

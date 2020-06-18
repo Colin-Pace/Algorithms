@@ -1,12 +1,5 @@
 /*
-Check to see if a binary tree is balanced;
-  in a balanced tree,
-    the subtrees of each node,
-      have heights that differ by,
-      no more than one;
-
-Return true if balanced,
-  false if not;
+Check to see if a binary tree is balanced. In a balanced tree, the subtrees of each node have heights that differ by, no more than one. Return true if balanced, false if not
 
 
 Example graphs

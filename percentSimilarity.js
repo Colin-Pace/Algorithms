@@ -1,12 +1,7 @@
 /*
-Write a function that, given two arrays of integers,
-  returns the percentage similarity of the arrays,
-  represented as a float from 0 to 1.
+Write a function that, given two arrays of integers returns the percentage similarity of the arrays represented as a float from 0 to 1.
 
-For instance, [1, 2, 3] and [1, 2, 3] are 100% similar,
-  so the solution to return is 1.0;
-  for [1, 2, 3, 4] and [1, 2, 3, 5], return 0.75;
-  for [1, 2] and [2, 1], return 0.
+For instance, [1, 2, 3] and [1, 2, 3] are 100% similar,so the solution to return is 1.0; for [1, 2, 3, 4] and [1, 2, 3, 5], return 0.75; for [1, 2] and [2, 1], return 0.
 */
 let integersOne = [1, 2, 3];
 let integersTwo = [1, 2, 3];

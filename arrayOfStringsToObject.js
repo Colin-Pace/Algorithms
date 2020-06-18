@@ -1,11 +1,5 @@
 /*
-Write a function that,
-  given an array of strings,
-    representing full names (first & last),
-  returns a dictionary with keys 'a', 'b', 'c', etc.,
-    and values being arrays of the names whose last name
-      starts with that letter;
-  assume all input is valid
+Given an array of strings representing full names (first & last), write a function that returns a dictionary with keys 'a', 'b', 'c', etc., and values being arrays of the names whose last name starts with that letter; assume all input is valid
 */
 let names = ['Michael Pace', 'Tina Applesauce', 'Colin Pace'];
 function arrayOfStringsToObject(array) {

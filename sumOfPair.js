@@ -1,10 +1,5 @@
 /*
-Given an array of integers,
-  determine whether it contains,
-  a pair of numbers whose value,
-  is equal to a target;
-  if multiple pairs exist,
-    return the first pair
+Given an array of integers determine whether it contains a pair of numbers whose value is equal to a target if multiple pairs exist, return the first pair
 */
 let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let integer = 7;

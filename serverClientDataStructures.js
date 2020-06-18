@@ -1,18 +1,5 @@
 /*
-Write a function that,
-    accepts a string as input, and,
-    returns as output an array that contains,
-        an object,
-            whose keys are the indices of the first item,
-                of successive pairs of non-space items, and,
-            whose values are the pairs of non-space items, and,
-        a string,
-            of each non-space odd character in the input, and,
-                this is to be done by indexing the object, and,
-        an array of objects, and,
-            each object is to have one pair,
-                whose key is the letter of each non-space item, and,
-                whose value is its index if no spaces were in the input
+Write a function that accepts a string as input, and returns as output an array that contains an object whose keys are the indices of the first item of successive pairs of non-space items, whose values are the pairs of non-space items, and a string of each non-space odd character in the input.
 */
 let input = "The HTTP object methods and status codes are fun";
 function serverClientDataStructures(input) {

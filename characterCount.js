@@ -1,10 +1,5 @@
 /*
-Write a function that,
-  given a string,
-  returns the length,
-  of the largest block in the string;
-
-A block is a run of adjacent characters that are the same;
+Write a function that, given a string, returns the length, of the largest block in the string. A block is a run of adjacent characters that are the same.
 
 For instance, the largest block in "abcdef" is 1;
 

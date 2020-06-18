@@ -1,15 +1,7 @@
 /*
-Write a function that,
-  given a string and an integer n,
-  returns a string made of
-    the first n characters of the string,
-    followed by the first n-1 characters
-      of the string, and so on
+Write a function that, given a string and an integer n, returns a string made of the first n characters of the string, followed by the first n-1 characters of the string, and so on
 
-For instance, if the input
-  were "Sandwich" and 5,
-  the output would be:
-    "SandwSandSanSaS"
+For instance, if the input were "Sandwich" and 5, the output would be: "SandwSandSanSaS"
 */
 let string = "Sandwich";
 function decrementedSequence(str, n) {

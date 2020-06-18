@@ -1,9 +1,5 @@
 /*
-Write a function that,
-  given a string,
-  returns the longest substring that,
-  appears at both the beginning and end,
-  of the string without overlapping;
+Write a function that given a string returns the longest substring that appears at both the beginning and end of the string without overlapping;
 
 For instance, if the input were "abc123abc",
   the output would be "abc"

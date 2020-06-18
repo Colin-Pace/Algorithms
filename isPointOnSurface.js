@@ -1,25 +1,11 @@
 /*
-If the x-y coordinates of a rectangle or square and,
-  those of a point are given,
-then,
-  write a function that returns,
-    whether the point is contained in the rectangle or square;
+If the x-y coordinates of a rectangle or square and those of a point are given,
+then write a function that returns whether the point is contained in the rectangle or square;
 
 For example,
-  if,
-    the rectangle or square were to have,
-      the coordinates of [[0, 0], [5, 0], [5, 10], [0, 10]],
-    and the point the coordinates of [3, 7],
-  then,
-    the function would return true;
+  if the rectangle or square were to have, the coordinates of [[0, 0], [5, 0], [5, 10], [0, 10]], and the point the coordinates of [3, 7], then the function would return true;
 
-Also,
-  if,
-    the rectangle or square were to have,
-      the coordinates of [[0, 0], [5, 0], [5, 10], [0, 10]],
-    and the point the coordinates of [12, 7],
-  then,
-    the function would return false
+Also, if the rectangle or square were to have, the coordinates of [[0, 0], [5, 0], [5, 10], [0, 10]], and the point the coordinates of [12, 7], then the function would return false
 */
 let surfaceDimensions = [[0, 0], [0, 10], [5, 0], [10, 10]];
 let onSurfacePoint = [3, 7];

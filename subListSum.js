@@ -1,7 +1,5 @@
 /*
-Given an unsorted array,
-  find a sub array that adds,
-  to integer S
+Given an unsorted array, find a sub array that adds to integer S
 */
 let inputOne = [1, 3, 2, 7, 4, 5, 2, 5, 8, 10, 1, 4, 2];
 let inputTwo = 25;

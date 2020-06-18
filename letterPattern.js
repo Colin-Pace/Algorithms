@@ -1,17 +1,11 @@
 /*
-Write a function that
-  accepts a string;
+Write a function that accepts a string.
 
-Look for patterns like "zip" and "zap" in the string, i.e.,
-  patterns with a length of 3 that start with 'z' and end with 'p';
+Look for patterns like "zip" and "zap" in the string, i.e., patterns with a length of 3 that start with 'z' and end with 'p';
 
-Return a string where,
-  for all such patterns,
-  the middle letter is gone;
+Return a string where for all such patterns the middle letter is gone;
 
-For instance,
-  "zipXzap" would yield "zpXzp",
-  and "zzzopzop" would yield "zzzpzp"
+For instance "zipXzap" would yield "zpXzp" and "zzzopzop" would yield "zzzpzp"
 */
 let inputOne = "zipXzap";
 let inputTwo = "zzzopzop";

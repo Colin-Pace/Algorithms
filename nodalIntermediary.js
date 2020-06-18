@@ -1,14 +1,7 @@
 /*
-Write a function that, given a graph
-  whose nodes represent profiles, and,
-  whose edges represent friendships,
-  returns whether two users who aren't friends
-    have a mutual friend
+Write a function that, given a graph whose nodes represent profiles, and whose edges represent friendships returns whether two users who aren't friends have a mutual friend
 
-E.g., if rows and columns represent edges among
-        nodes of friends in a network,
-      then 19 and 20 are friends,
-        but 1 and 24 are not
+Example: if rows and columns represent edges among nodes of friends in a network, then 19 and 20 are friends, but 1 and 24 are not
 
     1        5      9        13        17        21       25
     2        6      10       14        18        22       26

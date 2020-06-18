@@ -1,15 +1,7 @@
 /*
-Given a string,
-  write a function that computes,
-  a new string by changing,
-  every set of three characters;
+Given a string, write a function that computes a new string by changing every set of three characters.
 
-In each set,
-  the third item,
-  should be moved,
-  to first in its set,
-  and the other two,
-  should follow in the original order;
+In each set the third item should be moved to first in its set, and the other two should follow in the original order;
 
 For example,
   "abc" yields "bca",

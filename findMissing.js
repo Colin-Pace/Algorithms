@@ -1,6 +1,5 @@
 /*
-Find the integer in the first array,
-  that is missing from the second
+Find the integer in the first array, that is missing from the second
 */
 let inputOne = [4, 12, 9, 5, 6];
 let inputTwo = [4, 9, 12, 6];

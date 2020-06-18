@@ -1,10 +1,7 @@
 /*
-Given a binary tree,
-  create a two dimensional array;
-  each sub array is to contain,
-    the nodal data at each depth
+Given a binary tree, create a two dimensional array. Each sub array is to contain the nodal data at each depth
 
-E.g.,
+Example,
 
 Input
                 5
