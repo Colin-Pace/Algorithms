@@ -12,3 +12,23 @@ function pairSums(array, value) {
 const integers = [5, 2, 35, 7, 9, 4, 1, 14, 6];
 const value = 23;
 pairSums(integers, value);
+
+
+// Alternative solution
+function pairSums(array, value) {
+  array.sort(function(a, b){return a - b});
+  let first = 0;
+  let last = array.length - 1;
+  while (first < last) {
+    let s = array[first] + array[last];
+    if (s === value) {
+      console.log([array[first], array[last]]);
+      first++;
+      last--;
+    } else {
+      if (s < value) first++;
+      else last--;
+    }
+  }
+}
+//pairSums(integers, value);
