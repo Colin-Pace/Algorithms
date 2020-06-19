@@ -22,6 +22,9 @@ class LinkedList {
   }
 
   merge(list, array) {
+    if (array.length === 0) return null;
+    if (array.length === 1) return array;
+
     const firstList = array.shift();
     let fast = firstList.head;
     let slow = firstList.head;
