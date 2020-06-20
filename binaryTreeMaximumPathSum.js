@@ -1,3 +1,5 @@
+// Find the maximum path-sum in a non empty binary tree. The path does not need to travel through the root. 
+
 class Node {
   constructor(data, left = null, right = null) {
     this.data = data;
