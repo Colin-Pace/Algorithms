@@ -26,19 +26,24 @@ class LinkedList {
     if (array.length === 1) return array;
 
     const firstList = array.shift();
-    let fast = firstList.head;
-    let slow = firstList.head;
-
     while (array.length) {
-      fast = firstList.head;
-      slow = firstList.head;
+      let fast = firstList.head;
+      let slow = firstList.head;
       let currentList = array.shift();
       let current = currentList.head;
       let last = false;
 
       while (current) {
-        if (current.data < fast.data) {
-          const node = new Node(current.data);
+        if (current.data < slow.data && slow === firstList.head) {
+          let node = new Node(current.data);
+          node.next = slow;
+          firstList.head = node;
+          slow = firstList.head;
+          current = current.next;
+
+        } else if (current.data < fast.data) {
+          let node = new Node(current.data);
+
           node.next = fast;
           if (fast === slow) firstList.head = node;
           if (slow === fast) current = current.next;
@@ -60,6 +65,8 @@ class LinkedList {
             else {
               fast.next = new Node(current.data);
               last = true;
+              if (!current.next) break;
+              else current = current.next;
             }
           }
 
@@ -89,10 +96,10 @@ const listB = new LinkedList;
 const listC = new LinkedList;
 
 const integersA = [1, 4, 5];
-const integersB = [1, 3, 4];
-const integersC = [2, 6];
+const integersB = [-2, -1, 1, 3, 4, 10, 20];
+const integersC = [0, 2, 6, 40];
 
-// Another set of lists for input
+//Another set of lists for input
 // const integersA = [2, 3, 10, 12];
 // const integersB = [0, 3, 4];
 // const integersC = [1, 6];
