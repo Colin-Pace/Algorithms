@@ -1,3 +1,5 @@
+// Split a string based on a separator
+
 let result = [];
 const stringSplitter = str => {
   if (str.length === 0) {

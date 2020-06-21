@@ -1,3 +1,5 @@
+// Reverse a string
+
 const reverse = str => {
   if (str.length === 0) {
     return "";

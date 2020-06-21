@@ -1,3 +1,5 @@
+// Return the first argument raised to the power of the second
+
 const powerCalculator = (x, y) => {
   if (y <= -1) {
     throw "Exponent should be >= 0";

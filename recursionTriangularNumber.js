@@ -1,3 +1,5 @@
+// A triangular number counts the objects that con form an equilateral triangle. It is the sum of the natural numbers from one to n
+
 const triangularNumber = (number, memo) => {
   memo = memo || {};
   if (memo[number]) {

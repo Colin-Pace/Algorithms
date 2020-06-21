@@ -1,3 +1,5 @@
+// With a number as input, display it number of sheep that jump over the fence. 
+
 const sheep = number => {
   if (number === 0) {
     return;

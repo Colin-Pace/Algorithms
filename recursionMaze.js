@@ -1,3 +1,5 @@
+// Find a way out of the maze. If a location has an asterisk, it's non traversable
+
 const maze = [
     [' ', ' ', ' '],
     [' ', '*', ' '],
