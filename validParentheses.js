@@ -43,13 +43,11 @@ class Stack {
   validate(array) {
     if (array.length === 0) return null;
     const l = array.length;
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < l; i++) {
       if (array[i] === '(' || array[i] === '[' || array[i] === '{') {
-
         this.push(array[i]);
       } else {
         const node = this.pop();
-
         if (array[i] === ')' && node.data === '(') continue;
         else if (array[i] === ']' && node.data === '[') continue;
         else if (array[i] === '}' && node.data === '{') continue;
