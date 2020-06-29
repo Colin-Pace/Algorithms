@@ -106,8 +106,78 @@ class Trie {
 }
 
 const letters = new Trie;
+console.log('Trie');
+console.time();
 letters.insert('apple');
 letters.insert('app');
 letters.insert('application');
-console.log(letters.search('app'));
-console.log(letters.startsWith('ap'));
+letters.insert('apples');
+console.timeEnd();
+console.log('\n');
+// console.log(letters.search('apples'));
+// console.log(letters.startsWith('ap'));
+
+
+
+
+// Improvement of insertion asymptotic time complexity
+
+class Trie_ {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(data) {
+    if (!data) return null;
+    const letters = data.split('');
+    letters.push('*');
+    const l = letters.length;
+    let i = 0, marker = this.root;
+
+    while (i < l) {
+      if (!this.root) {
+        this.root = new Node(letters[0]);
+        marker = this.root;
+        i++;
+
+      } else {
+        const adj = marker.adj;
+        if (adj.length === 0) {
+          adj.push(new Node(letters[i]));
+          i++;
+          marker = adj[0];
+
+        } else {
+          if (i === 0) {
+            if (letters[0] !== this.root.data) return null;
+            else i = 1;
+          }
+
+          const len = adj.length;
+          for (let j = 0; j < len; j++) {
+            if (adj[j].data === letters[i]) {
+              marker = adj[j];
+              break;
+
+            } else if (adj[j].data !== letters[i] && j === len - 1) {
+              adj.push(new Node(letters[i]));
+              marker = adj[len];
+            }
+          }
+          i++;
+        }
+      }
+    }
+  }
+}
+
+const alphabet = new Trie_;
+console.log('Trie_:');
+console.time();
+alphabet.insert('apple');
+alphabet.insert('app');
+alphabet.insert('application');
+alphabet.insert('apples');
+console.timeEnd();
+console.log('\n');
+//console.log(alphabet.root.adj[0]);
