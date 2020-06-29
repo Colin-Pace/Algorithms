@@ -120,7 +120,7 @@ console.log('\n');
 
 
 
-// Improvement of insertion asymptotic time complexity
+// An improvement of the asymptotic time complexity of the insertion method
 
 class Trie_ {
   constructor() {
