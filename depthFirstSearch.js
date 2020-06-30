@@ -1,8 +1,7 @@
-// Search a graph by depth and return the search order
-
 class Node {
-  constructor(data, adj = null) {
+  constructor(data) {
     this.data = data;
+    this.adj = [];
   }
 }
 
@@ -21,16 +20,14 @@ e.adj = [c, d];
 const visited = [];
 const order = [];
 function route(node) {
-  if (visited.includes(node)) return;
+  if (!node) return null;
+  else if (visited.includes(node)) return;
   else {
     visited.push(node);
     order.push(node.data);
-    const neighbors = node.adj;
-    let l = neighbors.length;
-    for (let i = 0; i < l; i++) {
-      route(neighbors[i]);
-    }
+    const neighbors = node.adj, l = neighbors.length;
+    for (let i = 0; i < l; i++) route(neighbors[i]);
+    return order;
   }
-  return order;
 }
 console.log(route(a));
