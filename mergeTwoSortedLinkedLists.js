@@ -13,11 +13,13 @@ class LinkedList {
   }
 
   add(data) {
-    if (!this.head) this.head = new Node(data);
-    else {
-      let runner = this.head;
-      while (runner.next) runner = runner.next;
-      runner.next = new Node(data);
+    if (!this.head) {
+      this.head = new Node(data);
+      this.runner = this.head;
+    } else {
+      let node = new Node(data);
+      this.runner.next = node;
+      this.runner = this.runner.next;
     }
   }
 

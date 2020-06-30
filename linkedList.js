@@ -33,6 +33,18 @@ class SinglyLinkedList {
     }
   }
 
+  // An improvement in asymptotic time complexity
+  add_(data) {
+    if (!this.head) {
+      this.head = new Node(data);
+      this.runner = this.head;
+    } else {
+      let node = new Node(data);
+      this.runner.next = node;
+      this.runner = this.runner.next;
+    }
+  }
+
   remove(data) {
     if (!this.head) {
       throw "No nodes in list.";
@@ -104,6 +116,20 @@ class DoublyLinkedList {
     }
   }
 
+  // An improvement in asymptotic time complexity
+  add_(data) {
+    if (!this.head) {
+      this.head = new Node(data);
+      this.runner = this.head;
+    } else {
+      let node = new Node(data);
+      this.runner.next = node;
+      node.prev = this.runner;
+      this.runner = node;
+    }
+  }
+
+
   remove(data) {
     if (!this.head) {
       throw "No nodes in list.";
@@ -134,6 +160,14 @@ class DoublyLinkedList {
         }
       }
     }
+  }
+
+  // An improvement in asymptotic time complexity
+  remove_() {
+    let node = this.runner;
+    this.runner = this.runner.prev;
+    node.prev = null;
+    return node;
   }
 }
 
