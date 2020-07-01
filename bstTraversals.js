@@ -12,24 +12,27 @@ class Queue {
   }
 
   enqueue(data) {
-    let node = new QueueNode(data);
     if (!this.head) {
-      this.tail = node;
-      this.head = this.tail;
+      this.head = new QueueNode(data);
+      this.tail = this.head;
     } else {
-      this.head.next = node;
-      this.head = node;
+      let node = new QueueNode(data);
+      this.tail.next = node;
+      this.tail = node;
     }
   }
 
   dequeue() {
+    let node;
     if (!this.head) return null;
-    else {
-      let node = this.tail;
-      if (this.tail === this.head) {
-        this.tail = null;
-        this.head = null;
-      } else this.tail = this.tail.next;
+    else if (this.tail === this.head) {
+      node = this.head;
+      this.head = null;
+      this.tail = null;
+      return node;
+    } else {
+      node = this.head;
+      this.head = this.head.next;
       node.next = null;
       return node;
     }
