@@ -72,7 +72,7 @@ class BinarySearchTree {
   remove(data) {
     const remove = function(node, data) {
       if (!node) return null;
-      if (data === node.data) {
+      else if (data === node.data) {
         if (!node.left && !node.right) return null;
         else if (!node.left) return node.right;
         else if (!node.right) return node.left;
