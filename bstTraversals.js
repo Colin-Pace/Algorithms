@@ -75,7 +75,7 @@ class BinarySearchTree {
         else if (!node.right) return node.left;
         else {
           let temp = node.right;
-          while (temp.left) temp = temp.left
+          while (temp.left) temp = temp.left;
           node.data = temp.data;
           node.right = remove(node.right, temp.data);
           return node;
