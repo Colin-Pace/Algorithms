@@ -66,6 +66,31 @@ class BinarySearchTree {
     }
   }
 
+  remove(data) {
+    const remove = function(node, data) {
+      if (!node) return null;
+      if (data === node.data) {
+        if (!node.left && !node.right) return null;
+        else if (!node.left) return node.right;
+        else if (!node.right) return node.left;
+        else {
+          let temp = node.right;
+          while (temp.left) temp = temp.left
+          node.data = temp.data;
+          node.right = remove(node.right, temp.data);
+          return node;
+        }
+      } else if (data < node.data) {
+        node.left = remove(node.left, data);
+        return node;
+      } else {
+        node.right = remove(node.right, data);
+        return node;
+      }
+    }
+    this.root = remove(this.root, data);
+  }
+
   inOrder() {
     if (!this.root) return null;
     else {
@@ -135,4 +160,5 @@ integers.forEach(integer => tree.add(integer));
 console.log(`In order: ${tree.inOrder()}`);
 console.log(`Pre order: ${tree.preOrder()}`);
 console.log(`Post order: ${tree.postOrder()}`);
+tree.remove(8);
 console.log(`Level order: ${tree.levelOrder()}`);
