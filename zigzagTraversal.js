@@ -1,0 +1,87 @@
+// Given a binary tree, return the zigzag level order traversal of its nodes' values. A zigzag level order traversal goes from left to right, then right to left for the next level.
+
+class QueueNode {
+  constructor(data, next) {
+    this.data = data;
+    this.next = next;
+  }
+}
+
+class Queue {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  enqueue(data) {
+    if (!this.head) {
+      this.head = new Node(data);
+      this.tail = this.head;
+    } else {
+      let node = new Node(data);
+      this.tail.next = node;
+      this.tail = node;
+    }
+  }
+
+  dequeue() {
+    let node;
+    if (!this.head) return null;
+    else if (this.tail === this.head) {
+      node = this.head;
+      this.head = null;
+      this.tail = null;
+      return node;
+    } else {
+      node = this.head;
+      this.head = this.head.next;
+      node.next = null;
+      return node;
+    }
+  }
+}
+
+class Node {
+  constructor(data, left, right) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+const root = new Node(3);
+const b = new Node(9);
+const c = new Node(20);
+const d = new Node(15);
+const e = new Node(7);
+
+root.left = b;
+root.right = c;
+c.left = d;
+c.right = e;
+
+function zigzagTraversal(node) {
+  if (!node) return null;
+  else {
+    const result = [];
+    let normal = false;
+    queue.enqueue(node);
+    while (queue.head) {
+      const node = queue.dequeue().data;
+      result.push(node.data);
+      if (normal) {
+        if (node.left) queue.enqueue(node.left);
+        if (node.right) queue.enqueue(node.right);
+        normal = false;
+      } else {
+        if (node.right) queue.enqueue(node.right);
+        if (node.left) queue.enqueue(node.left);
+        normal = true;
+      }
+    }
+    return result;
+  }
+}
+
+const queue = new Queue;
+console.log(zigzagTraversal(root));
