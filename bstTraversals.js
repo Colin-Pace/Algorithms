@@ -40,7 +40,7 @@ class Queue {
 }
 
 class TreeNode {
-  constructor(data, left = null, right = null) {
+  constructor(data, left, right) {
     this.data = data;
     this.left = left;
     this.right = right;
@@ -50,6 +50,7 @@ class TreeNode {
 class BinarySearchTree {
   constructor() {
     this.root = null;
+    this.visited = [];
   }
 
   add(data) {
@@ -150,8 +151,61 @@ class BinarySearchTree {
       return result;
     }
   }
-}
 
+  findMin() {
+    let current = this.root;
+    while (current.left) current = current.left;
+    return current;
+  }
+
+  findMax() {
+    let current = this.root;
+    while (current.right) current = current.right;
+    return current;
+  }
+
+  find(value) {
+    let current = this.root;
+    while (current.data !== value) {
+      if (value < current.data) current = current.left;
+      else current = current.right;
+      if (current === null) return null;
+    }
+    return current;
+  }
+
+  minHeight(node = this.root) {
+    if (this.visited.includes(node)) return 0;
+    else if (node === null) return;
+    else {
+      this.visited.push(node);
+      let left = this.minHeight(node.left);
+      let right = this.minHeight(node.right);
+      if (left < right) return left + 1;
+      else return right + 1;
+    }
+  }
+
+  maxHeight(node = this.root) {
+    if (this.visited.includes(node)) return 0;
+    else if (node === null) return;
+    else {
+      this.visited.push(node);
+      let left = this.maxHeight(node.left);
+      let right = this.maxHeight(node.right);
+      if (left > right) return left + 1;
+      else return right + 1;
+    }
+  }
+
+  balanced() {
+    const min = this.minHeight();
+    this.visited = [];
+    const max = this.maxHeight();
+    if (Math.abs((max - min) + 1 <= 1)) return true;
+    else return false;
+  }
+}
 
 
 const queue = new Queue;
@@ -163,5 +217,4 @@ integers.forEach(integer => tree.add(integer));
 console.log(`In order: ${tree.inOrder()}`);
 console.log(`Pre order: ${tree.preOrder()}`);
 console.log(`Post order: ${tree.postOrder()}`);
-tree.remove(8);
 console.log(`Level order: ${tree.levelOrder()}`);
