@@ -26,7 +26,7 @@ class LinkedList {
     this.head = null;
   }
 
-  add(data) {
+  insert(data) {
     if (!this.head) this.head = new Node(data);
     else {
       let runner = this.head;
@@ -71,21 +71,21 @@ class LinkedList {
 
   createNewLinkedList(number) {
     for (let i = 0; i < number.length; i++) {
-      resultList.add(number[i]);
+      resultList.insert(number[i]);
     }
   }
 }
 
 
 let first = new LinkedList;
-first.add(2);
-first.add(4);
-first.add(3);
+first.insert(2);
+first.insert(4);
+first.insert(3);
 
 let second = new LinkedList;
-second.add(5);
-second.add(6);
-second.add(4);
+second.insert(5);
+second.insert(6);
+second.insert(4);
 
 
 function addTwoNumbers() {

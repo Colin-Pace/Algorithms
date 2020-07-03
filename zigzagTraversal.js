@@ -66,6 +66,7 @@ function zigzagTraversal(node) {
     const result = [];
     let normal = false;
     queue.enqueue(node);
+    
     while (queue.head) {
       const node = queue.dequeue().data;
       result.push(node.data);
@@ -73,6 +74,7 @@ function zigzagTraversal(node) {
         if (node.left) queue.enqueue(node.left);
         if (node.right) queue.enqueue(node.right);
         normal = false;
+
       } else {
         if (node.right) queue.enqueue(node.right);
         if (node.left) queue.enqueue(node.left);

@@ -1,9 +1,9 @@
 // Return the integer-to-last node of a linked list;
-//    e.g., the end item is first-to-last,
-//          the one before it second-to-last, etc.
+//    for example, the end item is last,
+//    the one before it first-to-last, etc.
 
 
-class _Node {
+class Node {
   constructor(data, next) {
     this.data = data;
     this.next = next;
@@ -15,28 +15,27 @@ class LinkedList {
     this.head = null;
   }
 
-  insertFirst(item) {
-    this.head = new _Node(item, null);
-  }
-
-  insertLast(item) {
-    let pointer = this.head;
-    while (pointer.next !== null) {
-      pointer = pointer.next;
+  add(data) {
+    if (!this.head) {
+      this.head = new Node(data);
+      this.runner = this.head;
+    } else {
+      let node = new Node(data);
+      this.runner.next = node;
+      this.runner = this.runner.next;
     }
-    pointer.next = new _Node(item, null);
   }
 
   integerToLast(integer) {
     let fast = this.head;
     let slow = this.head;
 
-    while (integer > 1) {
+    while (integer > 0) {
       fast = fast.next;
       integer--;
     }
 
-    while (fast.next !== null) {
+    while (fast.next) {
       fast = fast.next;
       slow = slow.next;
     }
@@ -56,9 +55,9 @@ class LinkedList {
 }
 
 let letters = new LinkedList;
-letters.insertFirst(1);
-letters.insertLast(2);
-letters.insertLast(3);
-letters.insertLast(4);
-letters.insertLast(5);
+letters.add(1);
+letters.add(2);
+letters.add(3);
+letters.add(4);
+letters.add(5);
 console.log(letters.integerToLast(3));

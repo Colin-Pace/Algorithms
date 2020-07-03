@@ -1,7 +1,7 @@
 // Delete the middle node of a singly linked list,
 //    given access only to that node
 
-class _Node {
+class Node {
   constructor(data, next) {
     this.data = data;
     this.next = next;
@@ -13,18 +13,15 @@ class LinkedList {
     this.head = null;
   }
 
-  insertFirst(item) {
-    this.head = new _Node(item, null);
-  }
-
-  insertLast(item) {
-    let pointer = this.head;
-
-    while (pointer.next !== null) {
-      pointer = pointer.next;
+  add(data) {
+    if (!this.head) {
+      this.head = new Node(data);
+      this.runner = this.head;
+    } else {
+      let node = new Node(data);
+      this.runner.next = node;
+      this.runner = this.runner.next;
     }
-
-    pointer.next = new _Node(item, null);
   }
 
   deleteMiddleNode(node) {
@@ -47,11 +44,11 @@ class LinkedList {
 }
 
 let letters = new LinkedList;
-letters.insertFirst("A");
-letters.insertLast("B");
-letters.insertLast("C");
-letters.insertLast("D");
-letters.insertLast("E");
+letters.add("A");
+letters.add("B");
+letters.add("C");
+letters.add("D");
+letters.add("E");
 console.log(letters.collectNodalData());
 
 let middleNode = letters.head.next.next;

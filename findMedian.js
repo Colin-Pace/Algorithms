@@ -17,23 +17,13 @@ class LinkedList {
   }
 
   add(data) {
-    if (data === null) return null;
-    else if (!this.head) this.head = new Node(data);
-    else {
-      if (data < this.head.data) {
-        const node = new Node(data);
-        node.next = this.head;
-        this.head = node;
-      } else {
-        let runner = this.head;
-        while (runner.next && runner.next.data < data) runner = runner.next;
-        if (!runner.next) runner.next = new Node(data);
-        else {
-          const node = new Node(data);
-          node.next = runner.next;
-          runner.next = node;
-        }
-      }
+    if (!this.head) {
+      this.head = new Node(data);
+      this.runner = this.head;
+    } else {
+      let node = new Node(data);
+      this.runner.next = node;
+      this.runner = this.runner.next;
     }
   }
 
