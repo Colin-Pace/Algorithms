@@ -23,24 +23,21 @@ class Node {
 
 class LinkedList {
   constructor() {
-    this.root = null;
+    this.head = null;
   }
 
-  insert(value) {
-    if (this.root == null) {
-      this.root = new Node(value, null);
-    } else {
-      let runner = this.root;
-      while (runner.next) {
-        runner = runner.next;
-      }
-      runner.next = new Node(value, null);
+  add(data) {
+    if (!this.head) this.head = new Node(data);
+    else {
+      let runner = this.head;
+      while (runner.next) runner = runner.next;
+      runner.next = new Node(data);
     }
   }
 
   collectNumber() {
     let number = [];
-    let runner = this.root;
+    let runner = this.head;
     while (runner.next) {
       number.push(runner.value);
       runner = runner.next;
@@ -74,21 +71,21 @@ class LinkedList {
 
   createNewLinkedList(number) {
     for (let i = 0; i < number.length; i++) {
-      resultList.insert(number[i]);
+      resultList.add(number[i]);
     }
   }
 }
 
 
 let first = new LinkedList;
-first.insert(2);
-first.insert(4);
-first.insert(3);
+first.add(2);
+first.add(4);
+first.add(3);
 
 let second = new LinkedList;
-second.insert(5);
-second.insert(6);
-second.insert(4);
+second.add(5);
+second.add(6);
+second.add(4);
 
 
 function addTwoNumbers() {
@@ -100,4 +97,4 @@ function addTwoNumbers() {
 
 let resultList = new LinkedList;
 addTwoNumbers();
-console.log(resultList);
+console.log(resultList.collectNumber());
