@@ -72,7 +72,7 @@ class BinarySearchTree {
 
   remove(data) {
     const remove = function(node, data) {
-      if (!node) return null;
+      if (!node || !data) return null;
       else if (data === node.data) {
         if (!node.left && !node.right) return null;
         else if (!node.left) return node.right;
@@ -153,25 +153,34 @@ class BinarySearchTree {
   }
 
   findMin() {
-    let current = this.root;
-    while (current.left) current = current.left;
-    return current;
+    if (!this.root) return null;
+    else {
+      let current = this.root;
+      while (current.left) current = current.left;
+      return current;
+    }
   }
 
   findMax() {
-    let current = this.root;
-    while (current.right) current = current.right;
-    return current;
+    if (!this.root) return null;
+    else {
+      let current = this.root;
+      while (current.right) current = current.right;
+      return current;
+    }
   }
 
   find(value) {
-    let current = this.root;
-    while (current.data !== value) {
-      if (value < current.data) current = current.left;
-      else current = current.right;
-      if (current === null) return null;
+    if (!this.root || !value) return null;
+    else {
+      let current = this.root;
+      while (current.data !== value) {
+        if (value < current.data) current = current.left;
+        else current = current.right;
+        if (current === null) return null;
+      }
+      return current;
     }
-    return current;
   }
 
   minHeight(node = this.root) {
@@ -199,6 +208,7 @@ class BinarySearchTree {
   }
 
   balanced() {
+    if (!this.root) return null;
     const min = this.minHeight();
     this.visited = [];
     const max = this.maxHeight();
