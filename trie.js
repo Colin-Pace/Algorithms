@@ -1,4 +1,4 @@
-// Implement a trie with insert, search, and startsWith methods.
+// Implement a trie with add, search, and startsWith methods
 
 class Node {
   constructor(data, adj) {
@@ -12,172 +12,98 @@ class Trie {
     this.root = null;
   }
 
-  insert(data) {
-    if (!data) return null;
-    const letters = data.split('');
-    letters.push('*');
-    let i = 0;
-
-    while (i < letters.length - 1) {
-      if (!this.root) this.root = new Node(letters[0]);
-      let index = 0;
-
-      const searchTree = function(itr) {
-        if (!itr.adj.length && itr.data !== '*') {
-          return itr.adj.push(new Node(letters[index + 1]));
-        } else {
-          if (letters[index] === itr.data) {
-            const l = itr.adj.length;
-            for (let i = 0; i < l; i++) {
-              if (letters[index + 1] === itr.adj[i].data) {
-                index++;
-                return searchTree(itr.adj[i]);
-              } else if (i === l - 1) {
-                return itr.adj.push(new Node(letters[index + 1]));
-              }
-            }
-          }
-        }
-      }
-      searchTree(this.root);
-      i++;
-    }
-  }
-
-  search(data) {
-    if (!data || !this.root) return null;
-    const letters = data.split('');
-    letters.push('*');
-    let i = 0;
-
-    while (i < letters.length - 1) {
-      if (!this.root) return null;
-      let index = 0, found = false;
-
-      const searchTree = function(itr) {
-        if (letters[index] === itr.data) {
-          const l = itr.adj.length;
-          for (let i = 0; i < l; i++) {
-            if (itr.adj[i].data === '*' && letters[index + 1] === '*') {
-              found = true;
-            } else if (letters[index + 1] === itr.adj[i].data) {
-              index++;
-              return searchTree(itr.adj[i]);
-            }
-          }
-        }
-
-      }
-      searchTree(this.root);
-      if (found === true) return true;
-      i++;
-    }
-
-    return false;
-  }
-
-  startsWith(data) {
-    if (!data || !this.root) return null;
-    const letters = data.split('');
-    let i = 0;
-
-    while (i < letters.length - 1) {
-      if (!this.root) return null;
-      let index = 0, found = false;
-
-      const searchTree = function(itr) {
-        if (letters[index] === itr.data) {
-          if (index === letters.length - 1) found = true;
-          const l = itr.adj.length;
-          for (let i = 0; i < l; i++) {
-            if (letters[index + 1] === itr.adj[i].data ) {
-              index++;
-              return searchTree(itr.adj[i]);
-            }
-          }
-        }
-      }
-      searchTree(this.root);
-      if (found === true) return true;
-      i++;
-    }
-    return false;
-  }
-}
-
-const letters = new Trie;
-console.log('Trie');
-console.time();
-letters.insert('apple');
-letters.insert('app');
-letters.insert('application');
-letters.insert('apples');
-console.timeEnd();
-console.log('\n');
-// console.log(letters.search('apples'));
-// console.log(letters.startsWith('ap'));
-
-
-
-
-// An improvement of the asymptotic time complexity of the insertion method
-
-class Trie_ {
-  constructor() {
-    this.root = null;
-  }
-
-  insert(data) {
+  add(data) {
     if (!data) return null;
     const letters = data.split('');
     letters.push('*');
     const l = letters.length;
     let i = 0, marker = this.root;
 
+    if (!this.root) this.root = new Node('root');
+    marker = this.root;
+
     while (i < l) {
-      if (!this.root) {
-        this.root = new Node(letters[0]);
-        marker = this.root;
-        i++;
+      const adj = marker.adj, l_ = adj.length;;
+      if (!adj.length) {
+        adj.push(new Node(letters[i]));
+        marker = adj[0];
 
       } else {
-        const adj = marker.adj;
-        if (adj.length === 0) {
-          adj.push(new Node(letters[i]));
-          i++;
-          marker = adj[0];
+        for (let j = 0; j < l_; j++) {
+          if (adj[j].data === letters[i]) {
+            marker = adj[j];
+            break;
 
-        } else {
-          if (i === 0) {
-            if (letters[0] !== this.root.data) return null;
-            else i = 1;
+          } else if (j === l_ - 1) {
+            adj.push(new Node(letters[i]));
+            marker = adj[adj.length - 1];
           }
-
-          const len = adj.length;
-          for (let j = 0; j < len; j++) {
-            if (adj[j].data === letters[i]) {
-              marker = adj[j];
-              break;
-
-            } else if (adj[j].data !== letters[i] && j === len - 1) {
-              adj.push(new Node(letters[i]));
-              marker = adj[len];
-            }
-          }
-          i++;
         }
+      }
+
+      i++;
+    }
+  }
+
+  search(data) {
+    if (!data || !this.root) return null;
+    else {
+      const letters = data.split('');
+      letters.push('*');
+      const l = letters.length;
+      let i = 0, marker = this.root;
+
+      while (i < l) {
+        const adj = marker.adj, l_ = adj.length;
+        for (let j = 0; j < l_; j++) {
+          if (letters[i] === '*' && adj[j].data === '*') return true;
+          else if (letters[i] === adj[j].data) {
+            marker = adj[j];
+            break;
+          } else if (j === l_ - 1) return false;
+        }
+
+        i++;
+      }
+    }
+  }
+
+  startsWith(data) {
+    if (!data || !this.root) return null;
+    else {
+      const letters = data.split('');
+      const l = letters.length;
+      let i = 0, marker = this.root;
+
+      while (i < l) {
+        const adj = marker.adj, l_ = adj.length;
+        for (let j = 0; j < l_; j++) {
+          if (i === l - 1 && letters[i] === adj[j].data) return true;
+          else if (letters[i] === adj[j].data) {
+            marker = adj[j];
+            break;
+          } else if (j === l_ - 1) return false;
+        }
+
+        i++;
       }
     }
   }
 }
 
-const alphabet = new Trie_;
-console.log('Trie_:');
-console.time();
-alphabet.insert('apple');
-alphabet.insert('app');
-alphabet.insert('application');
-alphabet.insert('apples');
-console.timeEnd();
+const alphabet = new Trie;
+
+const dictionary = ['apple', 'apples', 'application', 'app', 'billiards', 'baskets', 'ballads', 'buckets', 'biscuits', 'cars', 'car', 'class', 'dogs', 'docks', 'doors', 'drapes', 'dramaturgy'];
+
+dictionary.forEach(word => alphabet.add(word));
+
+console.log(alphabet.search('apple'));
+console.log(alphabet.search('application'));
+console.log(alphabet.search('biscuits'));
+console.log(alphabet.search('docks'));
+
 console.log('\n');
-//console.log(alphabet.root.adj[0]);
+console.log(alphabet.startsWith('ap'));
+console.log(alphabet.startsWith('applicat'));
+console.log(alphabet.startsWith('applicats'));
+console.log(alphabet.startsWith('drama'));

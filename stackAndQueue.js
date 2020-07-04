@@ -45,6 +45,7 @@ numeric.pop();
 console.log(numeric);
 
 
+
 class Queue {
   constructor() {
     this.head = null;
@@ -52,22 +53,28 @@ class Queue {
   }
 
   enqueue(data) {
-    let node = new Node(data);
-    if (this.head === null || this.head === undefined) {
-      this.head = node;
-      this.tail = node;
+    if (!this.head) {
+      this.head = new Node(data);
+      this.tail = this.head;
     } else {
+      let node = new Node(data);
       this.tail.next = node;
       this.tail = node;
     }
   }
 
   dequeue() {
-    if (!this.head) {
-      throw "No items in queue."
+    let node;
+    if (!this.head) return null;
+    else if (this.tail === this.head) {
+      node = this.head;
+      this.head = null;
+      this.tail = null;
+      return node;
     } else {
-      let node = this.head;
-      this.head = node.next;
+      node = this.head;
+      this.head = this.head.next;
+      node.next = null;
       return node;
     }
   }
