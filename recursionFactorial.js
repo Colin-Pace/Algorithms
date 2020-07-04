@@ -7,6 +7,7 @@ const factorial = number => {
     return number * factorial(number - 1);
   }
 }
+
 console.log('Without memoization:');
 console.time();
 console.log(factorial(20));
@@ -25,6 +26,7 @@ function factorial_(integer, memo) {
     return memo[integer];
   }
 }
+
 console.log('With memoization:');
 console.time();
 console.log(factorial_(20));

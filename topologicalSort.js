@@ -4,6 +4,7 @@ File structure -- topological sort
 2. Sort class declaration
 3. Instance implementation
 */
+
 class _Node {
   constructor(data, edges, inbound=0) {
     this.data = data;
@@ -11,6 +12,7 @@ class _Node {
     this.inbound = inbound;
   }
 }
+
 let graph = [];
 let a = new _Node('A');
 let b = new _Node('B');
@@ -25,6 +27,7 @@ let j = new _Node('J');
 let k = new _Node('K');
 let l = new _Node('L');
 let m = new _Node('M');
+
 a.edges = [d];
 b.edges = [d];
 c.edges = [a, b];
@@ -38,6 +41,7 @@ j.edges = [l, m];
 k.edges = [j];
 l.edges = undefined;
 m.edges = undefined;
+
 graph.push(a);
 graph.push(b);
 graph.push(c);
@@ -51,6 +55,7 @@ graph.push(j);
 graph.push(k);
 graph.push(l);
 graph.push(m);
+
 class TopologicalSort {
   algorithm(graph) {
     let order = [];
@@ -85,11 +90,14 @@ class TopologicalSort {
             processNext.push(edges[ae]);
           }
         }
+
         order.push(node);
       }
     }
+
     return order;
   }
 }
+
 let instance = new TopologicalSort;
 console.log(instance.algorithm(graph));

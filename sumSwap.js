@@ -3,16 +3,19 @@ Given two arrays of integers, find a pair of values, one from each array that if
 */
 let inputOne = [4, 1, 2, 1, 1, 2];
 let inputTwo = [3, 6, 3, 3];
+
 function sumSwap(ae, ap) {
   let result = [];
   let object = {};
   let aeSum = 0;
   let apSum = 0;
   let difference = 0;
+
   for (let c in ae) {
     let idx = ae[c];
     aeSum += idx;
   }
+  
   for (let c in ap) {
     apSum += ap[c];
   }

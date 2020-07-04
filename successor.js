@@ -63,31 +63,34 @@ p.parent = o;
 
 
 function traversal(node) {
-    if (node === null) {
-        return null;
-    }
+  if (node === null) {
+    return null;
+  }
 
-    if (node.right !== null) {
-        return leftMost(node.right);
-    } else {
-        let q = node;
-        let x = q.parent;
-        while (x !== null && x.left !== q) {
-            q = x;
-            x = x.parent;
-        }
-        return x;
+  if (node.right !== null) {
+    return leftMost(node.right);
+  } else {
+    let q = node;
+    let x = q.parent;
+
+    while (x !== null && x.left !== q) {
+      q = x;
+      x = x.parent;
     }
+    return x;
+  }
 }
 
 function leftMost(node) {
-    if (node === null) {
-        return null;
-    }
-    while (node.left !== null) {
-        node = node.left;
-    }
-    return node;
+  if (node === null) {
+    return null;
+  }
+
+  while (node.left !== null) {
+    node = node.left;
+  }
+  
+  return node;
 }
 
 console.log(traversal(root));

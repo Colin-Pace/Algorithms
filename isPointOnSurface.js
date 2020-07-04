@@ -7,9 +7,11 @@ For example,
 
 Also, if the rectangle or square were to have, the coordinates of [[0, 0], [5, 0], [5, 10], [0, 10]], and the point the coordinates of [12, 7], then the function would return false
 */
+
 let surfaceDimensions = [[0, 0], [0, 10], [5, 0], [10, 10]];
 let onSurfacePoint = [3, 7];
 let notOnSurfacePoint = [12, 7];
+
 function isPointOnSurface(surfDim, pointCoords) {
   let xRange;
   let yRange;
@@ -20,6 +22,7 @@ function isPointOnSurface(surfDim, pointCoords) {
       break;
     }
   }
+
   for (let i = 1; i < surfDim.length; i++) {
     if (surfDim[i-1][1] !== surfDim[i][1]) {
       yRange = [surfDim[i-1][1], surfDim[i][1]]
@@ -37,17 +40,21 @@ function isPointOnSurface(surfDim, pointCoords) {
                  pointCoords[1] > yRange[1]) {
                     return true;
     }
+
   } else if ( pointCoords[0] < xRange[0] &&
               pointCoords[0] > xRange[1]) {
     if ( pointCoords[1] > yRange[0] &&
          pointCoords[1] < yRange[1]) {
       return true;
+
     } else if ( pointCoords[1] < yRange[0] &&
                 pointCoords[1] > yRange[1]) {
       return true;
     }
   }
+
   return false;
 }
-//console.log(isPointOnSurface(surfaceDimensions, onSurfacePoint));
-//console.log(isPointOnSurface(surfaceDimensions, notOnSurfacePoint));
+
+console.log(isPointOnSurface(surfaceDimensions, onSurfacePoint));
+console.log(isPointOnSurface(surfaceDimensions, notOnSurfacePoint));

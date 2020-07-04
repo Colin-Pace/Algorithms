@@ -4,6 +4,7 @@ let result = [];
 const stringSplitter = str => {
   if (str.length === 0) {
     return;
+
   } else {
     let part = "";
     let i = 0;
@@ -11,13 +12,16 @@ const stringSplitter = str => {
       part += str[i];
       i++
     }
+
     result.push(part);
     if (str[i] === undefined) {
       return;
+
     } else {
       stringSplitter(str.substring(i + 1));
     }
   }
 }
+
 stringSplitter("02/20/2020");
 console.log(result);

@@ -4,6 +4,7 @@ let inputOne = "permutation";
 let inputTwo = "mutation";
 let inputThree = "notmutation";
 let inputFour = "mutationper";
+
 function isPermutation(one, two) {
   if (one.length !== two.length) {
     return false;
@@ -41,6 +42,7 @@ function isPermutation(one, two) {
     return true;
   }
 }
+
 console.log(isPermutation(inputOne, inputTwo));
 console.log(isPermutation(inputOne, inputThree));
 console.log(isPermutation(inputOne, inputFour));

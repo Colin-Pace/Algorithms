@@ -6,8 +6,10 @@ Prompt: given any integer between one and ten thousand,
       Input: 1234
       Output: "one thousand two hundred and thirty four"
 */
+
 let integer = 1234;
 let int = 0;
+
 function stringFromInteger(integer) {
   let strings = {
     1 : 'one',
@@ -40,6 +42,7 @@ function stringFromInteger(integer) {
     100 : 'hundred',
     1000 : 'thousand'
   }
+
   let array = [];
   let length = integer.toString().length;
   let idxStr = integer.toString();
@@ -59,6 +62,7 @@ function stringFromInteger(integer) {
     if (integer in strings) {
       console.log(strings[integer]);
     }
+
     else {
       let tens = idxStr[0] + 0;
       array.push(strings[tens]);
@@ -88,6 +92,7 @@ function stringFromInteger(integer) {
           result += array[i] + ' ';
         }
         console.log(result);
+        
       } else {
           let tens = idxStr[1] + 0;
           array.push(strings[tens]);
@@ -108,6 +113,7 @@ function stringFromInteger(integer) {
         result += array[i] + ' ';
       }
       console.log(result);
+
     } else if (last === 0 && tens === 0) {
       array.push(strings[idxStr[0]]);
       array.push('thousand');
@@ -117,6 +123,7 @@ function stringFromInteger(integer) {
         result += array[i] + ' ';
       }
       console.log(result);
+
     } else if (last === 0) {
       array.push(strings[idxStr[0]]);
       array.push('thousand');
@@ -128,6 +135,7 @@ function stringFromInteger(integer) {
         result += array[i] + ' ';
       }
       console.log(result);
+
     } else {
       array.push(strings[idxStr[0]]);
       array.push('thousand');

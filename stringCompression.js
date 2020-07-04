@@ -1,4 +1,4 @@
-// Compress a string such that the number of letters of consecutive letters follows the letter; if the compressed string is longer than the original, return the original 
+// Compress a string such that the number of letters of consecutive letters follows the letter; if the compressed string is longer than the original, return the original
 
 function stringCompression(str) {
   let result = "";
@@ -12,6 +12,7 @@ function stringCompression(str) {
       } else {
         count++;
       }
+
     } else {
       if (i + 2 === str.length) {
         result += `${str[i]}${count}`;
@@ -24,7 +25,9 @@ function stringCompression(str) {
   }
   return result;
 }
+
 const letters = "aabcccccaaa";
 const lettersTwo = "abbbbbccdda";
+
 console.log(stringCompression(letters));
 console.log(stringCompression(lettersTwo));

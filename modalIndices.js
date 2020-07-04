@@ -10,6 +10,7 @@ Prompt: Given a 2D array with sub arrays of two positive
     Output [['Index zero modal start', 1, 2, 'end'],
             ['Index one modal start', 3, 'end']]
 */
+
 function makeInput(number) {
   let result = [];
   for (let i = 0; i < number; i++) {

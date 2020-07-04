@@ -10,6 +10,7 @@ let two = new Node("B");
 let three = new Node("C");
 let four = new Node("D");
 let five = new Node("E");
+
 one.next = two;
 two.next = three;
 three.next = four;

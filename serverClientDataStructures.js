@@ -1,6 +1,7 @@
 /*
 Write a function that accepts a string as input, and returns as output an array that contains an object whose keys are the indices of the first item of successive pairs of non-space items, whose values are the pairs of non-space items, and a string of each non-space odd character in the input.
 */
+
 let input = "The HTTP object methods and status codes are fun";
 function serverClientDataStructures(input) {
     let result = [];

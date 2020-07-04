@@ -3,8 +3,10 @@ Write a function that returns true if the string "cat" and "dog" appear the same
 
 For example, return true for an input of "cat//dog........catdog" and you'd return false for an input of "cat//dog............catcow"
 */
+
 let stringTrue = "cat//dog........catdog";
 let stringFalse = "cat//dog........catcow";
+
 function stringCounts(str) {
   let catCount = 0;
   let dogCount = 0;
@@ -31,5 +33,6 @@ function stringCounts(str) {
   }
   return false;
 }
-// console.log(stringCounts(stringTrue));
-// console.log(stringCounts(stringFalse));
+
+console.log(stringCounts(stringTrue));
+console.log(stringCounts(stringFalse));

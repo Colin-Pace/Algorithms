@@ -13,6 +13,7 @@ let stringFive = '81rla';
 let stringSix = '2r2';
 let stringSeven = 'ewe';
 let stringEight = 'rzzr';
+
 function isSubstring(string) {
   for (let i = 0; i < string.length - 2; i++) {
     if (string[i] === 'r') {
@@ -21,6 +22,8 @@ function isSubstring(string) {
       }
     }
   }
+
   return false;
 }
+
 console.log(isSubstring(stringEight));

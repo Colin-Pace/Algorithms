@@ -10,9 +10,11 @@ For example,
 
 Ignore any group of fewer than three characters at the end
 */
+
 let inputOne = "abc";
 let inputTwo = "abcdef";
 let inputThree = "abcdefgh";
+
 function thirdToFirst(string) {
   let array = [];
   for (let i = 0; i < string.length; i+=3) {
@@ -20,13 +22,16 @@ function thirdToFirst(string) {
       array += string[i+1];
       array += string[i+2];
       array += string[i];
+
     } else {
       break;
     }
   }
+
   let result = array.toString();
   return result;
 }
+
 //console.log(thirdToFirst(inputOne));
 //console.log(thirdToFirst(inputTwo));
 //console.log(thirdToFirst(inputThree));

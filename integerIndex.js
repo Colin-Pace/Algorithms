@@ -31,6 +31,7 @@ function findIntegerIndex(integers, value) {
         return i;
       }
     }
+    
   } else {
     for (let i = midIndex; i < integers.length; i++) {
       if (integers[i] === value) {

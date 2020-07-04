@@ -1,8 +1,10 @@
 class MyDictionary {
+
     constructor(size=200) {
         this.size = size;
         this.array = [];
     }
+
     hash(str) {
         var resultString = "";
         for (var i = 0; i < str.length; i++) {
@@ -10,6 +12,7 @@ class MyDictionary {
         }
         return Number(resultString) % this.size;
     }
+
     get(key) {
         let index = this.hash(key);
         let subArray = this.array[index];
@@ -24,6 +27,7 @@ class MyDictionary {
         }
         return undefined;
     }
+
     set(key, value) {
         let index = this.hash(key);
         let subArrayItem = [key, value];
@@ -44,11 +48,15 @@ class MyDictionary {
         }
     }
 }
+
 let myDictionary = new MyDictionary();
+
 myDictionary.set('abcde', 123);
 myDictionary.set('fghij', 456);
 //console.log(myDictionary.get('employeeId'))
+
 myDictionary.set('klmno', 789);
 myDictionary.set('pqrst', 123);
 //console.log(myDictionary.get('laksdjf'));
+
 console.log(myDictionary);
