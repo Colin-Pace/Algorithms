@@ -93,7 +93,7 @@ class Trie {
 
 const alphabet = new Trie;
 
-const dictionary = ['apple', 'apples', 'application', 'app', 'billiards', 'baskets', 'ballads', 'buckets', 'biscuits', 'cars', 'car', 'class', 'dogs', 'docks', 'doors', 'drapes', 'dramaturgy'];
+const dictionary = ['apple', 'apples', 'application', 'app', 'billiards', 'baskets', 'ballads', 'buckets', 'biscuits', 'cars', 'car', 'class', 'dogs', 'docks', 'doors', 'drama', 'dramaturgy'];
 
 dictionary.forEach(word => alphabet.add(word));
 
