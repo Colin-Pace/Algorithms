@@ -33,7 +33,15 @@ const inputThree_ = { "apple": 1, "bat": 2 };
 const inputFour = [{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }];
 const inputFour_ = { "apple": 1, "cookie": 2 };
 
+const inputFive = [{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }, { "bat":2 }];
+const inputFive_ = { "apple": 1, "bat": 2 };
+
+const inputSix = [{"a": 1, "b": 2, "c": 3}];
+const inputSix_ = {"a": 1, "b": 9999, "c": 3};
+
 console.log(whereforeArtThou(inputOne, inputOne_));
 console.log(whereforeArtThou(inputTwo, inputTwo_));
 console.log(whereforeArtThou(inputThree, inputThree_));
 console.log(whereforeArtThou(inputFour, inputFour_));
+console.log(whereforeArtThou(inputFive, inputFive_));
+console.log(whereforeArtThou(inputSix, inputSix_));

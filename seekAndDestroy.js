@@ -18,8 +18,12 @@ const inputOne = [[1, 2, 3, 1, 2, 3], 2, 3];
 const inputTwo = [[1, 2, 3, 5, 1, 2, 3], 2, 3];
 const inputThree = [[3, 5, 1, 2, 2], 2, 3, 5];
 const inputFour = [[2, 3, 2, 3], 2, 3];
+const inputFive = [["tree", "hamburger", 53], "tree", 53];
+const inputSix = [["possum", "trollo", 12, "safari", "hotdog", 92, 65, "grandma", "bugati", "trojan", "yacht"], "yacht", "possum", "trollo", "safari", "hotdog", "grandma", "bugati", "trojan"];
 
 console.log(seekAndDestroy(inputOne));
 console.log(seekAndDestroy(inputTwo));
 console.log(seekAndDestroy(inputThree));
 console.log(seekAndDestroy(inputFour));
+console.log(seekAndDestroy(inputFive));
+console.log(seekAndDestroy(inputSix));

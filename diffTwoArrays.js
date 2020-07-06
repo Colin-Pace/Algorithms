@@ -32,7 +32,11 @@ const inputThree_ = [1, "calf", 3, 4];
 const inputFour = [1, "calf", 3, "piglet"];
 const inputFour_ = [7, "filly"];
 
+const inputFive = ["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"];
+const inputFive_ = ["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"];
+
 console.log(diffTwoArrays(inputOne, inputOne_));
 console.log(diffTwoArrays(inputTwo, inputTwo_));
 console.log(diffTwoArrays(inputThree, inputThree_));
 console.log(diffTwoArrays(inputFour, inputFour_));
+console.log(diffTwoArrays(inputFive, inputFive_));
