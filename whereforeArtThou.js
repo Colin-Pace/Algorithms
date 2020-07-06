@@ -9,7 +9,7 @@ function whereforeArtThou(array, object) {
 
   for (let i = 0; i < l; i++) {
     for (let j in array[i]) {
-      if (j in object && array[i][j] === object[j]) count_++;
+      if (array[i][j] === object[j]) count_++;
       if (count_ === count) {
         result.push(array[i]);
         count_ = 0;

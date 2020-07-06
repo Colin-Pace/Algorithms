@@ -19,10 +19,10 @@ function searchAndReplace(str, arg, arg_) {
 
           if (j === len - 1) {
             let upper = true;
-            if (arg[0] !== arg[0].toUpperCase()) upper = false;
-
-            if (upper === true) result += arg_[0].toUpperCase();
-            else result += arg_[0].toLowerCase();
+            
+            if (arg[0] !== arg[0].toUpperCase()) {
+              result += arg_[0].toLowerCase();
+            } else result += arg_[0].toUpperCase();
             j = 1;
 
             while (j < len_) {
