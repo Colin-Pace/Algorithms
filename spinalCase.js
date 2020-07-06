@@ -20,7 +20,7 @@ function spinalCase(str) {
 
     } else {
       if (90 >= integer && integer >= 65) result += letter.toLowerCase();
-      else if (122 >= integer && integer >= 97) result += letter.toLowerCase();
+      else if (122 >= integer && integer >= 97) result += letter;
       else result += '-';
     }
   }
