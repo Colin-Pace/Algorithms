@@ -24,25 +24,27 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
   }
 
   insert(data) {
-    if (!this.head) this.head = new Node(data);
-    else {
-      let runner = this.head;
-      while (runner.next) runner = runner.next;
-      runner.next = new Node(data);
+    if (!this.head) {
+      this.head = new Node(data);
+      this.tail = this.head;
+    } else {
+      this.tail.next = new Node(data);
+      this.tail = this.tail.next;
     }
   }
 
   collectNumber() {
     let number = [];
-    let runner = this.head;
-    while (runner.next) {
-      number.push(runner.value);
-      runner = runner.next;
+    let tail = this.head;
+    while (tail.next) {
+      number.push(tail.value);
+      tail = tail.next;
     }
-    number.push(runner.value);
+    number.push(tail.value);
     return number;
   }
 

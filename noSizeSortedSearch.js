@@ -19,4 +19,5 @@ function binarySearch(list, value, low, high) {
   }
   return -1;
 }
+
 console.log(search(integers, 150));

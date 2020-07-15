@@ -31,4 +31,4 @@ function pairSums(array, value) {
     }
   }
 }
-//pairSums(integers, value);
+pairSums(integers, value);

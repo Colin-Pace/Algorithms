@@ -28,5 +28,6 @@ function removeDuplicates(array) {
 
 const input = [1, 1, 2];
 const input_ = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+
 console.log(removeDuplicates(input));
 console.log(removeDuplicates(input_));

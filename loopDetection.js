@@ -10,17 +10,17 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.marker = null;
+    this.tail = null;
   }
 
   add(data) {
     if (!this.head) {
       this.head = new Node(data);
-      this.marker = this.head;
+      this.tail = this.head;
     } else {
       const node = new Node(data);
-      this.marker.next = node;
-      this.marker = node;
+      this.tail.next = node;
+      this.tail = node;
     }
   }
 

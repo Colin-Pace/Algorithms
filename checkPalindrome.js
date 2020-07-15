@@ -10,27 +10,29 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
   }
 
   add(data) {
     let node = this.head;
-    if (!node) this.head = new Node(data);
-    else {
-      let runner = this.head;
-      while (runner.next) runner = runner.next;
-      runner.next = new Node(data);
+    if (!node) {
+      this.head = new Node(data);
+      this.tail = this.head;
+    } else {
+      this.tail.next = new Node(data);
+      this.tail = this.tail.next;
     }
   }
 
   checkPalindrome(list) {
     let letters = [];
-    let runner = this.head;
-    while (runner.next) {
-      letters.push(runner.data);
-      runner = runner.next;
+    let tail = this.head;
+    while (tail.next) {
+      letters.push(tail.data);
+      tail = tail.next;
     }
 
-    letters.push(runner.data);
+    letters.push(tail.data);
     let start = 0;
     let end = letters.length - 1;
     let mid = Math.floor(letters.length / 2);
@@ -47,9 +49,12 @@ class LinkedList {
 
 const palindrome = new LinkedList;
 const notPalindrome = new LinkedList;
+
 const isPalindrome = ['r','a','c','e','c','a','r'];
 const isNotPalindrome = ['n','o','t','r','a','c','e','c','a','r'];
+
 isPalindrome.forEach(letter => palindrome.add(letter));
 isNotPalindrome.forEach(letter => notPalindrome.add(letter));
+
 console.log(palindrome.checkPalindrome(palindrome));
 console.log(notPalindrome.checkPalindrome(isNotPalindrome));

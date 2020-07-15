@@ -1,4 +1,3 @@
-
 function fibonacciSequence(n, memo) {
   memo = memo || {};
 

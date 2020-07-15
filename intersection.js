@@ -10,54 +10,56 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
   }
 
   add(data) {
-    let node = this.head;
-    if (!node) this.head = new Node(data);
-    else {
-      let runner = this.head;
-      while (runner.next) runner = runner.next;
-      runner.next = new Node(data);
+    if (!this.head) {
+      this.head = new Node(data);
+      this.tail = this.head;
+    } else {
+      let node = new Node(data);
+      this.tail.next = node;
+      this.tail = this.tail.next;
     }
   }
 
   intersection(list, list_) {
-    let runner = list.head;
-    let runner_ = list_.head;
+    let tail = list.head;
+    let tail_ = list_.head;
     let listLength = 1;
     let list_Length = 1;
-    while (runner.next) {
-      runner = runner.next;
+    while (tail.next) {
+      tail = tail.next;
       listLength++
     }
-    while (runner_.next) {
-      runner_ = runner_.next;
+    while (tail_.next) {
+      tail_ = tail_.next;
       list_Length++;
     }
-    if (runner !== runner_) return false;
+    if (tail !== tail_) return false;
     else {
       let difference = Math.abs(listLength - list_Length);
       if (listLength > list_Length) {
-        runner = list.head;
-        runner_ = list_.head;
+        tail = list.head;
+        tail_ = list_.head;
         while (difference > 0) {
-          runner = runner.next;
+          tail = tail.next;
           difference--;
         }
       } else {
-        runner = list.head;
-        runner_ = list_.head;
+        tail = list.head;
+        tail_ = list_.head;
         while (difference > 0) {
-          runner_ = runner_.next;
+          tail_ = tail_.next;
           difference--;
         }
       }
-      while (runner !== runner_) {
-        runner = runner.next;
-        runner_ = runner_.next;
+      while (tail !== tail_) {
+        tail = tail.next;
+        tail_ = tail_.next;
       }
-      return runner;
+      return tail;
     }
   }
 }

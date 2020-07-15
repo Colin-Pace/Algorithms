@@ -51,12 +51,15 @@ class Stack {
 }
 
 let ThreeStacks = new Stack();
+
 ThreeStacks.push(3, "A");
 ThreeStacks.push(3, "A");
 ThreeStacks.push(3, "A");
 ThreeStacks.push(2, "B");
 ThreeStacks.push(1, "C");
+
 console.log(ThreeStacks.pop(2));
 console.log(ThreeStacks.pop(2));
 console.log(ThreeStacks.pop(3));
+
 console.log(ThreeStacks.array);

@@ -14,5 +14,6 @@ function firstUnique(str) {
 
 const inputOne = 'leetcode';
 const inputTwo = 'loveleetcode';
+
 console.log(firstUnique(inputOne));
 console.log(firstUnique(inputTwo));

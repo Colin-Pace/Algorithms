@@ -7,7 +7,6 @@ class Node {
   }
 }
 
-
 class Stack {
   constructor() {
     this.head = null;

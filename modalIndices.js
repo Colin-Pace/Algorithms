@@ -1,15 +1,13 @@
-/*
-Prompt: Given a 2D array with sub arrays of two positive
+/* Prompt: Given a 2D array with sub arrays of two positive
   integers between zero and one hundred inclusive, return
   in an array those two (or more) integers most common among the
   sub levels in each element index;
 
-  e.g.,
+  Example:
 
-    Input [[1, 2], [2, 3], [4, 3], [1, 6], [2, 4]]
-    Output [['Index zero modal start', 1, 2, 'end'],
-            ['Index one modal start', 3, 'end']]
-*/
+              Input [[1, 2], [2, 3], [4, 3], [1, 6], [2, 4]]
+              Output [['Index zero modal start', 1, 2, 'end'],
+                      ['Index one modal start', 3, 'end']] */
 
 function makeInput(number) {
   let result = [];
@@ -18,7 +16,7 @@ function makeInput(number) {
     for (let j = 0; j < 2; j++) {
       result[i].push(Math.floor(Math.random() * 100));
     }
-  } twoDimensionalMode(result);
+  } return twoDimensionalMode(result);
 }
 
 
@@ -30,7 +28,6 @@ function twoDimensionalMode(input) {
   let result = [[], []];
   let zeroMax = 0;
   let oneMax = 0;
-
 
   for (let i = 0; i < input.length; i++) {
     let indexZero = input[i][0];
@@ -49,14 +46,11 @@ function twoDimensionalMode(input) {
     }
   }
 
-
   for (let i in indexZeroCount) {
     if (indexZeroCount[i] > zeroMax) {
       zeroMax = indexZeroCount[i];
     } else if (indexZeroCount[i] === zeroMax) {
-    } else {
-      continue;
-    }
+    } else continue;
   }
     result[0].push('Index zero modal item(s) start');
     for (let i in indexZeroCount) {
@@ -70,9 +64,7 @@ function twoDimensionalMode(input) {
     if (indexOneCount[i] > oneMax) {
       oneMax = indexOneCount[i];
     } else if (indexOneCount[i] === oneMax) {
-    } else {
-      continue;
-    }
+    } else continue;
   }
     result[1].push('Index one modal item(s) start')
     for (let i in indexOneCount) {
@@ -82,7 +74,7 @@ function twoDimensionalMode(input) {
     }
     result[1].push('End');
 
-
-  console.log(result);
+  return result;
 }
-makeInput(50);
+
+console.log(makeInput(50));

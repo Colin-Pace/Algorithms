@@ -34,5 +34,6 @@ function happyNumber(integer, count) {
 
 const input = 19;
 const input_ = 18;
+
 console.log(happyNumber(input, 1));
 console.log(happyNumber(input_, 1));

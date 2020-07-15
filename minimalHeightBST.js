@@ -1,7 +1,7 @@
 // Make a binary search tree with minimal height,
 //    from an array of unique, increasing integers
 
-class _Node {
+class Node {
   constructor(data, left, right) {
     this.data = data;
     this.left = left;
@@ -16,7 +16,7 @@ class BinarySearchTree {
     }
 
     let mid = Math.floor((start + end) / 2);
-    let node = new _Node(array[mid]);
+    let node = new Node(array[mid]);
 
     node.left = this.createTree(array, start, mid - 1);
     node.right = this.createTree(array, mid + 1, end);

@@ -12,6 +12,7 @@ function flattenLists(list) {
 
 const input = [[1, 1], 2, [1, 1]];
 const input_ = [1, [4, [6]]];
+
 console.log(flattenLists(input));
 result = [];
 console.log(flattenLists(input_));

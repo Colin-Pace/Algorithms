@@ -37,6 +37,7 @@ const additionAway = "ple";
 const replacementAway = "bale";
 const deletionAway = "pales";
 const notOneAway = "bake";
+
 console.log(oneAway(letters, additionAway));
 console.log(oneAway(letters, replacementAway));
 console.log(oneAway(letters, deletionAway));

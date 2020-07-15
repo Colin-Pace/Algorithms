@@ -20,4 +20,5 @@ function sortedMerge(A, B) {
   }
   return A;
 }
+
 console.log(sortedMerge(inputA, inputB));

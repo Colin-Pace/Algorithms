@@ -30,5 +30,6 @@ function palindromePermutation(string) {
 
 let inputOne = "tact coa";
 let inputTwo = "hot dogs";
+
 console.log(palindromePermutation(inputOne));
 console.log(palindromePermutation(inputTwo));

@@ -57,27 +57,27 @@ i.right = j;
 // d.right = k;
 
 function checkBalanced(root) {
-    if (root === null) {
-        return -1;
-    }
+  if (root === null) {
+    return -1;
+  }
 
-    let leftHeight = checkBalanced(root.left);
-    if (leftHeight === Number.MIN_VALUE) {
-        return Number.MIN_VALUE;
-    }
+  let leftHeight = checkBalanced(root.left);
+  if (leftHeight === Number.MIN_VALUE) {
+    return Number.MIN_VALUE;
+  }
 
-    let rightHeight = checkBalanced(root.right);
-    if (rightHeight === Number.MIN_VALUE) {
-        return Number.MIN_VALUE;
-    }
+  let rightHeight = checkBalanced(root.right);
+  if (rightHeight === Number.MIN_VALUE) {
+    return Number.MIN_VALUE;
+  }
 
-    let heightDiff = leftHeight - rightHeight;
+  let heightDiff = leftHeight - rightHeight;
 
-    if (Math.abs(heightDiff) > 1) {
-        return Number.MIN_VALUE;
-    } else {
-        return Math.max(leftHeight, rightHeight) + 1;
-    }
+  if (Math.abs(heightDiff) > 1) {
+    return Number.MIN_VALUE;
+  } else {
+    return Math.max(leftHeight, rightHeight) + 1;
+  }
 }
 
 function booleanCheck(root) {

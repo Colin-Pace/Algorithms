@@ -1,5 +1,4 @@
-/*
-Let's say that a "triple" in a string,
+/* Let's say that a "triple" in a string,
   is a character appearing three times in a row;
 
 Return the number of triples in the given string;
@@ -10,8 +9,8 @@ For instance, if the input were "aaa", the output would be 1;
 
 If the input were "cccc", the output would be 2;
 
-If the input were "ababbbaaaa", the output would be 3
-*/
+If the input were "ababbbaaaa", the output would be 3 */
+
 let inputOne = "aaa";
 let inputTwo = "cccc";
 let inputThree = "ababbbaaaa";
@@ -24,6 +23,7 @@ function triplesNumber(str) {
   }
   return count;
 }
+
 console.log(triplesNumber(inputOne));
 console.log(triplesNumber(inputTwo));
 console.log(triplesNumber(inputThree));

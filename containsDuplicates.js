@@ -17,6 +17,7 @@ function containsDuplicates(integers) {
 const inputOne = [1, 2, 3, 1];
 const inputTwo = [1, 2, 3, 4];
 const inputThree = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
+
 console.log(containsDuplicates(inputOne));
 console.log(containsDuplicates(inputTwo));
 console.log(containsDuplicates(inputThree));

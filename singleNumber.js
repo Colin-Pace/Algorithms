@@ -12,5 +12,6 @@ function singleNumber(integers) {
 
 const array = [2, 2, 1];
 const array_ = [4, 1, 2, 1, 2];
+
 console.log(singleNumber(array));
 console.log(singleNumber(array_));

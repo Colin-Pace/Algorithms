@@ -1,5 +1,5 @@
 /*
-Given an array of integers, sort it into an alternating sequence of peaks and valleys. A peak is an element that is greater than or equal to its adjacent integers. A valley is an element that is less than or equal to its adjacent integers. 
+Given an array of integers, sort it into an alternating sequence of peaks and valleys. A peak is an element that is greater than or equal to its adjacent integers. A valley is an element that is less than or equal to its adjacent integers.
 */
 
 function sortValleyPeak(array) {
@@ -28,5 +28,6 @@ function sortValleyPeak(array) {
 
 const array = [5, 3, 1, 2, 3];
 const secondExample = [9, 1, 0, 4, 8, 7];
+
 console.log(sortValleyPeak(array));
 console.log(sortValleyPeak(secondExample));

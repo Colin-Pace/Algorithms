@@ -18,5 +18,6 @@ function moveZeros(integers) {
 
 const input = [0, 1, 0, 3, 12];
 const inputTwo = [1, 0, 20, 0, 0, 8, 0];
+
 console.log(moveZeros(input));
 console.log(moveZeros(inputTwo));

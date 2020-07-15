@@ -68,6 +68,6 @@ function findSubStringLength(s, k) {
 }
 
 console.log(findSubStringLength(inputOne, 3));
-// console.log(findSubStringLength(inputTwo, 2));
-// console.log(findSubStringLength(inputThree, 2));
-// console.log(findSubStringLength(inputFour, 4));
+console.log(findSubStringLength(inputTwo, 2));
+console.log(findSubStringLength(inputThree, 2));
+console.log(findSubStringLength(inputFour, 4));

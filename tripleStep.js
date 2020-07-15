@@ -13,4 +13,5 @@ function countWays(integer, memo) {
     return memo[integer];
   }
 }
+
 console.log(countWays(3));

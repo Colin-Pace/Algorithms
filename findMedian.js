@@ -14,48 +14,49 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
   }
 
   add(data) {
     if (!this.head) {
       this.head = new Node(data);
-      this.runner = this.head;
+      this.tail = this.head;
     } else {
       let node = new Node(data);
-      this.runner.next = node;
-      this.runner = this.runner.next;
+      this.tail.next = node;
+      this.tail = this.tail.next;
     }
   }
 
   findMedian() {
     let count = 0;
-    let runner = this.head;
+    let tail = this.head;
 
-    while (runner.next) {
+    while (tail.next) {
       count++;
-      runner = runner.next;
+      tail = tail.next;
     }
     count++;
 
     let median
     if (count % 2 !== 0) {
       median = Math.floor((count / 2) + 1);
-      runner = this.head;
+      tail = this.head;
       while (median !== 1) {
-        runner = runner.next;
+        tail = tail.next;
         median--;
       }
-      const result = runner.data;
+      const result = tail.data;
       return result;
 
     } else {
       median = Math.floor(count / 2);
-      runner = this.head;
+      tail = this.head;
       while (median !== 1) {
-        runner = runner.next;
+        tail = tail.next;
         median--;
       }
-      const result = (runner.data + runner.next.data) / 2;
+      const result = (tail.data + tail.next.data) / 2;
       return result;
     }
   }

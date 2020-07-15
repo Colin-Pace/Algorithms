@@ -30,6 +30,9 @@ class _Node {
 }
 
 class Stack {
+  constructor() {
+    this.top = null;
+  }
 
   push(data) {
     if (!this.top) {
@@ -52,8 +55,8 @@ class Stack {
     this.top = node.next;
     return node.data;
   }
-
 }
+
 function isBalanced(string) {
   let array = string.split('');
   let stack = new Stack();

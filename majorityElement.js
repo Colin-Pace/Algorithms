@@ -13,5 +13,6 @@ function majorityElement(integers) {
 
 const inputOne = [3, 2, 3];
 const inputTwo = [2, 2, 1, 1, 1, 2, 2];
+
 console.log(majorityElement(inputOne));
 console.log(majorityElement(inputTwo));

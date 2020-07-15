@@ -10,32 +10,35 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
   }
 
   add(data) {
-    if (this.head === null) this.head = new Node(data);
-    else {
-      let runner = this.head;
-      while (runner.next) runner = runner.next;
-      runner.next = new Node(data);
+    if (!this.head) {
+      this.head = new Node(data);
+      this.tail = this.head;
+    } else {
+      let node = new Node(data);
+      this.tail.next = node;
+      this.tail = this.tail.next;
     }
   }
 
   deleteNode(data) {
     if (!data || !this.head) return null;
-    let runner = this.head;
-    while (runner.data !== data) runner = runner.next;
-    runner.data = runner.next.data;
-    runner.next = runner.next.next;
+    let tail = this.head;
+    while (tail.data !== data) tail = tail.next;
+    tail.data = tail.next.data;
+    tail.next = tail.next.next;
   }
 
   collectNodalData() {
     if (!this.head) return null;
     const result = [];
-    let runner = this.head;
-    while (runner) {
-      result.push(runner.data);
-      runner = runner.next;
+    let tail = this.head;
+    while (tail) {
+      result.push(tail.data);
+      tail = tail.next;
     }
     return result;
   }

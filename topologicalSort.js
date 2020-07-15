@@ -5,7 +5,7 @@ File structure -- topological sort
 3. Instance implementation
 */
 
-class _Node {
+class Node {
   constructor(data, edges, inbound=0) {
     this.data = data;
     this.edges = edges;
@@ -14,19 +14,19 @@ class _Node {
 }
 
 let graph = [];
-let a = new _Node('A');
-let b = new _Node('B');
-let c = new _Node('C');
-let d = new _Node('D');
-let e = new _Node('E');
-let f = new _Node('F');
-let g = new _Node('G');
-let h = new _Node('H');
-let i = new _Node('I');
-let j = new _Node('J');
-let k = new _Node('K');
-let l = new _Node('L');
-let m = new _Node('M');
+let a = new Node('A');
+let b = new Node('B');
+let c = new Node('C');
+let d = new Node('D');
+let e = new Node('E');
+let f = new Node('F');
+let g = new Node('G');
+let h = new Node('H');
+let i = new Node('I');
+let j = new Node('J');
+let k = new Node('K');
+let l = new Node('L');
+let m = new Node('M');
 
 a.edges = [d];
 b.edges = [d];

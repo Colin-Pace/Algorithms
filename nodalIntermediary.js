@@ -86,6 +86,7 @@ function findIfMutualFriend(nodeOne, nodeTwo) {
   }
   return false;
 }
+
 console.log(findIfMutualFriend(a, b));
 console.log(findIfMutualFriend(a, c));
 console.log(findIfMutualFriend(a, m));

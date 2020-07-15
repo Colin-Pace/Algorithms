@@ -10,15 +10,17 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
   }
 
   add(data) {
-    let node = this.head;
-    if (!node) this.head = new Node(data);
-    else {
-      let runner = this.head;
-      while (runner.next) runner = runner.next;
-      runner.next = new Node(data);
+    if (!this.head) {
+      this.head = new Node(data);
+      this.tail = this.head;
+    } else {
+      let node = new Node(data);
+      this.tail.next = node;
+      this.tail = this.tail.next;
     }
   }
 

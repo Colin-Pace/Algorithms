@@ -17,6 +17,7 @@ function findMissingPositive(array) {
 const inputOne = [1, 2, 0];
 const inputTwo = [3, 4, -1, 1];
 const inputThree = [7, 8, 9, 11, 12];
+
 console.log(findMissingPositive(inputOne));
 console.log(findMissingPositive(inputTwo));
 console.log(findMissingPositive(inputThree));

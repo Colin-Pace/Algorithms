@@ -66,7 +66,7 @@ function zigzagTraversal(node) {
     const result = [];
     let normal = false;
     queue.enqueue(node);
-    
+
     while (queue.head) {
       const node = queue.dequeue().data;
       result.push(node.data);

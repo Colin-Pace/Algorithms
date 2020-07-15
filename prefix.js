@@ -9,6 +9,7 @@ The function returns true if with the same string, the integer parameter is 2, s
 
 The function would return false if the prefix number were 3, since 'abX' from indices zero, one, and two appears not elsewhere.
 */
+
 let alphabeticalString = 'abXYabc';
 function isPrefixAgain(str, number) {
   let prefix = '';
@@ -16,14 +17,17 @@ function isPrefixAgain(str, number) {
   for (let i = 0; i < number; i++) {
     prefix += str[i];
   }
+  
   for (let i = number; i < str.length; i++) {
     otherStringCharacters += str[i];
   }
+
   if (otherStringCharacters.includes(prefix)) {
     return true;
   } else {
     return false;
   }
 }
-// console.log(isPrefixAgain(alphabeticalString, 2));
-// console.log(isPrefixAgain(alphabeticalString, 3));
+
+console.log(isPrefixAgain(alphabeticalString, 2));
+console.log(isPrefixAgain(alphabeticalString, 3));

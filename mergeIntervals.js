@@ -101,7 +101,7 @@ function mergeIntervals(input) {
 }
 
 console.log(mergeIntervals(inputOne));
-// console.log(mergeIntervals(inputTwo));
-// console.log(mergeIntervals(inputThree));
-// console.log(mergeIntervals(inputFour));
-// console.log(mergeIntervals(inputFive));
+console.log(mergeIntervals(inputTwo));
+console.log(mergeIntervals(inputThree));
+console.log(mergeIntervals(inputFour));
+console.log(mergeIntervals(inputFive));

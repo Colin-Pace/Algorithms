@@ -10,16 +10,17 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
   }
 
   add(data) {
     if (!this.head) {
       this.head = new Node(data);
-      this.runner = this.head;
+      this.tail = this.head;
     } else {
       let node = new Node(data);
-      this.runner.next = node;
-      this.runner = this.runner.next;
+      this.tail.next = node;
+      this.tail = this.tail.next;
     }
   }
 
@@ -53,11 +54,15 @@ class LinkedList {
 
 const array = [1, 2, 3, 4, 5];
 const array_ = [2, 1, 3, 5, 6, 4, 7];
+
 const integers = new LinkedList;
 const integers_ = new LinkedList;
+
 array.forEach(integer => integers.add(integer));
 array_.forEach(integer => integers_.add(integer));
+
 integers.oddEven();
 integers_.oddEven();
+
 console.log(integers.collectNodalData());
 console.log(integers_.collectNodalData());

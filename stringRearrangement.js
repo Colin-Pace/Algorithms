@@ -28,5 +28,5 @@ function everyOtherAtEnd(str) {
   return result
 }
 
-//console.log(everyOtherAtEnd(stringOne));
-//console.log(everyOtherAtEnd(stringTwo))i;
+console.log(everyOtherAtEnd(stringOne));
+console.log(everyOtherAtEnd(stringTwo));
