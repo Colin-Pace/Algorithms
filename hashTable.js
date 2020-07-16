@@ -1,4 +1,4 @@
-class Dictionary {
+class HashTable {
   constructor(size = 200) {
     this.size = size;
     this.array = [];
@@ -13,44 +13,47 @@ class Dictionary {
     return Number(resultString) % this.size;
   }
 
-  get(key) {
-    let index = this.hash(key);
-    let subArray = this.array[index];
-    if (subArray === undefined) return undefined;
-    const l = subArray.length;
-    for (let i = 0; i < l; i++) {
-      if (subArray[i] === key) {
-        return subArray[1];
-      }
-    }
-    return undefined;
-  }
-
   set(key, value) {
-    let index = this.hash(key);
-    let subArrayItem = [key, value];
-    let subArray = this.array[index];
-    if (subArray === undefined) {
-      this.array[index] = subArrayItem;
-    } else {
-      let keyAlreadyExists = false;
+    const index = this.hash(key);
+    const item = [key, value];
+    const subArray = this.array[index];
+
+    if (!subArray) this.array[index] = item;
+    else {
+      let keyExists = false;
       const l = subArray.length;
       for (let i = 0; i < l; i++) {
         if (subArray[i] === key) {
-          keyAlreadyExists = true;
+          key = true;
           subArray[1] = value;
         }
       }
-      if (!keyAlreadyExists) {
-        this.array[index].push(subArrayItem);
+
+      if (!keyExists) {
+        subArray.push(item);
       }
     }
-    return index;
+  }
+
+  get(key) {
+    const index = this.hash(key);
+    const subArray = this.array[index];
+
+    if (!subArray) return null;
+    else {
+      const l = subArray.length;
+      for (let i = 0; i < l; i++) {
+        if (subArray[i] === key) {
+          return subArray[1];
+        }
+      }
+      return null;
+    }
   }
 }
 
-let dictionary = new Dictionary();
+let hashTable = new HashTable();
 
-const a = dictionary.set('abcde', 123);
-const b = dictionary.set('abcde', 321);
-console.log(dictionary);
+const a = hashTable.set('abcde', 123);
+const b = hashTable.set('abcde', 321);
+console.log(hashTable);
