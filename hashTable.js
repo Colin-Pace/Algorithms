@@ -54,6 +54,7 @@ class HashTable {
 
 let hashTable = new HashTable();
 
-const a = hashTable.set('abcde', 123);
-const b = hashTable.set('abcde', 321);
+hashTable.set("Fortran", 123);
+hashTable.set("Fortran", 321);
 console.log(hashTable);
+console.log(hashTable.get("Fortran"))

@@ -26,14 +26,15 @@ class LinkedList {
 
   remove(value) {
     let slow = this.head;
-    this.tail = this.head.next;
-    while (this.tail) {
+    let fast = this.head.next;
+    while (fast) {
       if (slow.data === value) {
+        this.head = slow.next;
         return slow.next = null;
-      } else if (this.tail.data === value) {
-        return slow.next = this.tail.next;
+      } else if (fast.data === value) {
+        return slow.next = fast.next;
       } else {
-        this.tail = this.tail.next;
+        fast = fast.next;
         slow = slow.next;
       }
     }
@@ -48,16 +49,6 @@ list.add(3);
 list.add(4);
 list.add(5);
 
-list.remove(4);
+list.remove(3);
 
-console.log(list.head.next.next.next.data);
-
-
-
-// Doubly linked list
-class DoublyLinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-  }
-}
+console.log(list.head.next.next.data);
