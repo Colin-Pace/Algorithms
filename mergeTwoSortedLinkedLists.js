@@ -1,4 +1,4 @@
-// Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing together the nodes of the first two lists.
+// Create and merge two sorted linked lists
 
 class Node {
   constructor(data, next) {
@@ -11,6 +11,7 @@ class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.result = null;
   }
 
   add(data) {
@@ -24,74 +25,184 @@ class LinkedList {
     }
   }
 
-  merge(integers, integers_) {
-    if (integers.length === 0 || integers_.length === 0) return null;
+  merge(list, list_) {
+    let fast, slow, runner;
 
-    let fast = integers.head.next;
-    let slow = integers.head;
-    let runner = integers_.head;
-    let last = false;
-
-    while (runner) {
-
-      if (runner.data < slow.data && slow === this.head) {
-        const node = new Node(runner.data);
-        node.next = slow;
-        integers.head = node;
-        slow = this.head;
-        runner = runner.next;
-
-      } else if (runner.data < fast.data) {
-        const node = new Node(runner.data);
-        if (runner.data > slow.data) {
-          while (slow.next.data < runner.data) slow = slow.next;
-          slow.next = node;
-          node.next = fast;
-          runner = runner.next;
-        } else {
-          while (slow.next !== fast) slow = slow.next;
-          slow.next = node;
-          node.next = fast;
+    if (!list && !list_) return null;
+    else if (!list && list_) return list_;
+    else if (list && !list_) return list;
+    else if (!list.head.next && !list_.head.next) {
+      if (list.head.data === list_.head.data) {
+        list.head.next = list_.head;
+        list.tail = list_.head;
+        this.result = list;
+        return list;
+      } else if (list.head.data < list_.head.data) {
+        list.head.next = list_.head;
+        list.tail = list_.head;
+        this.result = list;
+        return list;
+      } else {
+        list_.head.next = list.head;
+        list_.tail = list.head;
+        this.result = list_;
+        return list_;
+      }
+    } else if (!list.head.next && list_.head.next) {
+      fast = list.head;
+      runner = list_.head;
+      if (fast.data < runner.data) {
+        fast.next = runner;
+        list_.head = fast;
+        this.result = list_;
+        return list_;
+      } else if (fast.data === runner.data) {
+        fast.next = runner;
+        list_.head = fast;
+        this.result = list_;
+        return list_;
+      } else {
+        while (runner.next && runner.next.data <= fast.data) {
           runner = runner.next;
         }
-
+        if (!runner.next) {
+          runner.next = fast;
+          list_.tail = fast;
+          this.result = list_;
+          return list_;
+        } else {
+          fast.next = runner.next;
+          runner.next = fast;
+          this.result = list_;
+          return list_;
+        }
+      }
+    } else if (list.head.next && !list_.head.next) {
+      fast = list.head;
+      runner = list_.head;
+      if (runner.data < fast.data) {
+        runner.next = fast;
+        list.head = runner;
+        this.result = list;
+        return list;
       } else if (runner.data === fast.data) {
-        const node = new Node(runner.data);
-        while (slow.next !== fast) slow = slow.next;
-        slow.next = node;
-        node.next = fast;
-        runner = runner.next;
-
+        runner.next = fast;
+        list.head = runner;
+        this.result = list;
+        return list;
       } else {
-        while (fast.data < runner.data && fast.next) fast = fast.next;
-        if (!fast.next && runner.data > fast.data) {
-          fast.next = new Node(runner.data);
-          if (!runner.next) break;
-          else runner = runner.next;
+        while (fast.next && fast.next.data <= runner.data) {
+          fast = fast.next;
+        }
+        if (!fast.next) {
+          fast.next = runner;
+          list.tail = runner;
+          this.result = list;
+          return list;
+        } else {
+          runner.next = fast.next;
+          fast.next = runner;
+          this.result = list;
+          return list;
+        }
+      }
+    } else {
+      fast = list.head;
+      runner = list_.head;
+      if (list.tail.data <= list_.head.data) {
+        list.tail.next = list_.head;
+        list.tail = list_.tail;
+        this.result = list;
+        return list;
+      } else if (list_.tail.data <= list.head.data) {
+        list_.tail.next = list.head;
+        list_.tail = list.tail;
+        this.result = list_;
+        return list_;
+      } else {
+        if (fast.data === runner.data) {
+          while (runner) {
+            while (fast.next && fast.next.data <= runner.data) {
+              fast = fast.next;
+            }
+            const node = new Node(runner.data);
+            node.next = fast.next;
+            fast.next = node;
+            runner = runner.next;
+            fast = fast.next;
+          }
+          this.result = list;
+          return list;
+        } else {
+          if (fast.data < runner.data) {
+            while (runner) {
+              while (fast.next && fast.next.data <= runner.data) {
+                fast = fast.next;
+              }
+              const node = new Node(runner.data);
+              node.next = fast.next;
+              fast.next = node;
+              runner = runner.next;
+              fast = fast.next;
+            }
+            this.result = list;
+            return list;
+          } else {
+            while (fast) {
+              while (runner.next && runner.next.data <= fast.data) {
+                runner = runner.next;
+              }
+              const node = new Node(fast.data);
+              node.next = runner.next;
+              runner.next = node;
+              fast = fast.next;
+              runner = runner.next;
+            }
+            this.result = list_;
+            return list_;
+          }
         }
       }
     }
   }
 
-  collectNodalData(integers) {
+  collectNodalData(list) {
     const result = [];
-    let runner = integers.head;
+    let runner = list.head;
     while (runner) {
       result.push(runner.data);
       runner = runner.next;
     }
-    console.log(result);
+    return result;
   }
 }
 
-const input = [1, 2, 4, 10];
-const input_ = [-3, -2, -1, 0, 1, 3, 4, 20, 30, 40];
+const input = [1, 1, 2];
+const input_ = [0, 1, 1, 2, 4];
 
-const integers = new LinkedList;
-const integers_ = new LinkedList;
+// const input = [1, 1, 2, 5];
+// const input_ = [0, 1, 1, 2, 4];
 
-input.forEach(integer => integers.add(integer));
-input_.forEach(integer => integers_.add(integer));
+// const input = [-1, 1, 1, 2, 5];
+// const input_ = [0, 1, 1, 2, 4];
 
-integers.merge(integers, integers_);
-integers.collectNodalData(integers);
+// const input = [-1, 1, 1, 2, 5];
+// const input_ = [0, 1, 1, 2, 4, 10];
+
+// const input = [1, 1, 2, 5];
+// const input_ = [1, 1, 2, 4];
+
+// const input = [1, 1, 2];
+// const input_ = [1, 2, 4, 6];
+
+const linkedList = new LinkedList;
+const linkedList_ = new LinkedList;
+
+input.forEach(integer => linkedList.add(integer));
+input_.forEach(integer => linkedList_.add(integer));
+
+linkedList.merge(linkedList, linkedList_);
+
+const resultList = linkedList.result;
+
+console.log(linkedList.collectNodalData(resultList));

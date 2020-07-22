@@ -25,8 +25,10 @@ function route(node) {
   else {
     visited.push(node);
     order.push(node.data);
-    const neighbors = node.adj, l = neighbors.length;
-    for (let i = 0; i < l; i++) route(neighbors[i]);
+    const adjacents = node.adj, l = adjacents.length;
+    for (let i = 0; i < l; i++) {
+      if (!visited.includes(adjacents[i])) route(adjacents[i]);
+    }
     return order;
   }
 }

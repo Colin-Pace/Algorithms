@@ -14,7 +14,7 @@ class Stack {
   }
 
   push(item) {
-    if (this.head === null) {
+    if (!this.head) {
       let node = new Node(item, null);
       this.head = node;
     } else {
@@ -24,8 +24,8 @@ class Stack {
   }
 
   pop() {
-    if (this.head === null) {
-      throw "Stack is empty";
+    if (!this.head) {
+      return null;
     } else {
       let node = this.head;
       this.head = node.next;
@@ -34,15 +34,15 @@ class Stack {
   }
 }
 
-let numeric = new Stack;
-numeric.push(2);
-numeric.push(1);
-numeric.push(4);
-numeric.push(3);
-numeric.push(5);
-numeric.pop();
-numeric.pop();
-console.log(numeric);
+let integers = new Stack;
+integers.push(2);
+integers.push(1);
+integers.push(4);
+integers.push(3);
+integers.push(5);
+integers.pop();
+integers.pop();
+console.log(integers);
 
 
 
@@ -80,12 +80,12 @@ class Queue {
   }
 }
 
-const alphabetic = new Queue;
-alphabetic.enqueue("a");
-alphabetic.enqueue("b");
-alphabetic.enqueue("c");
-alphabetic.enqueue("d");
-alphabetic.enqueue("e");
-alphabetic.dequeue();
-alphabetic.dequeue();
-console.log(alphabetic);
+const letters = new Queue;
+letters.enqueue("a");
+letters.enqueue("b");
+letters.enqueue("c");
+letters.enqueue("d");
+letters.enqueue("e");
+letters.dequeue();
+letters.dequeue();
+console.log(letters);

@@ -73,7 +73,7 @@ function route(node) {
           queue.enqueue(adjacents[i]);
         }
       }
-      visited.push(node);
+      if (!visited.includes(node)) visited.push(node);
     }
     return order;
   }
