@@ -1,5 +1,3 @@
-// Find if there is a route between two nodes in a graph
-
 class QueueNode {
   constructor(data, next) {
     this.data = data;
@@ -45,17 +43,39 @@ class GraphNode {
   }
 }
 
-const a = new GraphNode('a');
-const b = new GraphNode('b');
-const c = new GraphNode('c');
-const d = new GraphNode('d');
-const e = new GraphNode('e');
+const a = new GraphNode("a");
+const b = new GraphNode("b");
+const c = new GraphNode("c");
+const d = new GraphNode("d");
+const e = new GraphNode("e");
+const f = new GraphNode("f");
+const g = new GraphNode("g");
+const h = new GraphNode("h");
+const i = new GraphNode("i");
+const j = new GraphNode("j");
 
-a.adj = [b];
-b.adj = [a, c, d];
-c.adj = [b, e];
-d.adj = [b, e];
-e.adj = [c, d];
+/*
+                                                        i           j
+
+              b           d           f
+
+        a                                         h
+
+              c           e           g
+
+*/
+
+a.adj = [b, c];
+b.adj = [c, d];
+c.adj = [e];
+d.adj = [f, g];
+e.adj = [f];
+f.adj = [h];
+g.adj = null;
+h.adj = [f];
+i.adj = [h];
+j.adj = [i];
+
 
 function route(start, end) {
   if (!start || !end) return null;
@@ -66,6 +86,7 @@ function route(start, end) {
     while (queue.head) {
       const node = queue.dequeue().data;
       order.push(node.data);
+      if (node.adj === null) continue;
       const adjacents = node.adj, l = adjacents.length;
       for (let i = 0; i < l; i++) {
         if (!visited.includes(adjacents[i])) {
@@ -83,4 +104,4 @@ function route(start, end) {
 }
 
 const queue = new Queue;
-console.log(route(a, e));
+console.log(route(a, h));
