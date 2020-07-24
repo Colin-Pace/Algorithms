@@ -25,18 +25,31 @@ class LinkedList {
   }
 
   remove(value) {
-    let slow = this.head;
-    let fast = this.head.next;
-    while (fast) {
-      if (slow.data === value) {
-        this.head = slow.next;
-        return slow.next = null;
-      } else if (fast.data === value) {
-        return slow.next = fast.next;
-      } else {
-        fast = fast.next;
-        slow = slow.next;
+    if (!value) return null;
+    else if (!this.head.next.next) {
+      let node;
+      if (this.head.data === value) {
+        node = this.head;
+        this.head = this.head.next;
+        node.next = null;
+        node = null;
+      } else if (this.head.next.data === value) {
+        this.head.next = null;
       }
+    } else {
+      let slow = this.head;
+      let fast = this.head.next;
+      while (fast) {
+        if (slow.data === value) {
+          this.head = slow.next;
+          return slow.next = null;
+        } else if (fast.data === value) {
+          return slow.next = fast.next;
+        } else {
+          fast = fast.next;
+          slow = slow.next;
+        }
+      }  
     }
   }
 }
