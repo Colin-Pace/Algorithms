@@ -166,6 +166,36 @@ class LinkedList {
     }
   }
 
+  mergeIntoNewList(list, list_) {
+    let a = list.head, b = list_.head, c = null;
+    const result = new LinkedList;
+
+    while (a !== undefined && b !== undefined) {
+      if (a.data < b.data || a.data === b.data) {
+        result.add(a.data);
+        a = a.next;
+      } else {
+        result.add(b.data);
+        b = b.next;
+      }
+    }
+
+    if (a === undefined && b !== undefined) {
+      while (b !== undefined) {
+        result.add(b.data);
+        b = b.next;
+      }
+    } else if (b === undefined && a !== undefined) {
+      while (a !== undefined) {
+        result.add(a.data);
+        a = a.next;
+      }
+    }
+
+    return result;
+  }
+
+
   collectNodalData(list) {
     const result = [];
     let runner = list.head;
@@ -202,7 +232,8 @@ input.forEach(integer => linkedList.add(integer));
 input_.forEach(integer => linkedList_.add(integer));
 
 linkedList.merge(linkedList, linkedList_);
-
 const resultList = linkedList.result;
+
+//const resultList = linkedList.mergeIntoNewList(linkedList, linkedList_);
 
 console.log(linkedList.collectNodalData(resultList));

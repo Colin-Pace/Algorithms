@@ -54,7 +54,8 @@ class Stack {
         else return false;
       }
     }
-    return true;
+
+    if (!this.head) return true;
   }
 }
 
@@ -70,4 +71,5 @@ console.log(parentheses.validate(inputOne));
 console.log(parentheses.validate(inputTwo));
 console.log(parentheses.validate(inputThree));
 console.log(parentheses.validate(inputFour));
+parentheses.pop();
 console.log(parentheses.validate(inputFive));
