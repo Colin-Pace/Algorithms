@@ -49,7 +49,7 @@ class LinkedList {
           fast = fast.next;
           slow = slow.next;
         }
-      }  
+      }
     }
   }
 }
@@ -62,6 +62,6 @@ list.add(3);
 list.add(4);
 list.add(5);
 
-list.remove(3);
+list.remove(5);
 
-console.log(list.head.next.next.data);
+console.log(list.head.next.next.next.data);
