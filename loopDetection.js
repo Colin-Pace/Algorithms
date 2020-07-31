@@ -29,6 +29,7 @@ class LinkedList {
     let fast = this.head;
 
     while (fast !== null && fast.next !== null) {
+      if (fast.next === undefined) return null;
       slow = slow.next;
       fast = fast.next.next;
       if (slow === fast) break;
