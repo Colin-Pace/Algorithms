@@ -44,7 +44,8 @@ class LinkedList {
           this.head = slow.next;
           return slow.next = null;
         } else if (fast.data === value) {
-          return slow.next = fast.next;
+          slow.next = fast.next;
+          return fast = null;
         } else {
           fast = fast.next;
           slow = slow.next;
@@ -62,6 +63,7 @@ list.add(3);
 list.add(4);
 list.add(5);
 
-list.remove(5);
+list.remove(4);
+list.remove(2);
 
-console.log(list.head.next.next.next.data);
+console.log(list.head.next.next.data);
