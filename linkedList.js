@@ -31,9 +31,11 @@ class LinkedList {
       if (this.head.data === value) {
         node = this.head;
         this.head = this.head.next;
-        node.next = null;
+        node = null;
         node = null;
       } else if (this.head.next.data === value) {
+        node = this.head.next;
+        node = null;
         this.head.next = null;
       }
     } else {
@@ -42,7 +44,7 @@ class LinkedList {
       while (fast) {
         if (slow.data === value) {
           this.head = slow.next;
-          return slow.next = null;
+          return slow = null;
         } else if (fast.data === value) {
           slow.next = fast.next;
           return fast = null;
@@ -63,7 +65,7 @@ list.add(3);
 list.add(4);
 list.add(5);
 
-list.remove(4);
-list.remove(2);
 
-console.log(list.head.next.next.data);
+list.remove(4);
+
+console.log(list.head.next.next.next.data);

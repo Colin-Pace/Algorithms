@@ -10,46 +10,41 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.tail = null;
-  }
-
-  add(data) {
-    if (!this.head) {
-      this.head = new Node(data);
-      this.tail = this.head;
-    } else {
-      const node = new Node(data);
-      this.tail.next = node;
-      this.tail = node;
-    }
   }
 
   loopDetection() {
-    let slow = this.head;
     let fast = this.head;
-
-    while (fast !== null && fast.next !== null) {
-      if (fast.next === undefined) return null;
-      slow = slow.next;
+    let slow = this.head;
+    while (fast !== undefined && fast.next !== undefined) {
       fast = fast.next.next;
-      if (slow === fast) break;
+      slow = slow.next;
+      if (fast === slow) break;
     }
-
-    if (fast === null || fast.next === null) return null;
+    if (fast === undefined || fast.next === undefined) return null;
     else {
-      slow = this.head;
-      while (slow !== fast) {
-        slow = slow.next;
+      fast = this.head;
+      while (fast !== slow) {
         fast = fast.next;
+        slow = slow.next;
       }
-
       return fast.data;
     }
   }
 }
 
-const letters = new LinkedList;
-const input = ['a', 'b', 'c', 'd', 'e'];
-input.forEach(item => letters.add(item));
-letters.head.next.next.next.next.next = letters.head.next.next;
-console.log(letters.loopDetection());
+const a = new Node("a");
+const b = new Node("b");
+const c = new Node("c");
+const d = new Node("d");
+const e = new Node("e");
+
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = e;
+e.next = c;
+
+const list = new LinkedList;
+list.head = a;
+
+console.log(list.loopDetection());
