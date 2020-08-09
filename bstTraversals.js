@@ -51,6 +51,7 @@ class BinarySearchTree {
   constructor() {
     this.root = null;
     this.visited = [];
+    this.count = 0;
   }
 
   add(data) {
@@ -214,6 +215,16 @@ class BinarySearchTree {
     const max = this.maxHeight();
     if (Math.abs((max - min) + 1 <= 1)) return true;
     else return false;
+  }
+
+  sum(node = this.root) {
+    this.count += node.data;
+    if (!node.left && !node.right) return node.data;
+    else {
+      const addend = node.left && this.sum(node.left);
+      const addend_ = node.right && this.sum(node.right);
+    }
+    return this.count;
   }
 }
 
