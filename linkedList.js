@@ -26,6 +26,7 @@ class LinkedList {
 
   remove(value) {
     if (!value) return null;
+    else if (!this.head) return null;
     else if (!this.head.next.next) {
       let node;
       if (this.head.data === value) {
