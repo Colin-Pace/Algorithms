@@ -46,7 +46,7 @@ class TreePaths {
     this.paths = [];
   }
 
-  makeListOfPaths(root, listPath) {
+  fromRoot(root, listPath) {
     let temp = [];
     temp.push(root.data);
 
@@ -71,4 +71,4 @@ class TreePaths {
 
 let searchTreeForPath = new TreePaths;
 
-console.log(searchTreeForPath.makeListOfPaths(treeRoot));
+console.log(searchTreeForPath.fromRoot(treeRoot));
