@@ -1,9 +1,8 @@
 /*
-Given a binary tree, return all the root to leaf paths.
+Given a binary tree, return all the root to leaf paths in a two dimensional array.
 
 
-Tree structure
-
+Tree
           1
     4           4
       2       2
@@ -49,18 +48,16 @@ class TreePaths {
   fromRoot(root, listPath) {
     let temp = [];
     temp.push(root.data);
-
-    if (!root.left && !root.right) return this.paths.push(temp);
+    if (!root.left && !root.right) this.paths.push(temp);
     else {
       if (root.left) this.search(root.left, temp.slice());
       if (root.right) this.search(root.right, temp);
-      return this.paths;
     }
+    return this.paths;
   }
 
   search(Node, temp) {
     temp.push(Node.data);
-
     if (!Node.left && !Node.right) this.paths.push(temp);
     else {
       if (Node.left) this.search(Node.left, temp.slice());
@@ -68,6 +65,7 @@ class TreePaths {
     }
   }
 }
+
 
 let searchTreeForPath = new TreePaths;
 
