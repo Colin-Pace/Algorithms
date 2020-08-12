@@ -11,7 +11,7 @@ Tree structure
                 1  3
 */
 
-class TreeNode {
+class Node {
   constructor(data, left, right) {
     this.data = data;
     this.left = left;
@@ -19,16 +19,17 @@ class TreeNode {
   }
 }
 
-let treeRoot = new TreeNode(1);
-let firstLeft = new TreeNode(4);
-let firstRight = new TreeNode(4);
-let secondLeft = new TreeNode(2);
-let secondRight = new TreeNode(2);
-let thirdLeft = new TreeNode(1);
-let thirdRightOne = new TreeNode(6);
-let thirdRightTwo = new TreeNode(8);
-let fourthRightOne = new TreeNode(1);
-let fourthRightTwo = new TreeNode(3);
+let treeRoot = new Node(1);
+let firstLeft = new Node(4);
+let firstRight = new Node(4);
+let secondLeft = new Node(2);
+let secondRight = new Node(2);
+let thirdLeft = new Node(1);
+let thirdRightOne = new Node(6);
+let thirdRightTwo = new Node(8);
+let fourthRightOne = new Node(1);
+let fourthRightTwo = new Node(3);
+
 treeRoot.left = firstLeft;
 treeRoot.right = firstRight;
 firstLeft.right = secondLeft;
@@ -49,38 +50,24 @@ class TreePaths {
     let temp = [];
     temp.push(root.data);
 
-    if (!root.left && !root.right) {
-      this.paths.push(temp);
+    if (!root.left && !root.right) return this.paths.push(temp);
+    else {
+      if (root.left) this.search(root.left, temp.slice());
+      if (root.right) this.search(root.right, temp);
+      return this.paths;
     }
-
-    if (root.left) {
-      this.search(root.left, temp.slice());
-    }
-
-    if (root.right) {
-      this.search(root.right, temp);
-    }
-
-    return this.paths;
   }
 
-  search(TreeNode, temp) {
-    temp.push(TreeNode.data);
+  search(Node, temp) {
+    temp.push(Node.data);
 
-    if (!TreeNode.left && !TreeNode.right) {
-      this.paths.push(temp);
-    }
-
-    if (TreeNode.left) {
-      this.search(TreeNode.left, temp.slice());
-    }
-
-    if (TreeNode.right) {
-      this.search(TreeNode.right, temp.slice());
+    if (!Node.left && !Node.right) this.paths.push(temp);
+    else {
+      if (Node.left) this.search(Node.left, temp.slice());
+      if (Node.right) this.search(Node.right, temp.slice());
     }
   }
 }
-
 
 let searchTreeForPath = new TreePaths;
 
