@@ -89,9 +89,9 @@ function route(start, end) {
       if (node.adj === null) continue;
       const adjacents = node.adj, l = adjacents.length;
       for (let i = 0; i < l; i++) {
-        if (!visited.includes(adjacents[i])) {
-          if (adjacents[i] === end) return true;
-          else {
+        if (adjacents[i] === end) return true;
+        else {
+          if (!visited.includes(adjacents[i])) {
             visited.push(adjacents[i]);
             queue.enqueue(adjacents[i]);
           }
