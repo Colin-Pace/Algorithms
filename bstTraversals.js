@@ -12,7 +12,7 @@ class Queue {
   }
 
   enqueue(data) {
-    if (!data) throw return null;
+    if (!data) return null;
     if (!this.head) {
       this.head = new QueueNode(data);
       this.tail = this.head;
@@ -252,8 +252,8 @@ const tree = new BinarySearchTree;
 
 const integers = [10, 5, 2, 8, 15, 12, 20];
 integers.forEach(integer => tree.add(integer));
-
-console.log(`In order: ${tree.inOrder()}`);
-console.log(`Pre order: ${tree.preOrder()}`);
-console.log(`Post order: ${tree.postOrder()}`);
+tree.remove(8);
+// console.log(`In order: ${tree.inOrder()}`);
+// console.log(`Pre order: ${tree.preOrder()}`);
+// console.log(`Post order: ${tree.postOrder()}`);
 console.log(`Level order: ${tree.levelOrder()}`);
