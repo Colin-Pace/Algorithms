@@ -13,9 +13,9 @@ console.log(fibonacci(10));
 
 // Iterative
 function fibonacci(int) {
-  if (int === 0) return 0;
-  else if (int === 1) return 1;
-  else if (int === 2) return 1;
+  if (int < 0) return null;
+  else if (int === 0) return 0;
+  else if (int <= 2) return 1;
   else {
     let first = 1;
     let second = 1;
