@@ -20,7 +20,7 @@ class FibonacciSequence {
 
     iterative(int) {
         if (typeof int !== typeof 1 || !int) return null;
-        if (int <= 0 || !int) return null;
+        if (int <= 0) return 0;
         else if (int <= 2) return 1;
         else {
             let slow = 1, fast = 1;
