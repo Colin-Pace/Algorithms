@@ -7,16 +7,19 @@
 class FibonacciSequence {
     recursive(int, memo) {
         memo = memo || {};
-        if (memo[int]) return memo[int];
+        if (typeof int !== typeof 1 || !int) return null;
+        else if (memo[int]) return memo[int];
         else if (int < 1) return 0;
         else if (int <= 2) return 1;
         else {
-            memo[int] = fibonacci(int - 1, memo) + fibonacci(int - 2, memo);
+            memo[int] = this.recursive(int - 1, memo) +
+                        this.recursive(int - 2, memo);
             return memo[int];
         }
     }
 
     iterative(int) {
+        if (typeof int !== typeof 1 || !int) return null;
         if (int <= 0 || !int) return null;
         else if (int <= 2) return 1;
         else {
@@ -33,7 +36,8 @@ class FibonacciSequence {
     }
 
     sumOfOddIntegersToInteger(int) {
-        if (int <= 0) return 0;
+        if (typeof int !== typeof 1 || !int) return null;
+        else if (int <= 0) return 0;
         else if (int === 1) return 1;
         else if (int === 2) return 2;
         else {
@@ -49,7 +53,8 @@ class FibonacciSequence {
     }
 
     sumOfOddIntegersToFibonacciNumber(int) {
-        if (int <= 0) return 0;
+        if (typeof int !== typeof 1 || !int) return null;
+        else if (int <= 0) return 0;
         else if (int === 1) return 1;
         else if (int === 2) return 2;
         else {
@@ -75,7 +80,7 @@ const sequence = new FibonacciSequence;
 const results = [];
 
 // Method one
-results.push(sequence.iterative(10) === 55);
+results.push(sequence.recursive(10) === 55);
 
 // Method two
 results.push(sequence.iterative(10) === 55);
