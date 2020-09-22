@@ -15,10 +15,20 @@ class OneHundredDoors {
     return doors;
   }
 
-  verifyResult() {
-    const result = this.getFinalOpenedDoors(), l = result.length;
-    const answerKey = [0, 3, 8, 15, 24, 35, 48, 63, 80, 99];
-    //                 1  4  9  16  25  36  49  64  81  100
+  getFinalOpenDoors_() {
+    let doors = [], count = 1, door = 1;
+    for (let i = 0; i < 100; i++) {
+      if (i === door - 1) {
+        doors.push("open");
+        count += 2;
+        door += count;
+      } else doors.push("closed");
+    }
+    return doors;
+  }
+
+  verifyResult(result) {
+    const answerKey = [0, 3, 8, 15, 24, 35, 48, 63, 80, 99], l = result.length;
     for (let i = 0; i < l; i++) {
       if (result[i] === "open") if (!answerKey.includes(i)) return false;
     }
@@ -27,4 +37,9 @@ class OneHundredDoors {
 }
 
 const test = new OneHundredDoors;
-console.log("Test passes: " + test.verifyResult());
+
+const result = test.getFinalOpenedDoors();
+console.log("Test passes: " + test.verifyResult(result));
+
+const result_ = test.getFinalOpenDoors_();
+console.log("Test passes: " + test.verifyResult(result_));
