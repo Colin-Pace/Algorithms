@@ -18,6 +18,7 @@ class OneHundredDoors {
   verifyResult() {
     const result = this.getFinalOpenedDoors(), l = result.length;
     const answerKey = [0, 3, 8, 15, 24, 35, 48, 63, 80, 99];
+    //                 1  4  9  16  25  36  49  64  81  100
     for (let i = 0; i < l; i++) {
       if (result[i] === "open") if (!answerKey.includes(i)) return false;
     }
