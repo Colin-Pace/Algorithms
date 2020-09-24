@@ -23,7 +23,6 @@ public class WordBreak {
 
             if (letter != letter_) {
               count++;
-              if (count == l_) return false;
               break;
             } else if (letter == letter_ && m == l - 1) return true;
             else if (letter == letter_ && n == len - 1) {
@@ -34,8 +33,14 @@ public class WordBreak {
             m++;
           }
 
-          if (found == true) i = m;
-        } else count++;
+          if (found == true) {
+            i = m;
+            break;
+          }
+        } else {
+          if (count == l_ - 1) return false;
+          else count++;
+        }
       }
 
       i++;
