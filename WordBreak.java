@@ -3,23 +3,23 @@
 public class WordBreak {
   static Boolean comparison(String[] dictionary, String letters) {
     int l = letters.length();
-    int i = 0;
+    int i = 0;                                                     // s iterator
 
-    while (i < l) {
-      int j = 0;
+    while (i < l) {                                         // s iteration start
+      int j = 0;                                     // dictionary word iterator
       int l_ = dictionary.length;
-      int count = 0;
+      int count = 0;                                // dictionary iterator count
       Boolean found = false;
 
-      for (int k = 0; k < l_; k++) {
+      for (int k = 0; k < l_; k++) {               // dictionary iteration start
         if (dictionary[k].charAt(j) == letters.charAt(i)) {
-          int m = i;
+          int m = i;       // s iterator for comparison; preserves i if no match
           int len = dictionary[k].length();
-          String word = dictionary[k];
+          String word = dictionary[k];                   // string in dictionary
 
-          for (int n = 0; n < len; n++) {
-            char letter = letters.charAt(m);
-            char letter_ = word.charAt(n);
+        for (int n = 0; n < len; n++) {            // comparison iteration start
+            char letter = letters.charAt(m);                      // letter in s
+            char letter_ = word.charAt(n);        // letter in dictionary string
 
             if (letter != letter_) {
               count++;
@@ -31,7 +31,7 @@ public class WordBreak {
             }
 
             m++;
-          }
+          }                                          // comparison iteration end
 
           if (found == true) {
             i = m;
@@ -41,10 +41,10 @@ public class WordBreak {
           if (count == l_ - 1) return false;
           else count++;
         }
-      }
+      }                                              // dictionary iteration end
 
       i++;
-    }
+    }                                                         // s iteration end
 
     return false;
   }
