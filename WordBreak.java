@@ -2,6 +2,7 @@
 
 public class WordBreak {
   static Boolean comparison(String[] dictionary, String letters) {
+    letters = letters.toLowerCase();
     int l = letters.length();
     int i = 0;                                                     // s iterator
 
@@ -12,10 +13,10 @@ public class WordBreak {
       Boolean found = false;
 
       for (int k = 0; k < l_; k++) {               // dictionary iteration start
-        if (dictionary[k].charAt(j) == letters.charAt(i)) {
+        if (dictionary[k].toLowerCase().charAt(j) == letters.charAt(i)) {
           int m = i;       // s iterator for comparison; preserves i if no match
           int len = dictionary[k].length();
-          String word = dictionary[k];                   // string in dictionary
+          String word = dictionary[k].toLowerCase();     // string in dictionary
 
         for (int n = 0; n < len; n++) {            // comparison iteration start
             char letter = letters.charAt(m);                      // letter in s
