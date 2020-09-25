@@ -30,6 +30,9 @@ class LinkedList {
   }
 
   nextGreaterNode() {
+    if (!this.head) return null;
+    else if (!this.head.next) return 0;
+
     const container = [];
     let fast = this.head;
     let slow = this.head;
