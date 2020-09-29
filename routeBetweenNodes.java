@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Main {
-  public static Boolean routeBetweenNodes(Node start, Node end) {
+  public Boolean routeBetweenNodes(Node start, Node end) {
     Queue queue = new Queue();
     ArrayList <Node> visited = new ArrayList <Node>();
     queue.enqueue(start);
@@ -21,6 +21,8 @@ public class Main {
 
 
   public static void main(String[] args) {
+    Main search = new Main();
+
     Node first = new Node(1);
     Node second = new Node(2);
     Node third = new Node(3);
@@ -39,7 +41,7 @@ public class Main {
     fifth.adj.add(fourth);
 
     System.out.print("Route between nodes exists: ");
-    System.out.println(routeBetweenNodes(first, fifth));
+    System.out.println(search.routeBetweenNodes(first, fifth));
   }
 }
 

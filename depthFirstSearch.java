@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Main {
-  public static ArrayList <Node> visited = new ArrayList <Node>();
-  public static ArrayList <Integer> order = new ArrayList <Integer>();
+  public ArrayList <Node> visited = new ArrayList <Node>();
+  public ArrayList <Integer> order = new ArrayList <Integer>();
 
-  public static ArrayList depthFirstSearch(Node node) {
+  public ArrayList depthFirstSearch(Node node) {
     if (visited.contains(node)) return null;
     else {
       visited.add(node);
@@ -17,9 +17,11 @@ public class Main {
       return order;
     }
   }
-  
+
 
   public static void main(String[] args) {
+    Main arrayList = new Main();
+
     Node first = new Node(1);
     Node second = new Node(2);
     Node third = new Node(3);
@@ -38,7 +40,7 @@ public class Main {
     fifth.adj.add(fourth);
 
     System.out.print("Depth first search: ");
-    System.out.println(depthFirstSearch(first));
+    System.out.println(arrayList.depthFirstSearch(first));
   }
 }
 

@@ -1,6 +1,6 @@
 public class Main {
-  public static BinarySearchTree tree = new BinarySearchTree();
   public static void main(String[] args) {
+    BinarySearchTree tree = new BinarySearchTree();
     tree.add(10);
     tree.add(5);
     tree.add(2);

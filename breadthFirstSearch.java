@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Main {
-  public static ArrayList breadthFirstSearch(Node node) {
+  public ArrayList breadthFirstSearch(Node node) {
     Queue queue = new Queue();
     ArrayList <Node> visited = new ArrayList <Node>();
     ArrayList <Integer> order = new ArrayList <Integer>();
@@ -22,6 +22,8 @@ public class Main {
 
 
   public static void main(String[] args) {
+    Main arrayList = new Main();
+
     Node first = new Node(1);
     Node second = new Node(2);
     Node third = new Node(3);
@@ -40,7 +42,7 @@ public class Main {
     fifth.adj.add(fourth);
 
     System.out.print("Breadth first search: ");
-    System.out.println(breadthFirstSearch(first));
+    System.out.println(arrayList.breadthFirstSearch(first));
   }
 }
 
