@@ -4,8 +4,6 @@ public class HashTable {
   Integer size;
   LinkedList[] array = new LinkedList[200];
 
-  public LinkedList list = new LinkedList();
-
   public HashTable() {
     this.size = 200;
     this.array = array;
