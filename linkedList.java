@@ -1,21 +1,11 @@
-/* 1. Main class
-      A. List declaration
-      B. Main method
-   2. Linked list class
-      A. Node class
-          1. Node method
-      B. Head and tail declarations
-      C. Add node method
-      D. Display method */
-
-
 public class Main {
+  public static LinkedList list = new LinkedList();
   public static void main(String[] args) {
-    LinkedList list = new LinkedList();
     list.append(1);
     list.append(2);
     list.append(3);
     list.append(4);
+    list.remove(1);
     list.display();
   }
 }
@@ -42,6 +32,28 @@ class LinkedList {
     } else {
       tail.next = node;
       tail = node;
+    }
+  }
+
+  public void remove(int data) {
+    Node fast = head;
+    Node slow = head;
+    if (head == null) System.out.println("No nodes in list");
+    else if (head.data == data) {
+      fast = head;
+      head = head.next;
+      System.out.println("Removed: " + fast.data);
+    } else {
+      while (data != fast.data) fast = fast.next;
+      if (fast == null) System.out.println("Data not in list");
+      else {
+        while (slow.next != fast) slow = slow.next;
+        if (fast.next == null) slow.next = null;
+        else {
+          slow.next = fast.next;
+          System.out.println("Removed: " + fast.data);
+        }
+      }
     }
   }
 
