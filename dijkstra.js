@@ -1,3 +1,4 @@
+// Impementation adapted from https://hackernoon.com/how-to-implement-dijkstras-algorithm-in-javascript-abdfd1702d04
 const graph = {
   start: {A: 5, B: 2},
   A: {C: 4, D: 2},
