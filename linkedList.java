@@ -5,8 +5,16 @@ public class Main {
     list.append(2);
     list.append(3);
     list.append(4);
-    list.remove(1);
+    list.append(5);
+    list.append(6);
+
+    System.out.print("Nodes in list: ");
     list.display();
+
+    list.remove(1);
+    list.prepend(1);
+
+    list.rotate(2);
   }
 }
 
@@ -23,6 +31,16 @@ class LinkedList {
 
   public Node head = null;
   public Node tail = null;
+
+  public void prepend(int data) {
+    Node node = new Node(data);
+    node.next = head;
+    head = node;
+    System.out.println("Prepended: " + node.data);
+    System.out.print("Nodes in list after prepend: ");
+    display();
+    System.out.print("\n");
+  }
 
   public void append(int data) {
     Node node = new Node(data);
@@ -55,18 +73,66 @@ class LinkedList {
         }
       }
     }
+    System.out.print("Nodes in list after removal: ");
+    display();
+    System.out.print("\n");
+  }
+
+  public void rotate(int rotation) {
+    System.out.print("Nodal order before rotation: ");
+    display();
+    System.out.print("Rotated list by: " + rotation + "\n");
+
+    Node fast = head;
+    Node slow = head;
+    int l = 0;
+
+    while (fast != null) {
+      l++;
+      fast = fast.next;
+    }
+
+    if (l == rotation) return;
+    else {
+      int count = -1;
+      int fromArray = 0;
+      int[] array = new int[l];
+      int index = 0;
+
+      if (rotation > l) rotation = rotation % l;
+      fast = head;
+      for (int i = 0; i < rotation; i++) fast = fast.next;
+
+      while (index < l) {
+        if (fast == null) fast = head;
+        array[index] = fast.data;
+        if (count < (rotation - 1)) {
+          fast.data = slow.data;
+          fast = fast.next;
+          slow = slow.next;
+          count++;
+        } else {
+          fast.data = array[fromArray];
+          fast = fast.next;
+          slow = slow.next;
+          fromArray++;
+        }
+        index++;
+      }
+      System.out.print("Nodal order after rotation: ");
+      display();
+    }
   }
 
   public void display() {
     Node current = head;
     if (head == null) System.out.print("Empty list");
     else {
-      System.out.print("Nodes in list: ");
       while (current != null) {
         System.out.print(current.data + " ");
         current = current.next;
       }
-      System.out.println();
+      System.out.print("\n\n");
     }
   }
 }
