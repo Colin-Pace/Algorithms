@@ -1,10 +1,3 @@
-/*
-File structure -- topological sort
-1. Graph class declaration
-2. Sort class declaration
-3. Instance implementation
-*/
-
 class Node {
   constructor(data, edges, inbound=0) {
     this.data = data;
@@ -57,40 +50,31 @@ graph.push(l);
 graph.push(m);
 
 class TopologicalSort {
-  algorithm(graph) {
+  sort(graph) {
     let order = [];
     let processNext = [];
 
     for (let at = 0; at < graph.length; at++) {
-      if (graph[at]['edges'] === undefined) {
-        continue;
-      } else {
+      if (!graph[at]['edges'] === undefined) {
         let edges = graph[at]['edges'];
-        for (let ae = 0; ae < edges.length; ae++) {
-          edges[ae].inbound++;
-        }
+        for (let ae = 0; ae < edges.length; ae++) edges[ae].inbound++;
       }
     }
 
     for (let at = 0; at < graph.length; at++) {
-      if (graph[at].inbound === 0) {
-        processNext.push(graph[at]);
-      }
+      if (graph[at].inbound === 0) processNext.push(graph[at]);
     }
 
     while (processNext.length) {
       let node = processNext.shift();
-      if (node['edges'] === undefined) {
-        order.push(node);
-      } else {
+      if (node['edges'] === undefined) order.push(node);
+      else {
         let edges = node['edges'];
         for (let ae = 0; ae < edges.length; ae++) {
           edges[ae].inbound--;
-          if (edges[ae].inbound === 0) {
-            processNext.push(edges[ae]);
-          }
+          if (edges[ae].inbound === 0) processNext.push(edges[ae]);
         }
-
+ 
         order.push(node);
       }
     }
@@ -99,5 +83,5 @@ class TopologicalSort {
   }
 }
 
-let instance = new TopologicalSort;
-console.log(instance.algorithm(graph));
+let top = new TopologicalSort;
+console.log(top.sort(graph));

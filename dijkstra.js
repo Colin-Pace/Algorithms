@@ -9,7 +9,8 @@ const graph = {
 };
 
 function dijkstra(graph) {
-  const costs = Object.assign({finish: Infinity}, graph.start), visited = [];
+  const costs = Object.assign({finish: Infinity}, graph.start)
+  const visited = [];
   const parents = {finish: null};
   for (let child in graph.start) parents[child] = 'start';
 
