@@ -9,12 +9,16 @@ public class Main {
     list.append(5);
     list.append(6);
 
-    System.out.print("\nNodes in list: ");
+    System.out.print("\n\tNodes in list: ");
     list.display();
+    System.out.println("\n\t_________");
 
     list.remove(1);
+    System.out.println("\n\t_________");
     list.prepend(1);
+    System.out.println("\n\t_________");
     list.rotate(2);
+    System.out.println();
   }
 }
 
@@ -37,12 +41,16 @@ class LinkedList {
       Node node = new Node(data);
       head = node;
       tail = node;
+      System.out.println("\n\tPrepended: " + node.data);
+      System.out.print("\tNodes in list after prepend: ");
+      display();
+      System.out.print("\n");
     } else {
       Node node = new Node(data);
       node.next = head;
       head = node;
-      System.out.println("Prepended: " + node.data);
-      System.out.print("Nodes in list after prepend: ");
+      System.out.println("\n\tPrepended: " + node.data);
+      System.out.print("\tNodes in list after prepend: ");
       display();
       System.out.print("\n");
     }
@@ -60,43 +68,42 @@ class LinkedList {
   }
 
   public void remove(int data) {
-    if (head == null) System.out.println("No nodes in list");
-    else {
-      Node fast = head;
-      Node slow = head;
+    Node fast = head;
+    Node slow = head;
 
-      if (head == null) System.out.println("No nodes in list");
-      else if (head.data == data) {
-        fast = head;
-        head = head.next;
-        System.out.println("\nRemoved: " + fast.data);
-      } else {
-        while (data != fast.data) fast = fast.next;
-
-        if (fast == null) System.out.println("Data not in list");
-        else {
-          while (slow.next != fast) slow = slow.next;
-
-          if (fast.next == null) slow.next = null;
-          else {
-            slow.next = fast.next;
-            System.out.println("Removed: " + fast.data);
-          }
-        }
-      }
-
-      System.out.print("Nodes in list after removal: ");
+    if (head == null) System.out.println("\tNo nodes in list");
+    else if (head.data == data) {
+      fast = head;
+      head = head.next;
+      System.out.println("\n\tRemoved: " + fast.data);
+      System.out.print("\tNodes in list after removal: ");
       display();
       System.out.print("\n");
+    } else {
+      while (data != fast.data) fast = fast.next;
+
+      if (fast == null) System.out.println("\tData not in list");
+      else {
+        while (slow.next != fast) slow = slow.next;
+
+        if (fast.next == null) slow.next = null;
+        else {
+          slow.next = fast.next;
+          System.out.println("\tRemoved: " + fast.data);
+          System.out.print("\tNodes in list after removal: ");
+          display();
+          System.out.print("\n");
+        }
+      }
     }
   }
 
   public void rotate(int rotation) {
-    if (head == null) System.out.println("No nodes in list");
+    if (head == null) System.out.println("\tNo nodes in list");
     else {
-      System.out.print("Nodal order before rotation: ");
+      System.out.print("\n\tNodal order before rotation: ");
       display();
-      System.out.print("\nRotated list by: " + rotation + "\n");
+      System.out.print("\n\tRotated list by: " + rotation + "\n");
 
       Node fast = head;
       Node slow = head;
@@ -135,25 +142,21 @@ class LinkedList {
           index++;
         }
 
-        System.out.print("Nodal order after rotation: ");
+        System.out.print("\tNodal order after rotation: ");
         display();
+        System.out.println();
       }
     }
   }
 
   public void display() {
-    if (head == null) System.out.println("No nodes in list");
+    if (head == null) System.out.println("\tNo nodes in list");
     else {
       Node current = head;
 
-      if (head == null) System.out.print("Empty list");
-      else {
-        while (current != null) {
-          System.out.print(current.data + " ");
-          current = current.next;
-        }
-
-        System.out.print("\n_____________\n");
+      while (current != null) {
+        System.out.print(current.data + " ");
+        current = current.next;
       }
     }
   }
