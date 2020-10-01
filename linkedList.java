@@ -86,10 +86,15 @@ class LinkedList {
       else {
         while (slow.next != fast) slow = slow.next;
 
-        if (fast.next == null) slow.next = null;
-        else {
+        if (fast.next == null) {
+          slow.next = null;
+          System.out.println("\n\tRemoved: " + fast.data);
+          System.out.print("\tNodes in list after removal: ");
+          display();
+          System.out.print("\n");
+        } else {
           slow.next = fast.next;
-          System.out.println("\tRemoved: " + fast.data);
+          System.out.println("\n\tRemoved: " + fast.data);
           System.out.print("\tNodes in list after removal: ");
           display();
           System.out.print("\n");
