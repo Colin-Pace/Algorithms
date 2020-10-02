@@ -14,6 +14,7 @@ public class InsertionSort {
 
     list.display();
     System.out.println("\n\tTest passes: " + list.test());
+
     System.out.println();
   }
 }
@@ -35,7 +36,6 @@ class LinkedList {
 
   public Node head = null;
   public Node tail = null;
-  public Integer flag = 1;
 
   public void add(Integer data) {
     Node node = new Node(data);
