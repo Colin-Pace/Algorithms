@@ -1,20 +1,22 @@
-// Sort a linked list in place with heap sort
-
-
-public class Main {
+public class HeapSort {
   public static void main(String[] args) {
     LinkedList list = new LinkedList();
-    list.add(1);
-    list.add(5);
-    list.add(4);
-    list.add(3);
 
+    int[] array = new int[10];
     System.out.print("\n\tNodes in list before heapsort: ");
-    list.display();
+    for (int i = 0; i < 10; i++) {
+      array[i] = (int) Math.floor(Math.random() * 100) + 1;
+      System.out.print(array[i] + " ");
+    }
+    for (int i = 0; i < array.length; i++) list.add(array[i]);
 
     list.heapify();
     System.out.print("\n\tNodes in list after heapsort: ");
     list.display();
+
+    System.out.println("\tTest passes: " + list.test());
+
+    System.out.println();
   }
 }
 
@@ -91,6 +93,23 @@ class LinkedList {
         head = head.next;
         heapify();
       }
+    }
+  }
+
+  public Boolean test() {
+    Node itr = head;
+    if (head == null) {
+      System.out.println("No nodes in list");
+      return false;
+    } else {
+      Integer data = head.data;
+      while (itr.next != null) {
+        itr = itr.next;
+        if (data > itr.data) return false;
+        data = itr.data;
+      }
+      if (data > itr.data) return false;
+      else return true;
     }
   }
 
