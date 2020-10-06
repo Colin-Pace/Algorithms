@@ -108,8 +108,8 @@ public class Stack {
     Stack stack_ = new Stack();
 
     int[] integers = stack.createArray(10);
-    Integer l = integers.length;
     int[] smallerIntegers = stack.findElements(stack, stack_, integers);
+
     Boolean answer = stack.test(integers, smallerIntegers);
 
     System.out.println("\n\tTest passes: " + answer);
