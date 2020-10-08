@@ -1,4 +1,4 @@
-/* Interview bit: sliding window maximum. Given an array of integers A. There is a sliding window of size B which is moving from the very left of the array to the very right. You can only see the w numbers in the window. Each time the sliding window moves rightwards by one position. You have to find the maximum for each window.*/
+/* Interview bit: sliding window maximum. Given an array of integers A. There is a sliding window of size B which is moving from the very left of the array to the very right. You can only see the w numbers in the window. Each time the sliding window moves rightwards by one position. You have to find the maximum for each window. */
 
 public class Stack {
   class Node {
@@ -58,7 +58,6 @@ public class Stack {
       stack.push(secondComparison);
     }
 
-    Integer count = 0;
     Node itr = tail;
     while (itr != null) {
       result[length - 3] = itr.data;
@@ -77,15 +76,15 @@ public class Stack {
       Integer secondComparison = Math.max(firstComparison, array[i + 2]);
 
       if (secondComparison == array[i]) {
-        if (secondComparison < array[i] || secondComparison < array[i + 2]) {
+        if (secondComparison < array[i] || secondComparison < array[i + 2] || secondComparison != result[i]) {
           return false;
         }
       } else if (secondComparison == array[i + 1]) {
-        if (secondComparison < array[i] || secondComparison < array[i + 2]) {
+        if (secondComparison < array[i] || secondComparison < array[i + 2] || secondComparison != result[i]) {
           return false;
         }
       } else {
-        if (secondComparison < array[i] || secondComparison < array[i + 1]) {
+        if (secondComparison < array[i] || secondComparison < array[i + 1] || secondComparison != result[i]) {
           return false;
         }
       }
