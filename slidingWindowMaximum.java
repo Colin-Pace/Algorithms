@@ -1,4 +1,4 @@
-/* Interview bit: sliding window maximum. Given an array of integers A. There is a sliding window of size B which is moving from the very left of the array to the very right. You can only see the w numbers in the window. Each time the sliding window moves rightwards by one position. You have to find the maximum for each window. The following example will give you more clarity. */
+/* Interview bit: sliding window maximum. Given an array of integers A. There is a sliding window of size B which is moving from the very left of the array to the very right. You can only see the w numbers in the window. Each time the sliding window moves rightwards by one position. You have to find the maximum for each window.*/
 
 public class Stack {
   class Node {
