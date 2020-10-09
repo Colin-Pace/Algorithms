@@ -108,7 +108,6 @@ public class BinarySearchTree {
 
   public void test(Integer ith) {
     Integer l = this.testArray.length;
-    Boolean found = false;
 
     for (Integer i = 0; i < l; i++) {
       if (ith == 0) {
@@ -118,7 +117,7 @@ public class BinarySearchTree {
       else ith--;
     }
 
-    if (found == false) System.out.println("\n\tTest passes: true");
+    System.out.println("\n\tTest passes: true");
   }
 
   public static void main(String[] args) {
