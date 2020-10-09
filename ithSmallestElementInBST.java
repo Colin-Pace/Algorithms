@@ -117,7 +117,7 @@ public class BinarySearchTree {
       else ith--;
     }
 
-    System.out.println("\n\tTest passes: true");
+    System.out.println("\n\tTest passes: false");
   }
 
   public static void main(String[] args) {
