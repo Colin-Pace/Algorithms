@@ -20,13 +20,7 @@ class BinaryTree {
 
   sumExists(key) {
     this.key = key;
-    let addendFound = false;
-
-    addendFound = this.traversal(this.root);
-
-    if (addendFound) return true;
-
-    return addendFound = this.checkAddends(key);
+    return this.traversal(this.root) ? true : false;
   }
 
   checkAddends(data) {
@@ -38,12 +32,10 @@ class BinaryTree {
   }
 
   traversal(node) {
-    node.left && this.traversal(node.left);
-    const addendFound = this.checkAddends(node.data);
-
     this.addends[ Math.abs(node.data - this.key) ] = true;
+    node.left && this.traversal(node.left);
     node.right && this.traversal(node.right);
-
+    const addendFound = this.checkAddends(node.data);
     return addendFound;
   }
 
