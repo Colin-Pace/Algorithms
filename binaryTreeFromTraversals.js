@@ -113,7 +113,7 @@ class BinaryTree {
     const result = [];
     const traversal = function(node) {
       node.left && traversal(node.left);
-      result.push(`${node.data}`);
+      result.push(node.data);
       node.right && traversal(node.right);
     }
 
