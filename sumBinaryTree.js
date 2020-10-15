@@ -1,7 +1,6 @@
 /* InterviewBit: sum binary tree. Given a binary search tree T, where each node
 contains a positive integer, and an integer key, you have to find whether or
-not there exist two different nodes A and B such that A.value + B.value = key.
-Return 1 to denote that two such nodes exist. Return 0, otherwise. */
+not there exist two different nodes A and B such that A.value + B.value = key. */
 
 class Node {
   constructor(data, left, right) {
