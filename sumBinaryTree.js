@@ -33,10 +33,12 @@ class BinaryTree {
 
   traversal(node) {
     this.addends[ Math.abs(node.data - this.key) ] = true;
+
     node.left && this.traversal(node.left);
+    if (this.checkAddends(node.data)) return true;
     node.right && this.traversal(node.right);
-    const addendFound = this.checkAddends(node.data);
-    return addendFound;
+
+    return this.checkAddends(node.data);
   }
 
   test(inputOne, inputTwo) {
