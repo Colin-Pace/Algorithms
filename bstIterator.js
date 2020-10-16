@@ -67,7 +67,7 @@ class BinarySearchTree {
     return result;
   }
 
-  findNext(info) {
+  findNext() {
     if (this.max === null) {
       this.itr = this.root;
       this.step = 0;
