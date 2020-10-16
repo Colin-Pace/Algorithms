@@ -16,7 +16,6 @@ class BinarySearchTree {
   constructor() {
     this.root = null;
     this.itr = null;
-    this.sup = null;
     this.max = null;
     this.elements = [];
     this.start = true;
