@@ -17,9 +17,7 @@ class BinarySearchTree {
     this.root = null;
     this.itr = null;
     this.sup = null;
-    this.step = null;
     this.max = null;
-    this.end = false;
     this.elements = [];
     this.start = true;
   }
@@ -75,7 +73,7 @@ class BinarySearchTree {
       this.itr = this.root;
       this.step = 0;
       this.findMax();
-    } else if (this.end === true) return "No more elements in tree";
+    }
 
     const order = ["left", "root", "right"];
     let answer;
