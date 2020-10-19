@@ -236,7 +236,7 @@ let test = true;
 function testRecoverBST() {
   let i = 0;
 
-  while (i < 10) {
+  while (i < 35) {
     tree = new BinarySearchTree;
     if (tree.test() != true) test = false;
     i++;
