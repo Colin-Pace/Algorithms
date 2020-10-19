@@ -1,6 +1,7 @@
 /* InterviewBit: recover binary search tree. Two elements of a binary search
 tree (BST) are swapped by mistake. Tell us the 2 values swapping which the tree
-will be restored and then swap them so that the binary search tree is recovered. */
+will be restored and then swap them so that the binary search tree is
+recovered. */
 
 
 class Node {
@@ -146,7 +147,7 @@ class BinarySearchTree {
         tree.previous.data = node.data;
         node.data = temp;
 
-        nodeFound = false;                    // how to optimize?
+        nodeFound = false;
         return;
       }
 
