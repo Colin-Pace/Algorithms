@@ -1,4 +1,4 @@
-// InterviewBit: reverse bits. Reverse the bits of an 32 bit unsigned integer A.
+// InterviewBit: reverse bits. Reverse the bits of a 32 bit unsigned integer A.
 
 function reverseBits(bit) {
   bit = (bit >>> 0).toString(2);
