@@ -10,9 +10,7 @@ public class Main {
       visited.add(node);
       order.add(node.data);
       for (int i = 0; i < node.adj.size(); i++) {
-        if (!visited.contains(node.adj.get(i))) {
-          depthFirstSearch(node.adj.get(i));
-        }
+        depthFirstSearch(node.adj.get(i));
       }
       return order;
     }

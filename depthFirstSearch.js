@@ -21,7 +21,6 @@ const visited = [];
 const order = [];
 function route(node) {
   if (!node) return null;
-  else if (visited.includes(node)) return;
   else {
     visited.push(node);
     order.push(node.data);
