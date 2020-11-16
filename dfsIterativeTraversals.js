@@ -1,4 +1,4 @@
-/*             Depth first search iterative tree traversals
+/*               Iterative tree traversals
 
 Works cited
   1.Algorithms
