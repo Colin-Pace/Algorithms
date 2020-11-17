@@ -60,8 +60,9 @@ class Node {
 
 class Tree {
   preOrder() {
-    if (this.root) stack.push(this.root);
+    if (!this.root) throw "No tree root";
     const result = [];
+    stack.push(this.root);
 
     while (stack.head) {
       const node = stack.pop();
@@ -74,44 +75,48 @@ class Tree {
   }
 
   inOrder() {
-    let current = this.root;
+    if (!this.root) throw "No tree root";
     const result = [];
+    let fast = this.root;
 
     while (true) {
-      while (!!current) {
-        stack.push(current);
-        current = current.left;
+      while (fast) {
+        stack.push(fast);
+        fast = fast.left;
       }
 
       if (!stack.head) break;
-      let former = stack.pop();
-      result.push(" " + former.data);
-      current = former.right;
+      else {
+        const slow = stack.pop();
+        result.push(" " + slow.data);
+        fast = slow.right;
+      }
     }
 
     return result;
   }
 
   postOrder() {
+    if (!this.root) throw "No tree root";
     const result = [];
-    let current = this.root;
-    let former = this.root;
+    let fast = this.root;
+    let slow = this.root;
 
-    while (current) {
-      while (current.left) {
-        stack.push(current);
-        current = current.left;
+    while (fast) {
+      while (fast.left) {
+        stack.push(fast);
+        fast = fast.left;
       }
 
-      while (!current.right || current.right === former) {
-        result.push(" " + current.data);
-        former = current;
+      while (!fast.right || fast.right === slow) {
+        result.push(" " + fast.data);
+        slow = fast;
         if (!stack.head) return result;
-        current = stack.pop();
+        fast = stack.pop();
       }
 
-      stack.push(current);
-      current = current.right;
+      stack.push(fast);
+      fast = fast.right;
     }
 
     return result;
