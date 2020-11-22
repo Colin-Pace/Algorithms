@@ -59,6 +59,32 @@ class Node {
 }
 
 class Tree {
+  add(data) {
+    if (!data) throw "No data to put in tree";
+
+    let node = this.root;
+    if (!node) this.root = new Node(data);
+    else {
+      while (true) {
+        if (data === node.data) throw "Data already in tree";
+        else if (data < node.data) {
+          if (node.left) node = node.left;
+          else {
+            node.left = new Node(data);
+            break;
+          }
+
+        } else if (data > node.data) {
+          if (node.right) node = node.right;
+          else {
+            node.right = new Node(data);
+            break;
+          }
+        }
+      }
+    }
+  }
+
   preOrder() {
     if (!this.root) throw "No tree root";
     const result = [];
@@ -123,31 +149,11 @@ class Tree {
   }
 }
 
-
-const f = new Node("f");
-const b = new Node("b");
-const g = new Node("g");
-const a = new Node("a");
-const d = new Node("d");
-const i = new Node("i");
-const c = new Node("c");
-const e = new Node("e");
-const h = new Node("h");
-
-f.left = b;
-f.right = g;
-b.left = a;
-b.right = d;
-d.left = c;
-d.right = e;
-g.right = i;
-i.left = h;
-
-
 const stack = new Stack;
 const tree = new Tree;
-tree.root = f;
 
+const integers = [100, 50, 20, 80, 150, 120, 200];
+integers.forEach(integer => tree.add(integer));
 
 console.log(`Pre order: ${tree.preOrder()}`);
 console.log(`In order: ${tree.inOrder()}`);
