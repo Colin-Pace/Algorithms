@@ -106,6 +106,9 @@ class Tree {
       if (slow.left === fast) slow.left = null;
       else slow.right = null;
 
+    } else if (!fast.left && fast.right.data > slow.data) {
+      slow.right = fast.right;
+
     } else if (!fast.left) slow.left = fast.right;
 
     else if (!fast.right) slow.right = fast.left;
@@ -203,9 +206,9 @@ const tree = new Tree;
 /*
             100
         50         150
-          80     120   200
-                     170    210
-                    160      220
+          80     120   200s
+                     170    210f
+                  160         220
 
 */
 
