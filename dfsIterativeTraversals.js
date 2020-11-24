@@ -84,10 +84,14 @@ class Tree {
   }
 
   remove(data) {
+    let fast = this.root;
+    let slow = this.root;
+
     if (!data || !this.root) throw "error";
-    else {
-      let fast = this.root;
-      let slow = this.root;
+    else if ( data === this.root.data &&
+            ( !this.root.left && !this.root.right)) {
+                this.root = null;
+    } else {
       while (data != fast.data) {
         if (data < fast.data) {
           slow = fast;
@@ -102,7 +106,34 @@ class Tree {
   }
 
   remove_(fast, slow) {
-    if (!fast.left && !fast.right) {
+    if (fast === this.root) {
+      if (!fast.right) this.root = fast.left;
+      else {
+        let node = fast.right;
+        let itr = fast.right;
+
+        if (!itr.left) {
+          if (!fast.left) {
+            this.root = itr;
+            fast = null;
+          } else {
+            fast.data = itr.data;
+            fast.right = itr.right;
+          }
+
+        } else {
+          while (itr.left) {
+            node = itr;
+            itr = itr.left;
+          }
+
+          fast.data = itr.data;
+          if (itr.right) node.left = itr.right;
+          else node.left = null;
+        }
+      }
+
+    } else if (!fast.left && !fast.right) {
       if (slow.left === fast) slow.left = null;
       else slow.right = null;
 
@@ -130,6 +161,7 @@ class Tree {
           node = itr;
           itr = itr.left;
         }
+
         fast.data = itr.data;
         node.left = null;
       }
@@ -204,15 +236,13 @@ const stack = new Stack;
 const tree = new Tree;
 
 /*
-            100
+              100
         50         150
           80     120   200
                      170    210
-                  160         220
+                  160         220  */
 
-*/
-
-const integers = [100, 50, 20, 80, 150, 120, 200, 170, 160, 210, 220];
+const integers = [100, 20, 80, 150, 120, 200, 170, 160, 210, 220];
 integers.forEach(integer => tree.add(integer));
 
 console.log(`Pre order: ${tree.preOrder()}`);
