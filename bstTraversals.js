@@ -80,25 +80,38 @@ class BinarySearchTree {
     else {
       const remove = function(node, data) {
         if (!node || !data) return null;
+
         else if (data === node.data) {
           if (!node.left && !node.right) return null;
-          else if (!node.left) return node.right;
           else if (!node.right) return node.left;
+
           else {
             let temp = node.right;
-            while (temp.left) temp = temp.left;
+            let itr = temp;
+            while (temp.left) {
+              itr = temp;
+              temp = temp.left;
+            }
+
             node.data = temp.data;
-            node.right = remove(node.right, temp.data);
+            if (itr === temp && (!temp.left && !temp.right)) {
+              node.right = null;
+
+            } else if (!temp.left && !temp.right) itr.left = null;
+            else node.right = remove(node.right, temp.data);
             return node;
           }
+
         } else if (data < node.data) {
           node.left = remove(node.left, data);
           return node;
+
         } else {
           node.right = remove(node.right, data);
           return node;
         }
       }
+
       this.root = remove(this.root, data);
     }
   }
@@ -246,13 +259,10 @@ class BinarySearchTree {
   }
 }
 
-
 const queue = new Queue;
 const tree = new BinarySearchTree;
 
-const integers = [10, 5, 2, 8, 15, 12, 20];
+const integers = [100, 150, 80, 50, 90, 130, 200, 110, 120, 115];
 integers.forEach(integer => tree.add(integer));
-console.log(`In order: ${tree.inOrder()}`);
-console.log(`Pre order: ${tree.preOrder()}`);
-console.log(`Post order: ${tree.postOrder()}`);
-console.log(`Level order: ${tree.levelOrder()}`);
+
+console.log(tree.root.data);
