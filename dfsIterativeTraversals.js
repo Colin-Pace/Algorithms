@@ -53,10 +53,15 @@ class Node {
     this.data = data;
     this.left = null;
     this.right = null;
+    this.visited = false;
   }
 }
 
 class Tree {
+  constructor() {
+    this.root = null;
+  }
+
   add(data) {
     if (!data) throw "No data to put in tree";
 
@@ -230,6 +235,52 @@ class Tree {
 
     return result;
   }
+
+  minMaxDepths() {
+    if (!this.root) return null;
+    else if (!this.root.left && !this.root.right) {
+      return "Min 1, max 1";
+    }
+
+    let itr = this.root;
+    let count = 1;
+    const branches = [];
+    let min = Infinity;
+    let max = 1;
+
+    while (true) {
+      if (itr.left && itr.right && itr.visited === false) {
+        branches.push([count, itr]);
+      }
+
+      if (itr.visited === true) {
+        count++;
+        itr = itr.right;
+
+      } else if (itr.left) {
+        count++;
+        itr.visited = true;
+        itr = itr.left;
+
+      } else if (itr.right) {
+        count++;
+        itr = itr.right;
+
+      } else {
+        if (count < min) min = count;
+        if (count > max) max = count;
+
+        if (!branches.length) break;
+        else {
+          const sub = branches.pop();
+          count = sub[0];
+          itr = sub[1];
+        }
+      }
+    }
+
+    return "Min " + min + ", " + "max " + max;
+  }
 }
 
 const stack = new Stack;
@@ -237,14 +288,12 @@ const tree = new Tree;
 
 /*
               100
-        50         150
+        20         150
           80     120   200
                      170    210
-                  160         220  */
+                  160                   */
 
-const integers = [100, 20, 80, 150, 120, 200, 170, 160, 210, 220];
+const integers = [100, 20, 80, 150, 120, 200, 170, 160, 210];
 integers.forEach(integer => tree.add(integer));
 
-console.log(`Pre order: ${tree.preOrder()}`);
-console.log(`In order: ${tree.inOrder()}`);
-console.log(`Post order: ${tree.postOrder()}`);
+console.log(tree.minMaxDepths());
