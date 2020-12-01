@@ -176,6 +176,7 @@ class Tree {
   preOrder() {
     if (!this.root) throw "No tree root";
     const result = [];
+    const stack = new Stack;
     stack.push(this.root);
 
     while (stack.head) {
@@ -191,6 +192,7 @@ class Tree {
   inOrder() {
     if (!this.root) throw "No tree root";
     const result = [];
+    const stack = new Stack;
     let fast = this.root;
 
     while (true) {
@@ -213,6 +215,7 @@ class Tree {
   postOrder() {
     if (!this.root) throw "No tree root";
     const result = [];
+    const stack = new Stack;
     let fast = this.root;
     let slow = this.root;
 
@@ -244,7 +247,7 @@ class Tree {
 
     let itr = this.root;
     let count = 1;
-    const branches = [];
+    const branches = new Stack;
     let min = Infinity;
     let max = 1;
 
@@ -270,7 +273,7 @@ class Tree {
         if (count < min) min = count;
         if (count > max) max = count;
 
-        if (!branches.length) break;
+        if (!branches.head) break;
         else {
           const sub = branches.pop();
           count = sub[0];
@@ -283,9 +286,6 @@ class Tree {
   }
 }
 
-const stack = new Stack;
-const tree = new Tree;
-
 /*
               100
         20         150
@@ -293,6 +293,7 @@ const tree = new Tree;
                      170    210
                   160                   */
 
+const tree = new Tree;
 const integers = [100, 20, 80, 150, 120, 200, 170, 160, 210];
 integers.forEach(integer => tree.add(integer));
 
