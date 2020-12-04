@@ -92,32 +92,6 @@ class BinarySearchTree {
     } else System.out.println("Data already in tree");
   }
 
-  public void remove(int data) {
-    Node node = root;
-    remove_(node, data);
-  }
-
-  public Node remove_(Node itr, int data) {
-    if (data == itr.data) {
-      if (itr.left == null && itr.right == null) return null;
-      else if (itr.left == null) return itr.right;
-      else if (itr.right == null) return itr.left;
-      else {
-        Node temp = itr.right;
-        while (temp.left != null) temp = temp.left;
-        temp.data = temp.data;
-        itr.right = remove_(itr.right, temp.data);
-        return temp;
-      }
-    } else if (data < itr.data) {
-      itr.left = remove_(itr.left, data);
-      return itr;
-    } else {
-      itr.right = remove_(itr.right, data);
-      return itr;
-    }
-  }
-
   public void inOrder() {
     Node node = root;
     System.out.print("In order: ");
