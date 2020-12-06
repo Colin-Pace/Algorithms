@@ -12,26 +12,32 @@ class Queue {
   }
 
   enqueue(data) {
-    let node = new QueueNode(data);
     if (!this.head) {
-      this.tail = node;
-      this.head = this.tail;
+      this.head = new QueueNode(data);
+      this.tail = this.head;
     } else {
-      this.head.next = node;
-      this.head = node;
+      const node = new QueueNode(data);
+      this.tail.next = node;
+      this.tail = node;
     }
   }
 
   dequeue() {
+    let node;
     if (!this.head) return null;
-    else {
-      let node = this.tail;
-      if (this.tail === this.head) {
-        this.tail = null;
-        this.head = null;
-      } else this.tail = this.tail.next;
-      node.next = null;
-      return node;
+    else if (this.head === this.tail) {
+      node = this.head;
+      this.head = null;
+      this.tail = null;
+      const data = node.data;
+      node = null;
+      return data;
+    } else {
+      node = this.head;
+      this.head = this.head.next;
+      const data = node.data;
+      node = null;
+      return data;
     }
   }
 }
@@ -78,13 +84,14 @@ j.adj = [i];
 
 
 function route(start, end) {
+  const queue = new Queue;
   if (!start || !end) return null;
   else {
     const visited = [];
     const order = [];
     queue.enqueue(start);
     while (queue.head) {
-      const node = queue.dequeue().data;
+      const node = queue.dequeue();
       order.push(node.data);
       if (node.adj === null) continue;
       const adjacents = node.adj, l = adjacents.length;
@@ -103,5 +110,4 @@ function route(start, end) {
   }
 }
 
-const queue = new Queue;
 console.log(route(a, h));

@@ -1,5 +1,3 @@
-// Implement a stack and queue class
-
 class Node {
   constructor(data, next) {
     this.data = data;
@@ -7,44 +5,42 @@ class Node {
   }
 }
 
-
 class Stack {
   constructor() {
     this.head = null;
+    this.tail = null;
   }
 
-  push(item) {
+  push(data) {
     if (!this.head) {
-      let node = new Node(item, null);
-      this.head = node;
+      this.head = new Node(data);
+      this.tail = this.head;
     } else {
-      let node = new Node(item, this.head);
-      this.head = node;
+      const node = new Node(data);
+      node.next = this.tail;
+      this.tail = node;
     }
   }
 
   pop() {
-    if (!this.head) {
-      return null;
+    let node;
+    if (!this.head) return null;
+    else if (this.head === this.tail) {
+      node = this.head;
+      this.head = null;
+      this.tail = null;
+      const data = node.data;
+      node = null;
+      return data;
     } else {
-      let node = this.head;
-      this.head = node.next;
-      return node;
+      node = this.tail;
+      this.tail = this.tail.next;
+      const data = node.data;
+      node = null;
+      return data;
     }
   }
 }
-
-let integers = new Stack;
-integers.push(2);
-integers.push(1);
-integers.push(4);
-integers.push(3);
-integers.push(5);
-integers.pop();
-integers.pop();
-console.log(integers);
-
-
 
 class Queue {
   constructor() {
@@ -57,7 +53,7 @@ class Queue {
       this.head = new Node(data);
       this.tail = this.head;
     } else {
-      let node = new Node(data);
+      const node = new Node(data);
       this.tail.next = node;
       this.tail = node;
     }
@@ -66,26 +62,22 @@ class Queue {
   dequeue() {
     let node;
     if (!this.head) return null;
-    else if (this.tail === this.head) {
+    else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
-      return node;
+      const data = node.data;
+      node = null;
+      return data;
     } else {
       node = this.head;
       this.head = this.head.next;
-      node.next = null;
-      return node;
+      const data = node.data;
+      node = null;
+      return data;
     }
   }
 }
 
-const letters = new Queue;
-letters.enqueue("a");
-letters.enqueue("b");
-letters.enqueue("c");
-letters.enqueue("d");
-letters.enqueue("e");
-letters.dequeue();
-letters.dequeue();
-console.log(letters);
+const stack = new Stack;
+const queue = new Queue;

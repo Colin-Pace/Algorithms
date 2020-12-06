@@ -26,23 +26,27 @@ class Stack {
       this.tail = this.head;
     } else {
       const node = new StackNode(data);
-      node.next = this.head;
-      this.head = node;
+      node.next = this.tail;
+      this.tail = node;
     }
   }
 
-  pop(data) {
+  pop() {
     let node;
     if (!this.head) return null;
     else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
-      return node.data;
+      const data = node.data;
+      node = null;
+      return data;
     } else {
-      node = this.head;
-      this.head = this.head.next;
-      return node.data;
+      node = this.tail;
+      this.tail = this.tail.next;
+      const data = node.data;
+      node = null;
+      return data;
     }
   }
 }

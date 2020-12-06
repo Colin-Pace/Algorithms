@@ -12,12 +12,11 @@ class Queue {
   }
 
   enqueue(data) {
-    if (!data) return null;
     if (!this.head) {
       this.head = new QueueNode(data);
       this.tail = this.head;
     } else {
-      let node = new QueueNode(data);
+      const node = new QueueNode(data);
       this.tail.next = node;
       this.tail = node;
     }
@@ -26,17 +25,27 @@ class Queue {
   dequeue() {
     let node;
     if (!this.head) return null;
-    else if (this.tail === this.head) {
+    else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
-      return node;
+      const data = node.data;
+      node = null;
+      return data;
     } else {
       node = this.head;
       this.head = this.head.next;
-      node.next = null;
-      return node;
+      const data = node.data;
+      node = null;
+      return data;
     }
+  }
+}
+
+class GraphNode {
+  constructor(data, adj) {
+    this.data = data;
+    this.adj = adj;
   }
 }
 

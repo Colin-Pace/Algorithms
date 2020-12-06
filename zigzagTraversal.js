@@ -18,7 +18,7 @@ class Queue {
       this.head = new Node(data);
       this.tail = this.head;
     } else {
-      let node = new Node(data);
+      const node = new Node(data);
       this.tail.next = node;
       this.tail = node;
     }
@@ -27,16 +27,19 @@ class Queue {
   dequeue() {
     let node;
     if (!this.head) return null;
-    else if (this.tail === this.head) {
+    else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
-      return node;
+      const data = node.data;
+      node = null;
+      return data;
     } else {
       node = this.head;
       this.head = this.head.next;
-      node.next = null;
-      return node;
+      const data = node.data;
+      node = null;
+      return data;
     }
   }
 }
@@ -61,6 +64,7 @@ c.left = d;
 c.right = e;
 
 function zigzagTraversal(node) {
+  const queue = new Queue;
   if (!node) return null;
   else {
     const result = [];
@@ -68,7 +72,7 @@ function zigzagTraversal(node) {
     queue.enqueue(node);
 
     while (queue.head) {
-      const node = queue.dequeue().data;
+      const node = queue.dequeue();
       result.push(node.data);
       if (normal) {
         if (node.left) queue.enqueue(node.left);
@@ -85,5 +89,4 @@ function zigzagTraversal(node) {
   }
 }
 
-const queue = new Queue;
 console.log(zigzagTraversal(root));

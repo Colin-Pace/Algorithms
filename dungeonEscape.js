@@ -16,23 +16,32 @@ class Queue {
   }
 
   enqueue(data) {
-    let node = new Node(data);
-    if (this.head === null || this.head === undefined) {
-      this.head = node;
-      this.tail = node;
+    if (!this.head) {
+      this.head = new Node(data);
+      this.tail = this.head;
     } else {
+      const node = new Node(data);
       this.tail.next = node;
       this.tail = node;
     }
   }
 
   dequeue() {
-    if (!this.head) {
-      throw "No items in queue."
+    let node;
+    if (!this.head) return null;
+    else if (this.head === this.tail) {
+      node = this.head;
+      this.head = null;
+      this.tail = null;
+      const data = node.data;
+      node = null;
+      return data;
     } else {
-      let node = this.head;
-      this.head = node.next;
-      return node;
+      node = this.head;
+      this.head = this.head.next;
+      const data = node.data;
+      node = null;
+      return data;
     }
   }
 }

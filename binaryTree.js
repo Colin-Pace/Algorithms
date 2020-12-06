@@ -13,27 +13,31 @@ class Queue {
 
   enqueue(data) {
     if (!this.head) {
-      this.head = new Node(data);
+      this.head = new QueueNode(data);
       this.tail = this.head;
     } else {
-      let node = new Node(data);
+      const node = new QueueNode(data);
       this.tail.next = node;
       this.tail = node;
     }
   }
 
-  dequeue(data) {
+  dequeue() {
     let node;
     if (!this.head) return null;
     else if (this.head === this.tail) {
       node = this.head;
-      this.head = null, this.tail = null, node.next = null;
-      return node;
+      this.head = null;
+      this.tail = null;
+      const data = node.data;
+      node = null;
+      return data;
     } else {
       node = this.head;
       this.head = this.head.next;
-      node.next = null;
-      return node;
+      const data = node.data;
+      node = null;
+      return data;
     }
   }
 }
@@ -94,12 +98,13 @@ class BinaryTree {
   }
 
   levelOrder() {
+    const queue = new Queue;
     if (!this.root) return null;
     else {
       const order = [];
       queue.enqueue(this.root);
       while (queue.head) {
-        const node = queue.dequeue().data;
+        const node = queue.dequeue();
         order.push(` ${node.data}`);
         if (node.left) queue.enqueue(node.left);
         if (node.right) queue.enqueue(node.right);
@@ -124,7 +129,6 @@ b.right = e;
 c.left = f;
 c.right = g;
 
-const queue = new Queue;
 const binaryTree = new BinaryTree;
 
 binaryTree.root = a;

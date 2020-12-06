@@ -14,26 +14,32 @@ class Queue {
   }
 
   enqueue(data) {
-    let node = new QueueNode(data);
     if (!this.head) {
-      this.tail = node;
-      this.head = this.tail;
+      this.head = new QueueNode(data);
+      this.tail = this.head;
     } else {
-      this.head.next = node;
-      this.head = node;
+      const node = new QueueNode(data);
+      this.tail.next = node;
+      this.tail = node;
     }
   }
 
   dequeue() {
+    let node;
     if (!this.head) return null;
-    else {
-      let node = this.tail;
-      if (this.tail === this.head) {
-        this.tail = null;
-        this.head = null;
-      } else this.tail = this.tail.next;
-      node.next = null;
-      return node;
+    else if (this.head === this.tail) {
+      node = this.head;
+      this.head = null;
+      this.tail = null;
+      const data = node.data;
+      node = null;
+      return data;
+    } else {
+      node = this.head;
+      this.head = this.head.next;
+      const data = node.data;
+      node = null;
+      return data;
     }
   }
 }
@@ -43,7 +49,7 @@ class GraphNode {
     this.data = data;
     this.adj = adj;
   }
-}
+} 
 
 const a = new GraphNode('a');
 const b = new GraphNode('b');
@@ -58,13 +64,14 @@ d.adj = [b, e];
 e.adj = [c, d];
 
 function route(node) {
+  const queue = new Queue;
   if (!node) return null;
   else {
     const visited = [];
     const order = [];
     queue.enqueue(node);
     while (queue.head) {
-      const node = queue.dequeue().data;
+      const node = queue.dequeue();
       order.push(node.data);
       const adjacents = node.adj, l = adjacents.length;
       for (let i = 0; i < l; i++) {
@@ -79,5 +86,4 @@ function route(node) {
   }
 }
 
-const queue = new Queue;
 console.log(route(a));
