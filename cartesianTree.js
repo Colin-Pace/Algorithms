@@ -1,7 +1,8 @@
 /* Works cited
-1. Prompt: InterviewBit, in order traversal of a Cartesian tree
-    1.1. Given an inorder traversal of a cartesian tree, construct the tree.
-2. Algorithm:
+1. Prompt
+    1.1 Site and title: InterviewBit, in order traversal of a Cartesian tree
+    1.2. Given an inorder traversal of a cartesian tree, construct the tree.
+2. Algorithm
     2.1. https://en.wikipedia.org/wiki/Cartesian_tree */
 
 class Node {
