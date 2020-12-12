@@ -2,7 +2,7 @@
 1. Prompt: InterviewBit, in order traversal of a Cartesian tree
     1.1. Given an inorder traversal of a cartesian tree, construct the tree.
 2. Algorithm:
-    2.1. https://en.wikipedia.org/wiki/Cartesian_tree ("efficient construction") */
+    2.1. https://en.wikipedia.org/wiki/Cartesian_tree */
 
 class Node {
   constructor(data, left, right, sup) {
