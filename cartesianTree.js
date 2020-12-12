@@ -86,7 +86,7 @@ class CartesianTree {
 
     let i = 0;
     result.forEach(integer => {
-      if (result[i] != integer) return false;
+      if (inOrder[i] != integer) return false;
       else i++;
     });
 
