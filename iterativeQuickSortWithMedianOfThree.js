@@ -72,10 +72,6 @@ class LinkedList {
     }
   }
 
-  //        9, 4, 2, 6, 4, 1, 9, 4, 1, 8
-
-  // start = 6
-
   medianOfThree(start, median, end) {
     let l;
     let m;
@@ -86,18 +82,18 @@ class LinkedList {
       m = this.tail;
       r = this.tail;
 
-      l = this.traversalFromEnd(l, this.length - start);
-      m = this.traversalFromEnd(m, this.length - median);
-      r = this.traversalFromEnd(r, this.length - end);
+      l = this.iterationFromEnd(l, this.length - start);
+      m = this.iterationFromEnd(m, this.length - median);
+      r = this.iterationFromEnd(r, this.length - end);
 
     } else {
       l = this.head;
       m = this.head;
       r = this.head;
 
-      l = this.traversal(l, start);
-      m = this.traversal(m, median);
-      r = this.traversal(r, end);
+      l = this.iteration(l, start);
+      m = this.iteration(m, median);
+      r = this.iteration(r, end);
     }
 
     const min = Math.min(l.data, m.data, r.data);
@@ -237,7 +233,7 @@ class LinkedList {
 
   sortTwoNodes(start, end) {
     let itr = this.head;
-    itr = this.traversal(itr, start);
+    itr = this.iteration(itr, start);
     if (itr.data > itr.next.data) {
       const temp = itr.data;
       itr.data = itr.next.data;
@@ -247,7 +243,7 @@ class LinkedList {
 
   sortThreeNodes(start, end) {
     let itr = this.head;
-    itr = this.traversal(itr, start);
+    itr = this.iteration(itr, start);
 
     const values = this.insertionSort(
       [itr.data, itr.next.data, itr.next.next.data]
@@ -274,7 +270,7 @@ class LinkedList {
     return values;
   }
 
-  traversal(itr, count) {
+  iteration(itr, count) {
     while (count != 0) {
       itr = itr.next;
       count--;
@@ -283,7 +279,7 @@ class LinkedList {
     return itr;
   }
 
-  traversalFromEnd(itr, count) {
+  iterationFromEnd(itr, count) {
     while (count != 1) {
       itr = itr.prev;
       count--;
