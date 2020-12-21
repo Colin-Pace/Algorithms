@@ -53,11 +53,13 @@ class LinkedList {
     this.head = null;
     this.tail = null;
     this.itr = null;
+    this.length = 0;
   }
 
   create(a) {
     const l = a.length;
     for (let i = 0; i < l; i++) {
+      this.length++;
       if (!this.head) {
         this.head = new Node(a[i]);
         this.itr = this.head;
@@ -70,14 +72,33 @@ class LinkedList {
     }
   }
 
-  medianOfThree(start, median, end) {
-    let l = this.head;
-    let m = this.head;
-    let r = this.head;
+  //        9, 4, 2, 6, 4, 1, 9, 4, 1, 8
 
-    l = this.traversal(l, start);
-    m = this.traversal(m, median);
-    r = this.traversal(r, end);
+  // start = 6
+
+  medianOfThree(start, median, end) {
+    let l;
+    let m;
+    let r;
+
+    if (start > Math.floor(this.length / 2)) {
+      l = this.tail;
+      m = this.tail;
+      r = this.tail;
+
+      l = this.traversalFromEnd(l, this.length - start);
+      m = this.traversalFromEnd(m, this.length - median);
+      r = this.traversalFromEnd(r, this.length - end);
+
+    } else {
+      l = this.head;
+      m = this.head;
+      r = this.head;
+
+      l = this.traversal(l, start);
+      m = this.traversal(m, median);
+      r = this.traversal(r, end);
+    }
 
     const min = Math.min(l.data, m.data, r.data);
     const max = Math.max(l.data, m.data, r.data);
@@ -262,6 +283,15 @@ class LinkedList {
     return itr;
   }
 
+  traversalFromEnd(itr, count) {
+    while (count != 1) {
+      itr = itr.prev;
+      count--;
+    }
+
+    return itr;
+  }
+
   listToArray() {
     const result = [];
     let itr = this.head;
@@ -343,7 +373,9 @@ function testQuickSort() {
     const input = quickSort.createInput();
     const sorted = quickSort.sort(input);
     const result = quickSort.test(sorted);
-    if (result === false) return false;
+    if (result === false) {
+      return false;
+    }
   }
   return true;
 }
