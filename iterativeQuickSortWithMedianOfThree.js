@@ -4,7 +4,9 @@ Works cited
 1. Stack algorithm: https://learnersbucket.com/examples/algorithms/quick-sort-iterative/
 2. Median of three
       2.1. https://www.oreilly.com/library/view/algorithms-in-a/9780596516246/ch04s04.html
-      2.2. https://stackoverflow.com/questions/7559608/median-of-three-values-strategy */
+      2.2. https://stackoverflow.com/questions/7559608/median-of-three-values-strategy
+3. Insertion sort: https://medium.com/javascript-algorithms/javascript-algorithms-insertion-sort-59b6b655373c
+*/
 
 class Node {
   constructor(data, next, prev) {
