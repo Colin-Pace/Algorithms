@@ -1,5 +1,4 @@
 /* Iterative quick sort with median of three partitioning
-
 Works cited
 1. Stack algorithm: https://learnersbucket.com/examples/algorithms/quick-sort-iterative/
 2. Median of three
@@ -101,25 +100,39 @@ class LinkedList {
     const max = Math.max(l.data, m.data, r.data);
     let med;
 
-    if (l.data === min && r.data === min) {
-      if (m.data === max) med = r.data;
+    if (l.data === min && 
+      r.data === min) {
+        if (m.data === max) {
+          med = r.data;
+        }
 
-    } else if (l.data === max && r.data === max) {
-      if (m.data === min) med = l.data;
+    } else if (l.data === max && 
+      r.data === max) {
+        if (m.data === min) {
+          med = l.data;
+        }
 
-    } else if (l.data === min && r.data === max ||
-        l.data === max && r.data === min) {
-          med = m.data;
+    } else if (l.data === min && 
+      r.data === max ||
+      l.data === max && 
+      r.data === min) {
+        med = m.data;
 
-    } else if (l.data === min && r.data === max ||
-             l.data === max && m.data === min) {
-               med = r.data;
+    } else if (l.data === min && 
+      r.data === max ||
+      l.data === max && 
+      m.data === min) {
+        med = r.data;
 
-    } else if (l.data === min && r.data < max ||
-               r.data === min && l.data < max) {
-      med = r.data;
+    } else if (l.data === min && 
+      r.data < max ||
+      r.data === min && 
+      l.data < max) {
+        med = r.data;
 
-    } else med = l.data;
+    } else {
+      med = l.data;
+    }
 
     l.data = min;
     m.data = med;
@@ -245,21 +258,47 @@ class LinkedList {
   sortThreeNodes(start, end) {
     let itr = this.head;
     itr = this.iteration(itr, start);
-    let mid;
+    let med;
 
     const min = Math.min(itr.data, itr.next.data, itr.next.next.data);
     const max = Math.max(itr.data, itr.next.data, itr.next.next.data);
 
-    if (itr.data != min && itr.data != max) {
-      mid = itr.data;
-    } else if (itr.next.data != min && itr.next.data != max) {
-      mid = itr.next.data;
-    } else if (itr.next.next.data != min && itr.next.next.data != max) {
-      mid = itr.next.next.data;
+    if (itr.data === min && 
+      itr.next.next.data === min) {
+        if (itr.next.data === max) {
+          med = itr.next.next.data;
+        }
+
+    } else if (itr.data === max && 
+      itr.next.next.data === max) {
+        if (itr.next.data === min) {
+          med = itr.data;
+        }
+
+    } else if (itr.data === min && 
+      itr.next.next.data === max ||
+      itr.data === max && 
+      itr.next.next.data === min) {
+        med = itr.next.data;
+
+    } else if (itr.data === min && 
+      itr.next.next.data === max ||
+      itr.data === max && 
+      itr.next.data === min) {
+      med = itr.next.next.data;
+
+    } else if (itr.data === min && 
+      itr.next.next.data < max ||
+      itr.next.next.data === min && 
+      itr.data < max) {
+        med = itr.next.next.data;
+
+    } else {
+      med = itr.data;
     }
 
     itr.data = min;
-    itr.next.data = mid;
+    itr.next.data = med;
     itr.next.next.data = max;
   }
 
