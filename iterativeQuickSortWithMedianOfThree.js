@@ -5,7 +5,6 @@ Works cited
 2. Median of three
       2.1. https://www.oreilly.com/library/view/algorithms-in-a/9780596516246/ch04s04.html
       2.2. https://stackoverflow.com/questions/7559608/median-of-three-values-strategy
-3. Insertion sort: https://medium.com/javascript-algorithms/javascript-algorithms-insertion-sort-59b6b655373c
 */
 
 class Node {
@@ -246,30 +245,22 @@ class LinkedList {
   sortThreeNodes(start, end) {
     let itr = this.head;
     itr = this.iteration(itr, start);
+    let mid;
 
-    const values = this.insertionSort(
-      [itr.data, itr.next.data, itr.next.next.data]
-    );
+    const min = Math.min(itr.data, itr.next.data, itr.next.next.data);
+    const max = Math.max(itr.data, itr.next.data, itr.next.next.data);
 
-    itr.data = values[0];
-    itr.next.data = values[1];
-    itr.next.next.data = values[2];
-  }
-
-  insertionSort(values) {
-    const len = values.length;
-
-    for (let i = 1; i < len; i++) {
-      const key = values[i];
-      let j = i - 1;
-      while (j >= 0 && values[j] > key) {
-        values[j + 1] = values[j];
-        j--;
-      }
-      values[j + 1] = key;
+    if (itr.data != min && itr.data != max) {
+      mid = itr.data;
+    } else if (itr.next.data != min && itr.next.data != max) {
+      mid = itr.next.data;
+    } else if (itr.next.next.data != min && itr.next.next.data != max) {
+      mid = itr.next.next.data;
     }
 
-    return values;
+    itr.data = min;
+    itr.next.data = mid;
+    itr.next.next.data = max;
   }
 
   iteration(itr, count) {
