@@ -100,39 +100,39 @@ class LinkedList {
     const max = Math.max(l.data, m.data, r.data);
     let med;
 
-    if (l.data === min && 
+  if (l.data === min && 
       r.data === min) {
-        if (m.data === max) {
-          med = r.data;
-        }
+          if (m.data === max) {
+              med = r.data;
+          }
 
-    } else if (l.data === max && 
-      r.data === max) {
-        if (m.data === min) {
-          med = l.data;
-        }
+  } else if (l.data === max && 
+             r.data === max) {
+                  if (m.data === min) {
+                      med = l.data;
+                  }
 
-    } else if (l.data === min && 
-      r.data === max ||
-      l.data === max && 
-      r.data === min) {
-        med = m.data;
+  } else if (l.data === min && 
+             r.data === max ||
+             l.data === max && 
+             r.data === min) {
+                  med = m.data;
 
-    } else if (l.data === min && 
-      r.data === max ||
-      l.data === max && 
-      m.data === min) {
-        med = r.data;
+  } else if (l.data === min && 
+             r.data === max ||
+             l.data === max && 
+             m.data === min) {
+              med = r.data;
 
-    } else if (l.data === min && 
-      r.data < max ||
-      r.data === min && 
-      l.data < max) {
-        med = r.data;
+  } else if (l.data === min && 
+             r.data < max ||
+             r.data === min && 
+             l.data < max) {
+                  med = r.data;
 
-    } else {
+  } else {
       med = l.data;
-    }
+  }
 
     l.data = min;
     m.data = med;
@@ -263,39 +263,39 @@ class LinkedList {
     const min = Math.min(itr.data, itr.next.data, itr.next.next.data);
     const max = Math.max(itr.data, itr.next.data, itr.next.next.data);
 
-    if (itr.data === min && 
-      itr.next.next.data === min) {
-        if (itr.next.data === max) {
-          med = itr.next.next.data;
-        }
+      if (itr.data === min && 
+          itr.next.next.data === min) {
+              if (itr.next.data === max) {
+                  med = itr.next.next.data;
+              }
 
-    } else if (itr.data === max && 
-      itr.next.next.data === max) {
-        if (itr.next.data === min) {
+      } else if (itr.data === max && 
+                 itr.next.next.data === max) {
+                      if (itr.next.data === min) {
+                          med = itr.data;
+                      }
+
+      } else if (itr.data === min && 
+                 itr.next.next.data === max ||
+                 itr.data === max && 
+                 itr.next.next.data === min) {
+                      med = itr.next.data;
+
+      } else if (itr.data === min && 
+                 itr.next.next.data === max ||
+                 itr.data === max && 
+                 itr.next.data === min) {
+                  med = itr.next.next.data;
+
+      } else if (itr.data === min && 
+                 itr.next.next.data < max ||
+                 itr.next.next.data === min && 
+                 itr.data < max) {
+                      med = itr.next.next.data;
+
+      } else {
           med = itr.data;
-        }
-
-    } else if (itr.data === min && 
-      itr.next.next.data === max ||
-      itr.data === max && 
-      itr.next.next.data === min) {
-        med = itr.next.data;
-
-    } else if (itr.data === min && 
-      itr.next.next.data === max ||
-      itr.data === max && 
-      itr.next.data === min) {
-      med = itr.next.next.data;
-
-    } else if (itr.data === min && 
-      itr.next.next.data < max ||
-      itr.next.next.data === min && 
-      itr.data < max) {
-        med = itr.next.next.data;
-
-    } else {
-      med = itr.data;
-    }
+      }
 
     itr.data = min;
     itr.next.data = med;
@@ -368,10 +368,6 @@ class QuickSort {
 
       const median = Math.floor(((end - start) + 1) / 2);
       const pivot = list.medianOfThree(start, median + start, end);
-
-      if (pivot === 100) {
-        break;
-      }
 
       if (pivot - 1 > start) {
         stack.push([start, pivot - 1]);
