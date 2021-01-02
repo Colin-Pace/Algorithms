@@ -12,17 +12,11 @@ class ShortestPathAllPairs {
 
                 if (i === j) {
                     graph[i][j] = 0;
+                    next[i][j] = null;
                 
                 } else {
                     graph[i][j] = Infinity;
-                }
-
-                if (graph[i][j] != Infinity) {
                     next[i][j] = j;
-               
-                } else {
-                    next[i][j] = null;
-                
                 }
             }
         }
@@ -75,7 +69,9 @@ class ShortestPathAllPairs {
     print() {
         for (let i = 0; i < graph.length; i++) {
             for (let j = 0; j < graph[i].length; j++) {
-                console.log("The shortest path from node " + i + " to node " + j + " is: " + graph[i][j]);
+                console.log(
+                    "The shortest path from node " + i + " to node " + j + " is: " + graph[i][j]
+                    );
             }
         }
     }
