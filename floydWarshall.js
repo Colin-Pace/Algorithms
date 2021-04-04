@@ -100,19 +100,27 @@ class ShortestPathAllPairs {
 
     printReconstructedPath() {
         let path = [];
+        
         for (let i = 0; i < int; i++) {
+            
             for (let j = 0; j < int; j++) {
                 path = floydWarshall.reconstructShortestPath(i, j);
                 let str;
+                
                 if (path === null) {
                     str = "HAS AN ∞ NUMBER OF SOLUTIONS! (negative cycle case)";
+                
                 } else if (path === undefined) {
                     str = "A route does not exist between " + i + " and " + j; 
+                
                 } else {
                     str = "The shortest path from " + i + " to " + j + " is: [";
+                
                     for (let k = 0; k < path.length; k++) {
+                
                         if (k === path.length - 1) {
                             str += path[k] + "]";
+                
                         } else {
                             str += path[k] + " -> ";
                         }
