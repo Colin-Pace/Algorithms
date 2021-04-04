@@ -100,5 +100,6 @@ console.log(memo);
 
 /* Complexity analysis
     1. Time: O ( |k| + |v| )
-    2. Space: O ( n + |v| ), where n is the number of elements in the given list and |v| is the size the memo
-*/
+    2. Space: O ( n + |v| ), where n is the number of elements in the given list and |v| is the size the memo */
+
+// Note: Iterate through a list and, after having taken out the current element, recurse on the new list, in order to create a set of all possible combinations of elements in the list
