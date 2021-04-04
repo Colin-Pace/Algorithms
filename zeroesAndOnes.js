@@ -100,5 +100,5 @@ console.log(memo);
 
 /* Complexity analysis
     1. Time: O ( |k| + |v| )
-    2. Space: O ( ( |k| + |v| ) * 2 )
+    2. Space: O ( n + |v| ), where n is the number of elements in the given list and |v| is the size the memo
 */
