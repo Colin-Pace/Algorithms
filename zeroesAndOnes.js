@@ -1,10 +1,10 @@
 /* LeetCode ones and zeroes: 
-1. https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/593/week-1-april-1st-april-7th/3694/ 
-2. Modification: Assume an equal to or fewer number of strings in the given list
+    1. https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/593/week-1-april-1st-april-7th/3694/ 
+    2. Modification: Assume an equal to or fewer number of strings in the given list
 
 Authors:
-1. Algorithm: Michael Pace
-2. Program: Colin Pace          */
+    1. Algorithm and complexity analysis: Michael Pace
+    2. Program: Colin Pace          */
 
 
 const strs = ["10","0001","111001","1","0"];
@@ -97,3 +97,8 @@ function onesAndZeroes(o, z, arrayOfIntegerStrings) {
 console.log(onesAndZeroes(m, n, strs));         // expects 4
 console.log(onesAndZeroes(m_, n_, strs_));      // expects 2
 console.log(memo);
+
+/* Complexity analysis
+    1. Time: O ( |k| + |v| )
+    2. Space: O ( ( |k| + |v| ) * 2 )
+*/
