@@ -1,6 +1,6 @@
 /* LeetCode ones and zeroes: 
     1. https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/593/week-1-april-1st-april-7th/3694/ 
-    2. Modification: Assume an equal to or fewer number of strings in the given list
+    2. Modification: Assume an equal to or fewer than 26 number of strings in the given list
 
 Authors:
     1. Algorithm and complexity analysis: Michael Pace
