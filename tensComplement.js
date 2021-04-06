@@ -1,4 +1,9 @@
-/* Given an array of integers, write a function that returns true if every integer has a ten's complement present in the array, i.e., another element that, when added to this element, sums to 10. Two elements cannot share a ten's complement. */
+/* Given an array of integers, write a function that returns true if every integer has a ten's complement present in the array, i.e., another element that, when added to this element, sums to 10. Two elements cannot share a ten's complement. 
+
+Authors:
+1. Algorithm: Michael Pace
+2. Program: Colin Pace
+*/
 
 
 function tensComplement(integers) {
