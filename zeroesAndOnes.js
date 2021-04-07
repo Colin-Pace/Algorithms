@@ -102,4 +102,196 @@ console.log(memo);
     1. Time: O ( |k| + |v| )
     2. Space: O ( n + |v| ), where n is the number of elements in the given list and |v| is the size the memo */
 
-// Note: Iterate through a list and, after having taken out the current element, recurse on the new list, in order to create a set of all possible combinations of elements in the list
+/* 
+Method: Iterate through a list and, after having taken out the current element, recurse on the new list, in order to create a set of all possible combinations of elements in the list
+
+
+Another example with most of the recursive steps enumerated with the variables' structure
+[ 00, 11, 0, 1, " ", 00000, 111 ]
+
+o = 1s, allowance = 3
+z = 0s, allowance = 3
+
+
+                                          1
+                                         /
+                                        2 
+                                      /   \
+                    3                               17     
+             /   \     \                           /     \
+            4     9     12                       18       23 ....
+          /  \     \     \    \                 /  \          
+         5    7     10    13   15             19    21
+        /       \     \     \    \           /         \   
+       6         8     11    14   16       20           22
+
+
+1.
+depth   0
+o       3
+z       3
+strs    [00, 11, 0, 1, " ", 00000, 111]
+deepest 0, 5
+
+2.
+depth   1
+o       3
+z       1
+strs    [11, 0, 1, " ", 00000, 111]
+deepest 1, 5
+
+3.
+depth   2
+o       1, (-2)
+z       1, (-4)
+strs    [0, 1, " ", 00000, 111]
+deepest 2, 5
+
+4.
+depth   3
+o       1, (-3)
+z       0, (-5)
+strs    [1, " ", 00000, 111]
+deepest 3, 5
+
+5.
+depth   4
+o       0, (-3)
+z       0, (-5)
+strs    [" ", 00000, 111]
+deepest 4, 5
+
+6.
+depth   5
+o       0, (-3)
+z       0, (-5)
+strs    [00000, 111]
+deepest 5
+
+___________________________
+7.
+depth   4
+o       0, (-3)
+z       0, (-5)
+strs    [" ", 00000, 111]
+deepest 4, 5
+
+8.
+depth   5
+o       0, (-3)
+z       0, (-5)
+strs    [00000, 111]
+deepest 5
+
+___________________________
+9.
+depth   3
+o       0, (-3)
+z       1, (-4)
+strs    [0, " ", 00000, 111]
+deepest 3, 5
+
+10.
+depth   4
+o       0, (-3)
+z       0, (-5)
+strs    [" ", 00000, 111]
+deepest 4, 5
+
+11.
+depth   5
+o       0, (-3)
+z       0, (-5)
+strs    [00000, 111]
+deepest 5
+
+___________________________
+12.
+depth   3
+o       1, (-2)
+z       1, (-4)
+strs    [0, 1, 00000, 111]
+deepest 3, 5
+
+13.
+depth   4
+o       1, (-2)
+z       0, (-5)
+strs    [1, 00000, 111]
+deepest 4, 5
+
+14.
+depth   5
+o       0, (-3)
+z       0, (-5)
+strs    [00000, 111]
+deepest 5
+___________________________
+15. 
+depth   4
+o       0, (-3)
+z       1, (-4)
+strs    [0, 00000, 111]
+deepest 4, 5
+
+16.
+depth   5
+o       0, (-3)
+z       0, (-5)
+strs    [00000, 111]
+deepest 4, 5
+
+___________________________
+17.
+depth   2
+o       3
+z       0
+strs    [11, 1, " ", 00000, 111]
+deepest 2, 5
+
+18.
+depth   3
+o       1, (-2)
+z       0, (-5)
+strs    [1, " ", 00000, 111]
+deepest 3, 5
+
+19.
+depth   4
+o       0, (-3)
+z       0, (-5)
+strs    [" ", 00000, 111]
+deepest 3, 5
+
+20.
+depth   5
+o       0, (-3)
+z       0, (-5)
+strs    [00000, 111]
+deepest 5
+
+___________________________
+21. 
+depth   4
+o       1, (-2)
+z       0, (-5)
+strs    [1, 00000, 111]
+deepest 4, 5
+
+22. 
+depth   5
+o       0, (-3)
+z       0, (-5)
+strs    [00000, 111]
+deepest 5
+
+___________________________
+23.
+depth   3
+o       2
+z       0
+strs    [11, " ", 00000, 111]
+deepest 3
+
+.... 
+*/
