@@ -1,9 +1,5 @@
 /* A comparison of iterative breadth and depth first searches of a graph
-
-1. The data structure that contains information about whether a node has been visited, enables a more efficient search algorithm
-        a. O ((n * m * p) + e) versus O ((n * m) + e), where n is the graph, m is a vertex's adjacent vertices, p is the order, and e is the edges   
-
-2. Graph
+1. Graph
 
         a
 
