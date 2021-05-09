@@ -64,21 +64,23 @@ Recursive tree________________________________
 function coinChangeRecursive(S, n, N, lookup) {
   if (N === 0) {
     return 1;
-  }
-  if (N < 0 || n < 0) {
+  } else if (n < 0 || N < 0) {
     return 0;
+  } else {
+    const key = n + "|" + N;
+    if (!(key in lookup)) {
+      const include = coinChangeRecursive(S, n, N - S[n], lookup);
+      const exclude = coinChangeRecursive(S, n - 1, N, lookup);
+      lookup[key] = include + exclude;
+    }
+    return lookup[key];
   }
-  const key = n + "|" + N;
-  if (!(key in lookup)) {
-    const include = coinChangeRecursive(S, n, N - S[n], lookup);
-    const exclude = coinChangeRecursive(S, n - 1, N, lookup);
-    lookup[key] = include + exclude;
-  }
-  return lookup[key];
 }
 const S = [1, 2, 3];
+const n = S.length - 1;
 const N = 4;
-console.log(coinChangeRecursive(S, S.length - 1, N, {}));
+const lookup = {};
+console.log(coinChangeRecursive(S, n, N, lookup));
 
 function coinChangeIterative(S, N) {
   let table = [];
