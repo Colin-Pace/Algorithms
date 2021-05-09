@@ -14,25 +14,25 @@ Call stack___________________________________
                 1.a
 
   Branch two
-                2.b.1.a.2
-                2.b.1.a.1
-                2.b.1.b
-                2.b.1.a
-                2.b.1
+                1.b.1.a.2
+                1.b.1.a.1
+                1.b.1.b
+                1.b.1.a
+                1.b.1
             
   Branch three
-                2.b.2.a.1
+                1.b.2.a.1
                 
   Branch four
-                2.b.2.a.2
+                1.b.2.a.2
 
   Branch five
-                2.b.2.a
+                1.b.2.a
 
   Branch six
-                2.b.2.b
-                2.b.2
-                2.b
+                1.b.2.b
+                1.b.2
+                1.b
                 1
 
 
@@ -45,21 +45,21 @@ Recursive tree________________________________
       1.a.2.b. n = 0, N = 1, callback 1
         1.a.2.b.1. n = 0, N = 0, return 1
         1.a.2.b.2. n = -1, N = 1, return 0
-  2.b. n = 1, N = 4, callback 3
-    2.b.1. n = 1, N = 2, callback 2
-      2.b.1.a. n = 1, N = 0, return 1
-      2.b.1.b. n = 0, N = 2, callback 1
-        2.b.1.a.1. n = 0, N = 1, return 1
-        2.b.1.a.2. n = -1, N = 2, return 0
-    2.b.2. n = 0, N = 4, callback 1
-      2.b.2.a. n = 0, N = 3, calback 1
-        2.b.2.a.1. n = 0, N = 2, return 1
+  1.b. n = 1, N = 4, callback 3
+    1.b.1. n = 1, N = 2, callback 2
+      1.b.1.a. n = 1, N = 0, return 1
+      1.b.1.b. n = 0, N = 2, callback 1
+        1.b.1.a.1. n = 0, N = 1, return 1
+        1.b.1.a.2. n = -1, N = 2, return 0
+    1.b.2. n = 0, N = 4, callback 1
+      1.b.2.a. n = 0, N = 3, calback 1
+        1.b.2.a.1. n = 0, N = 2, return 1
                 (a. n = 0, N = 1
                       1. n = 0, N = 0, return 1
                       2. n = -1, N = 0, return 1
                 b. n = -1, N = 1, return 0)
-        2.b.2.a.2. n = -1, N = 3, return 0
-      2.b.2.b. n = -1, N = 4, return 0
+        1.b.2.a.2. n = -1, N = 3, return 0
+      1.b.2.b. n = -1, N = 4, return 0
 */
 function coinChangeRecursive(S, n, N, lookup) {
   if (N === 0) {
