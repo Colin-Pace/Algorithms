@@ -72,7 +72,6 @@ function coinChangeRecursive(S, n, N, lookup) {
   if (!(key in lookup)) {
     const include = coinChangeRecursive(S, n, N - S[n], lookup);
     const exclude = coinChangeRecursive(S, n - 1, N, lookup);
-    console.log(n, N, lookup, include, exclude);
     lookup[key] = include + exclude;
   }
   return lookup[key];
