@@ -10,7 +10,7 @@ class HashTable {
     for (let i = 0; i < l; i++) {
       resultString += str.charCodeAt(i);
     }
-    return Number(resultString) % this.size;
+    return resultString % this.size;
   }
 
   set(key, value) {
@@ -53,8 +53,9 @@ class HashTable {
 }
 
 let hashTable = new HashTable();
-
-hashTable.set("Fortran", 123);
-hashTable.set("Fortran", 321);
-console.log(hashTable);
-console.log(hashTable.get("Fortran"))
+hashTable.set("abcd", 1234);
+hashTable.set("efgh", 5678);
+console.log(hashTable.get("abcd"));
+console.log(hashTable.get("efgh"));
+hashTable.set("efgh", 1234);
+console.log(hashTable.get("efgh"));

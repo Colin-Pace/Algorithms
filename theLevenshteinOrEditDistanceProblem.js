@@ -31,7 +31,8 @@ function distanceMemoized(X, m, Y, n, memo) {
       memo[key] = Math.min(
         distanceMemoized(X, m - 1, Y, n, memo) + 1,
         distanceMemoized(X, m, Y, n - 1, memo) + 1,
-        distanceMemoized(X, m - 1, Y, n - 1, memo) + cost);
+        distanceMemoized(X, m - 1, Y, n - 1, memo) + cost
+      );
     }
     return memo[key];
   }
