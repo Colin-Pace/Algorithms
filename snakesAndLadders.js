@@ -4,7 +4,7 @@
 
 class Graph {
   constructor() {
-    this.graph = new Array(100).fill().map(() => new Array().fill());
+    this.graph = new Array(100).fill().map(() => new Array());
     this.create = function(snakes, ladders) {
       const N = 100;
       for (let i = 0; i <= N ; i++) {
