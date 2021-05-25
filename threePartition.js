@@ -19,6 +19,7 @@
 
 
 function subsetSum(S, n, a, b, c, lookup) {
+  console.log(n, a, b, c)
   if (a === 0 && b === 0 && c === 0) {
     return true;
   }
