@@ -65,7 +65,7 @@ if (2 - 0), false
 visited = [false, false, true, false]
 k = 1
 if (0 - 0), false
-vsited = [true, false, true, false]
+visited = [true, false, true, false]
 k = 2
 if (2 - 0), true; return false
 
