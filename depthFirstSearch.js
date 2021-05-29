@@ -2,6 +2,7 @@ class Node {
   constructor(data) {
     this.data = data;
     this.adj = [];
+    this.visited = false;
   }
 }
 
@@ -17,18 +18,15 @@ c.adj = [b, e];
 d.adj = [b, e];
 e.adj = [c, d];
 
-const visited = [];
 const order = [];
-function route(node) {
-  if (!node) return null;
-  else {
-    visited.push(node);
-    order.push(node.data);
-    const adjacents = node.adj, l = adjacents.length;
-    for (let i = 0; i < l; i++) {
-      if (!visited.includes(adjacents[i])) route(adjacents[i]);
+function depthFirstSearch(node) {
+  node.visited = true;
+  order.push(node.data);
+  for (let i = 0; i < node.adj.length; i++) {
+    if (node.adj[i].visited === false) {
+      depthFirstSearch(node.adj[i]);
     }
-    return order;
   }
+  return order;
 }
-console.log(route(a));
+console.log(depthFirstSearch(a));
