@@ -92,7 +92,7 @@ class LongestCommonSubsequence {
 const lcs = new LongestCommonSubsequence;
 const X = "ABCBDAB";
 const Y = "BDCABA";
-const table = new Array(X.length + 1).fill(0).map(() => new Array(Y.length + 1).fill(0));
+const table = new Array(X.length + 1).fill().map(() => new Array(Y.length + 1).fill(0));
 
 console.log(lcs.lengthTopDown(X, Y, X.length, Y.length, {}));
 console.log(lcs.lengthBottomUp(X, Y));

@@ -11,15 +11,15 @@ function knapsackRecursive(v, w, n, W, lookup) {
   }
   const key = n + "|" + W;
   if (!(key in lookup)) {
-    const include = v[n] + knapsack(v, w, n - 1, W - w[n], lookup);
-    const exclude = knapsack(v, w, n - 1, W, lookup);
+    const include = v[n] + knapsackRecursive(v, w, n - 1, W - w[n], lookup);
+    const exclude = knapsackRecursive(v, w, n - 1, W, lookup);
     lookup[key] = Math.max(include, exclude);
   }
   return lookup[key];
 }
 
 function knapsackIterative(v, w, W) {
-  const table = new Array(v.length + 1).fill(0).map(() => new Array(W + 1).fill(0));
+  const table = new Array(v.length + 1).fill().map(() => new Array(W + 1).fill(0));
   for (let i = 1; i <= v.length; i++) {
     for (let j = 0; j < W + 1; j++) {
       if (w[i - 1] > j) {

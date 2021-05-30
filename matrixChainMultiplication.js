@@ -23,7 +23,7 @@ function maxtrixChainMultiplication(dims, i, j, table) {
   }
 }
 const dims = [10, 30, 5, 60];
-const table = new Array(dims.length).fill(0).map(() => new Array(dims.length).fill(0));
+const table = new Array(dims.length).fill().map(() => new Array(dims.length).fill(0));
 console.log(maxtrixChainMultiplication(dims, 0, dims.length - 1, table));
 
 function iterativeMaxtrixChainMultiplication(dims) {

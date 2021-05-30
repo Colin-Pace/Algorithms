@@ -59,7 +59,7 @@ console.log(subsetSum(integers, integers.length - 1, 14, {}));
 
 function subsetSumIterative(integers, sum) {
   const n = integers.length;
-  const table = new Array(n + 1).fill(0).map(() => new Array(sum + 1).fill(0));
+  const table = new Array(n + 1).fill().map(() => new Array(sum + 1).fill(0));
   for (let i = 0; i <= n; i++) {
     table[i][0] = true;
   }

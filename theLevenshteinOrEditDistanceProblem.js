@@ -42,7 +42,7 @@ console.log(distanceMemoized(X, X.length, Y, Y.length, {}));
 function iterativeDistance(X, Y) {
   const m = X.length;
   const n = Y.length;
-  const table = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0));
+  const table = new Array(m + 1).fill().map(() => new Array(n + 1).fill(0));
   for (let i = 1; i <= m; i++) {
     table[i][0] = i;
   }

@@ -6,7 +6,7 @@
 function longestCommonString(X, Y, m, n) {
   let maxLength = 0;
   let endingIndex = m;
-  const table = new Array(m + 1).fill(0).map(
+  const table = new Array(m + 1).fill().map(
   () => new Array(n + 1).fill(0));
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {

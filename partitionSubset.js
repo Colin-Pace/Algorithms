@@ -42,7 +42,7 @@ function memoizedSubsetSum(A, n, sum, memo) {
 }
 
 function subsetSum(A, n, sum) {
-  const table = new Array(n + 1).fill(0).map(
+  const table = new Array(n + 1).fill().map(
     () => new Array(sum + 1).fill(0)
   );
   for (let i = 0; i <= n; i++) {

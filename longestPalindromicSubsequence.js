@@ -51,6 +51,6 @@ function lcsLength(X, Y, n, table) {
   return table[n][n];
 }
 const Y = "BCACDBBA";
-const table = new Array(X.length + 1).fill(0).map(() => new Array(X.length + 1).fill(0));
+const table = new Array(X.length + 1).fill().map(() => new Array(X.length + 1).fill(0));
 console.log(lcsLength(X, Y, X.length, table));
 console.log(longestPalindrome(X, Y, X.length, X.length, table));
