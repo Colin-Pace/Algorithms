@@ -17,7 +17,7 @@ function findLongestPalindromicSubstring(str, len) {
   let maxLength = 0;
   let currLength;
 
-  const setMaxLength = function() {
+  const setMaxLengthAndStr = function() {
     if (currLength > maxLength) {
       maxLength = currLength;
       maxStr = currStr;
@@ -27,11 +27,11 @@ function findLongestPalindromicSubstring(str, len) {
   for (let i = 0; i < len; i++) {
     currStr = expand(str, i, i);
     currLength = currStr.length;
-    setMaxLength();
+    setMaxLengthAndStr();
     
     currStr = expand(str, i, i + 1);
     currLength = currStr.length;
-    setMaxLength();
+    setMaxLengthAndStr();
   }
 
   return maxStr;
