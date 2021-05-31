@@ -29,9 +29,9 @@ function findSumSubmatrix(matrix) {
     for (let j = i; j < M; j++) {
       for (let m = 0; m < N; m++) {
         for (let n = m; n < N; n++) {
-          let submatrixSum = S[j+1][n+1] - 
-                             S[j+1][m] -
-                             S[i][n+1] + 
+          let submatrixSum = S[j + 1][n + 1] - 
+                             S[j + 1][m] -
+                             S[i][n + 1] + 
                              S[i][m];
           if (submatrixSum > maxSum) {
             maxSum = submatrixSum;
