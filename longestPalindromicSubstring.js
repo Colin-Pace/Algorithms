@@ -2,8 +2,6 @@
 
 function expand(str, low, high) {
   const len = str.length;
-  let temp = low;
-  const tempTwo = high;
   
   while (low >= 0 && high < len && (str[low] === str[high])) {
     low--;
