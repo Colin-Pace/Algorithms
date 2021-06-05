@@ -1,3 +1,5 @@
+// Find the length of the shortest common supersequence
+
 function scsLengthRecursion(X, Y, m, n, lookup) {
   if (m === 0 || n === 0) {
     return n + m;
