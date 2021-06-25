@@ -1,3 +1,14 @@
+/* Big O of the methods
+1. Hash
+    a. Time: O(n)
+    b. Space: O(n)
+2. Set
+    a. Time: O(n)
+    b. Space: O(n)
+3. Get
+    a. Time: O(n)
+    b. Space: O(n) */
+
 class HashTable {
   constructor(size = 200) {
     this.size = size;
@@ -6,8 +17,7 @@ class HashTable {
 
   hash(str) {
     let resultString = "";
-    const l = str.length;
-    for (let i = 0; i < l; i++) {
+    for (let i = 0; i < str.length; i++) {
       resultString += str.charCodeAt(i);
     }
     return resultString % this.size;
@@ -21,8 +31,7 @@ class HashTable {
     if (!subArray) this.array[index] = item;
     else {
       let keyExists = false;
-      const l = subArray.length;
-      for (let i = 0; i < l; i++) {
+      for (let i = 0; i < subArray.length; i++) {
         if (subArray[i] === key) {
           key = true;
           subArray[1] = value;
@@ -41,21 +50,23 @@ class HashTable {
 
     if (!subArray) return null;
     else {
-      const l = subArray.length;
-      for (let i = 0; i < l; i++) {
+      for (let i = 0; i < subArray.length; i++) {
         if (subArray[i] === key) {
           return subArray[1];
         }
       }
+      
       return null;
     }
   }
 }
 
 let hashTable = new HashTable();
+
 hashTable.set("abcd", 1234);
 hashTable.set("efgh", 5678);
 console.log(hashTable.get("abcd"));
 console.log(hashTable.get("efgh"));
+
 hashTable.set("efgh", 1234);
 console.log(hashTable.get("efgh"));
