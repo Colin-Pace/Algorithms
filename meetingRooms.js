@@ -3,64 +3,64 @@ Write a function numberOfMeetingRoomsNeeded(MeetingRoom[] meetingRooms), where e
 */
 
 const meetingTimes = [ {start: 1, end: 4},
-  {start: 3, end: 6},
-  {start: 2, end: 8},
-  {start: 10, end: 12}
-];
+                       {start: 3, end: 6},
+                       {start: 2, end: 8},
+                       {start: 10, end: 12}
+                     ];
 
 function meetingRooms(meetingTimes) {
-let reformatted = [];
+  let reformatted = [];
+  
+  for (let i = 0; i < meetingTimes.length; i++) {
+    for (let key in meetingTimes[i]) {
+      const entry = {};
+      entry[key] = meetingTimes[i][key];
+      reformatted.push(entry);
+    }
+  }
+  reformatted = reformatted.sort(compare);
 
-for (let i = 0; i < meetingTimes.length; i++) {
-for (let key in meetingTimes[i]) {
-const entry = {};
-entry[key] = meetingTimes[i][key];
-reformatted.push(entry);
-}
-}
-reformatted = reformatted.sort(compare);
+  let overlappingRooms = 0;
+  let highestCount = 0;
+  for (let i = 0; i < reformatted.length; i++) {
 
-let overlappingRooms = 0;
-let highestCount = 0;
-for (let i = 0; i < reformatted.length; i++) {
+    let key;
+    for (let element in reformatted[i]) {
+      key = element;
+    }
 
-let key;
-for (let element in reformatted[i]) {
-key = element;
-}
+    if (key === "start") {
+      overlappingRooms++;
+    } else {
+      overlappingRooms--;
+    }
+    if (overlappingRooms > highestCount) {
+      highestCount = overlappingRooms;
+    }
+  }
 
-if (key === "start") {
-overlappingRooms++;
-} else {
-overlappingRooms--;
-}
-if (overlappingRooms > highestCount) {
-highestCount = overlappingRooms;
-}
-}
-
-return highestCount; 
+  return highestCount; 
 }
 
 function compare(a, b) {
-let aKey;
-let bKey;
+  let aKey;
+  let bKey;
 
-for (let key in a) {
-aKey = key;
-}
-for (let key in b) {
-bKey = key;
-}
+  for (let key in a) {
+    aKey = key;
+  }
+  for (let key in b) {
+    bKey = key;
+  }
 
-if (a[aKey] < b[bKey]) {
-return -1;
-}
-if (a[aKey] > b[bKey]) {
-return 1;
-}
+  if (a[aKey] < b[bKey]) {
+    return -1;
+  }
+  if (a[aKey] > b[bKey]) {
+    return 1;
+  }
 
-return 0;
+  return 0;
 }
 
 console.log(meetingRooms(meetingTimes));
