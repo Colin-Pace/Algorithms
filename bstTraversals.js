@@ -6,23 +6,23 @@
 
 2. Pre order
     a. Time: O(v + e)
-    b. Space: O(1)
+    b. Space: O(n)
 
 3. In order
     a. Time: O(v + e)
-    b. Space: O(1)
+    b. Space: O(n)
 
 4. Post order
     a. Time: O(v + e)
-    b. Space: O(1)
+    b. Space: O(n)
 
 5. Level order
     a. Time: O(v + e)
-    b. Space: O(1)
+    b. Space: O(n)
 
 6. Height
     a. Time: O(v + e)
-    b. Space: O(1)
+    b. Space: O(n)
 
 7. Recursive pre order
     a. Time: O(v + e)
