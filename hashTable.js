@@ -4,10 +4,10 @@
     b. Space: O(n)
 2. Set
     a. Time: O(n)
-    b. Space: O(n)
+    b. Space: O(1)
 3. Get
     a. Time: O(n)
-    b. Space: O(n) */
+    b. Space: O(1) */
 
 class HashTable {
   constructor(size = 200) {
@@ -28,8 +28,9 @@ class HashTable {
     const item = [key, value];
     const subArray = this.array[index];
 
-    if (!subArray) this.array[index] = item;
-    else {
+    if (!subArray) {
+      this.array[index] = item;
+    } else {
       let keyExists = false;
       for (let i = 0; i < subArray.length; i++) {
         if (subArray[i] === key) {
@@ -48,8 +49,9 @@ class HashTable {
     const index = this.hash(key);
     const subArray = this.array[index];
 
-    if (!subArray) return null;
-    else {
+    if (!subArray) {
+      return null;
+    } else {
       for (let i = 0; i < subArray.length; i++) {
         if (subArray[i] === key) {
           return subArray[1];

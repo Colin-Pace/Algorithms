@@ -1,4 +1,9 @@
-// Given a circular linked list, find the node of the beginning of the loop
+/* Given a circular linked list, find the node of the beginning of the loop
+
+1. Big O
+    a. Time: O(n)
+    b. Space: O(1)
+*/
 
 class Node {
   constructor(data, next) {
@@ -15,18 +20,23 @@ class LinkedList {
   loopDetection() {
     let fast = this.head;
     let slow = this.head;
+    
     while (fast !== undefined && fast.next !== undefined) {
       fast = fast.next.next;
       slow = slow.next;
       if (fast === slow) break;
     }
-    if (fast === undefined || fast.next === undefined) return null;
-    else {
+    
+    if (fast === undefined || fast.next === undefined) {
+      return null;
+    } else {
       fast = this.head;
+     
       while (fast !== slow) {
         fast = fast.next;
         slow = slow.next;
       }
+     
       return fast.data;
     }
   }
