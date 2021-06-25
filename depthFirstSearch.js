@@ -1,3 +1,8 @@
+/* Big O
+
+1. Time: O(v + e)
+2. Space: O(n)      */
+
 class Node {
   constructor(data) {
     this.data = data;
@@ -22,11 +27,14 @@ const order = [];
 function depthFirstSearch(node) {
   node.visited = true;
   order.push(node.data);
+  
   for (let i = 0; i < node.adj.length; i++) {
     if (node.adj[i].visited === false) {
       depthFirstSearch(node.adj[i]);
     }
   }
+  
   return order;
 }
+
 console.log(depthFirstSearch(a));

@@ -1,4 +1,9 @@
-// Find the traversal order of a graph by a breadth first search
+/* Traversal order of a graph by a breadth first search
+
+1. Big O
+    a. Time: O(v + e)
+    b. Space: O(n)
+*/
 
 class QueueNode {
   constructor(data, next) {
@@ -17,6 +22,7 @@ class Queue {
     if (!this.head) {
       this.head = new QueueNode(data);
       this.tail = this.head;
+    
     } else {
       const node = new QueueNode(data);
       this.tail.next = node;
@@ -26,14 +32,17 @@ class Queue {
 
   dequeue() {
     let node;
-    if (!this.head) return null;
-    else if (this.head === this.tail) {
+    if (!this.head) {
+      return null;
+    
+    } else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
       const data = node.data;
       node = null;
       return data;
+  
     } else {
       node = this.head;
       this.head = this.head.next;
@@ -48,6 +57,7 @@ class GraphNode {
   constructor(data, adj) {
     this.data = data;
     this.adj = adj;
+    this.visited = false;
   }
 } 
 
@@ -63,27 +73,43 @@ c.adj = [b, e];
 d.adj = [b, e];
 e.adj = [c, d];
 
-function route(node) {
+/*
+
+a
+
+b   c
+
+d   e
+
+*/
+
+function bfs(node) {
   const queue = new Queue;
-  if (!node) return null;
-  else {
+  if (!node) {
+    return null;
+  
+  } else {
     const visited = [];
     const order = [];
     queue.enqueue(node);
+    node.visited = true;
+    order.push(node.data);
+   
     while (queue.head) {
       const node = queue.dequeue();
-      order.push(node.data);
-      const adjacents = node.adj, l = adjacents.length;
-      for (let i = 0; i < l; i++) {
-        if (!visited.includes(adjacents[i])) {
-          visited.push(adjacents[i]);
+      const adjacents = node.adj
+  
+      for (let i = 0; i < adjacents.length; i++) {
+        if (adjacents[i].visited === false) {
+          adjacents[i].visited = true;
+          order.push(adjacents[i].data);
           queue.enqueue(adjacents[i]);
         }
       }
-      if (!visited.includes(node)) visited.push(node);
     }
+
     return order;
   }
 }
 
-console.log(route(a));
+console.log(bfs(a));
