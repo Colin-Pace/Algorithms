@@ -33,7 +33,7 @@ class HashTable {
       let keyExists = false;
       for (let i = 0; i < subArray.length; i++) {
         if (subArray[i] === key) {
-          key = true;
+          keyExists = true;
           subArray[1] = value;
         }
       }
@@ -55,7 +55,7 @@ class HashTable {
           return subArray[1];
         }
       }
-      
+
       return null;
     }
   }
