@@ -2,8 +2,7 @@
 
 1. Big O
     a. Time: O(v + e)
-    b. Space: O(n)
-*/
+    b. Space: O(n)      */
 
 class QueueNode {
   constructor(data, next) {
