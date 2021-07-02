@@ -14,13 +14,16 @@ If the input were "ababbbaaaa", the output would be 3 */
 let inputOne = "aaa";
 let inputTwo = "cccc";
 let inputThree = "ababbbaaaa";
+
 function triplesNumber(str) {
   let count = 0;
+
   for (let i = 0; i < str.length; i++) {
     if (str[i+1] === str[i] && str[i+2] === str[i]) {
       count++;
     }
   }
+
   return count;
 }
 

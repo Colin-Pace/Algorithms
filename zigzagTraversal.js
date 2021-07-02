@@ -17,6 +17,7 @@ class Queue {
     if (!this.head) {
       this.head = new Node(data);
       this.tail = this.head;
+   
     } else {
       const node = new Node(data);
       this.tail.next = node;
@@ -26,20 +27,19 @@ class Queue {
 
   dequeue() {
     let node;
-    if (!this.head) return null;
-    else if (this.head === this.tail) {
+    if (!this.head) {
+      return null;
+    
+    } else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
+
     } else {
       node = this.head;
       this.head = this.head.next;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     }
   }
 }
