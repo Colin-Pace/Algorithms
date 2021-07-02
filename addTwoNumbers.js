@@ -16,7 +16,7 @@
         where n is equal to the iterative time for the longest list between the given lists,
         or one iterative unit longer than the time for the longest list because of a remainder;
         since the relation between the answer and the two lists is known,
-        the given lists can be dropped from the equation as non dominant terms
+        the time for the given lists can be dropped from the equation as non dominant terms
     2. Space = O(n)
         where n is equal to the longest of the given lists
         or the worst case scenario is if the last integers of the lists have a remainder
