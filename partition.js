@@ -1,4 +1,9 @@
-// Partition a linked list around a value x; if x is in the list, it must be on the larger side, but other than the partition, order of the elements in each side does not matter
+/* Partition a linked list around a value x; if x is in the list, it must be on the larger side, but other than the partition, order of the elements in each side does not matter
+
+Big O
+1. Time: O(b)
+2. Space: O(b)    */
+
 
 class Node {
   constructor(data, next) {
@@ -14,34 +19,56 @@ class LinkedList {
   }
 
   add(data) {
+    if (!data && data !== 0) {
+      return null;
+    }
+
     if (!this.head) {
       this.head = new Node(data);
       this.tail = this.head;
     } else {
-      let node = new Node(data);
-      this.tail.next = node;
+      this.tail.next = new Node(data);
       this.tail = this.tail.next;
     }
   }
 
   partition(value) {
-    let lesser = [];
-    let greater = [];
-    let runner = this.head;
-    while (runner) {
-      if (value <= runner.data) greater.push(runner.data);
-      else lesser.push(runner.data);
-      runner = runner.next;
+    if (!value && value !== 0) {
+      return null;
     }
-    const partitionedLinkedList = new LinkedList;
-    lesser.forEach(integer => partitionedLinkedList.add(integer));
-    greater.forEach(integer => partitionedLinkedList.add(integer));
-    return partitionedLinkedList;
+
+    let lesser = new LinkedList;
+    let greater = new LinkedList;
+
+    let itr = this.head;
+    while (itr) {
+      if (itr.data < value) {
+        lesser.add(itr.data);
+      } else {
+        greater.add(itr.data);
+      }
+      
+      itr = itr.next;
+    }
+
+    lesser.tail.next = greater.head;
+    lesser.readAnswer();
+  }
+
+  readAnswer() {
+    if (!this.head) {
+      return null;
+    }
+
+    let itr = this.head;
+    while (itr) {
+      console.log(itr.data);
+      itr = itr.next;
+    }
   }
 }
 
-const numbers = new LinkedList;
-const data = [3, 5, 8, 5, 10, 2, 1];
-data.forEach(datum => numbers.add(datum));
-let result = numbers.partition(5);
-console.log(result.head);
+const list = new LinkedList;
+const integers = [3, 5, 8, 5, 10, 2, 1];
+integers.forEach(integer => list.add(integer));
+list.partition(8);
