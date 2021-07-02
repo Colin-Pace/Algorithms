@@ -1,14 +1,18 @@
-// Replace all spaces in a string with %20
+/* Replace all spaces in a string with %20
 
-function URLify(string, integer) {
-  let array = string.split("");
+Big O
+1. Time: O(n)
+2. Space: O(n)    */
+
+
+function URLify(str) {
   let result = "";
 
-  for (let itr = 0; itr < array.length; itr++) {
-    if (array[itr] === " ") {
+  for (let itr = 0; itr < str.length; itr++) {
+    if (str[itr] === " ") {
       result += "%20";
     } else {
-      result += array[itr];
+      result += str[itr];
     }
   }
 
