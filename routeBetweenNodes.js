@@ -1,3 +1,10 @@
+/* Find whether there is a route between two nodes in a directed graph
+
+Big O
+1. Time: O(v + e), where v is the number of vertices and e the number of edges
+2. Space: O(v), where v is the number of vertices stored in the queue   */
+
+
 class QueueNode {
   constructor(data, next) {
     this.data = data;
@@ -15,6 +22,7 @@ class Queue {
     if (!this.head) {
       this.head = new QueueNode(data);
       this.tail = this.head;
+   
     } else {
       const node = new QueueNode(data);
       this.tail.next = node;
@@ -24,14 +32,17 @@ class Queue {
 
   dequeue() {
     let node;
-    if (!this.head) return null;
-    else if (this.head === this.tail) {
+    if (!this.head) {
+      return null;
+    
+    } else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
       const data = node.data;
       node = null;
       return data;
+ 
     } else {
       node = this.head;
       this.head = this.head.next;
@@ -46,6 +57,7 @@ class GraphNode {
   constructor(data, adj) {
     this.data = data;
     this.adj = adj;
+    this.visited = false;
   }
 }
 
@@ -84,30 +96,37 @@ j.adj = [i];
 
 
 function route(start, end) {
+  if (!start || !end) {
+    return null;
+  }
+
   const queue = new Queue;
-  if (!start || !end) return null;
-  else {
-    const visited = [];
-    const order = [];
-    queue.enqueue(start);
-    while (queue.head) {
-      const node = queue.dequeue();
-      order.push(node.data);
-      if (node.adj === null) continue;
-      const adjacents = node.adj, l = adjacents.length;
-      for (let i = 0; i < l; i++) {
-        if (adjacents[i] === end) return true;
-        else {
-          if (!visited.includes(adjacents[i])) {
-            visited.push(adjacents[i]);
-            queue.enqueue(adjacents[i]);
+  queue.enqueue(start);
+  start.visited = true;
+
+  while (queue.head) {
+    const node = queue.dequeue();
+  
+    if (node.adj === null) {
+      continue;
+  
+    } else {
+      for (let i = 0; i < node.adj.length; i++) {
+        if (node.adj[i].visited === false) {
+  
+          if (node.adj[i] === end) {
+            return true;
+  
+          } else {
+            queue.enqueue(node.adj[i]);
+            node.adj[i].visited = true;
           }
         }
       }
-      visited.push(node);
     }
-    return false;
   }
+
+  return false;
 }
 
 console.log(route(a, h));
