@@ -1,4 +1,9 @@
-// Remove duplicates from a linked list
+/* Remove duplicates from a linked list
+
+Big O
+1. Time: O(n)
+2. Space: O(n)  */
+
 
 class Node {
   constructor(data, next) {
@@ -10,65 +15,93 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.tail = null;
+    this.itr = null;
   }
 
   add(data) {
+    if (!data) {
+      return null;
+    }
+
     if (!this.head) {
       this.head = new Node(data);
-      this.tail = this.head;
+      this.itr = this.head;
     } else {
-      let node = new Node(data);
-      this.tail.next = node;
-      this.tail = this.tail.next;
+      this.itr.next = new Node(data);
+      this.itr = this.itr.next;
     }
   }
 
   removeDuplicates() {
-    let values = {}, fast = this.head, slow = this.head;
-
-    while (fast.next) {
-      values[fast.data] = (values[fast.data] || 0) + 1;
-      fast = fast.next;
+    if (!this.head) {
+      return null;
     }
-    values[fast.data] = (values[fast.data] || 0) + 1;
 
-    fast = this.head.next;
-    while (fast) {
-      if (values[fast.data] > 1) {
-        values[fast.data]--;
-        slow.next = fast.next;
-        fast = fast.next;
-      } else {
+    let fast = this.head.next;
+    let slow = this.head;
+    const seen = {};
+    seen[slow.data] = true;
+
+    while (fast !== undefined) {
+      if (!(fast.data in seen)) {
+        seen[fast.data] = true;
         fast = fast.next;
         slow = slow.next;
+      } else {
+        slow.next = fast.next;
+        fast = fast.next;
       }
     }
   }
 
-  collectNodalData() {
-    let storage = [];
-    let pointer = this.head;
-    while (pointer) {
-      storage.push(pointer.data);
-      pointer = pointer.next;
+  test() {
+    if (!this.head) {
+      return null;
     }
-    return storage;
+
+    const seen = {};
+    let itr = this.head;
+
+    while (itr !== undefined) {
+      if (itr.data in seen) {
+        return false;
+      } else {
+        seen[itr.data] = true;
+        itr = itr.next;
+      }
+    }
+
+    return true;
   }
 }
 
-let letters = new LinkedList;
 
-letters.add("e");
-letters.add("a");
-letters.add("b");
-letters.add("c");
-letters.add("d");
-letters.add("e");
-letters.add("a");
-letters.add("f");
-letters.add("f");
+let list = new LinkedList;
+const dataOne = [1, 2, 3, 4, 2];
+dataOne.forEach(integer => list.add(integer));
+list.removeDuplicates();
+console.log(list.test());
 
-letters.removeDuplicates();
+list = new LinkedList;
+const dataTwo = [1, 1, 2, 3, 4];
+dataTwo.forEach(integer => list.add(integer));
+list.removeDuplicates();
+console.log(list.test());
 
-console.log(letters.collectNodalData());
+list = new LinkedList;
+const dataThree = [1, 1, 2, 2, 2, 3, 4];
+dataThree.forEach(integer => list.add(integer));
+list.removeDuplicates();
+console.log(list.test());
+
+list = new LinkedList;
+const dataFour = [1, 2, 1, 3, 4];
+dataFour.forEach(integer => list.add(integer));
+list.removeDuplicates();
+console.log(list.test());
+
+list = new LinkedList;
+const dataFive = [1, 1, 1, 1, 1];
+dataFive.forEach(integer => list.add(integer));
+list.removeDuplicates();
+console.log(list.test());
