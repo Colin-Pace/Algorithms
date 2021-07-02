@@ -1,8 +1,8 @@
 /* Check if two linked lists intersect and return the intersection
 
 Big O
-1. Time: O (c + p)
-2. Space: O (1)     */
+1. Time: O(c + p)
+2. Space: O(1)     */
 
 class Node {
   constructor(data, next) {
