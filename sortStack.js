@@ -1,4 +1,9 @@
-/* Sort a stack such that the smallest item is on top; use an additional, temporary stack  */
+/* Sort a stack such that the smallest item is on top; use an additional, temporary stack
+
+Big O
+1. Time: O(b ^ 2)
+2. Space: O(b)    */
+
 
 class Node {
   constructor(data, next) {
@@ -17,7 +22,6 @@ class Stack {
     if (this.head === null) {
       let node = new Node(item, null);
       this.head = node;
-  
     } else {
       let node = new Node(item, this.head);
       this.head = node;
@@ -27,7 +31,6 @@ class Stack {
   pop() {
     if (this.head === null) {
       throw "Stack is empty";
-  
     } else {
       let node = this.head;
       this.head = node.next;
@@ -35,40 +38,36 @@ class Stack {
     }
   }
 
-  sort(buffer) {
+  sort(r) {
     if (!this.head) {
       return;
     
     } else {
-      if (!buffer.head) {
+      if (!r.head) {
         let data = this.pop();
         let node = new Node(data, null);
-        buffer.head = node;
+        r.head = node;
 
       } else {
         let temp = this.pop();
-      
-        if (temp > buffer.head.data) {
-          let node = new Node(temp, buffer.head);
-          buffer.head = node;
+        if (temp > r.head.data) {
+          let node = new Node(temp, r.head);
+          r.head = node;
 
         } else {
-   
-          while (temp < buffer.head.data) {
-            let node = buffer.pop();
+          while (temp < r.head.data) {
+            let node = r.pop();
             this.push(node);
           }
-     
-          let node = new Node(temp, buffer.head);
-          buffer.head = node;
+       
+          let node = new Node(temp, r.head);
+          r.head = node;
         }
       }
     }
 
-    this.sort(buffer);
-  
-    while (buffer.head) {
-      let node = buffer.pop();
+    while (r.head) {
+      let node = r.pop();
       this.push(node);
     }
   }
@@ -76,8 +75,8 @@ class Stack {
 
 
 let stack = new Stack;
-let buffer = new Stack;
+let r = new Stack;
 const integers = [7, 10, 5, 12, 8, 3, 1];
-stack.sort(buffer);
-
+integers.forEach(integer => stack.push(integer));
+stack.sort(r);
 console.log(stack.head.data);
