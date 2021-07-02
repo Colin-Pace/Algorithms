@@ -1,8 +1,4 @@
-/* Compress a string such that the number of letters of consecutive letters follows the letter; if the compressed string is longer than the original, return the original
-
-Big O
-1. Time: O(b), if string concatenation in JavaScript is O(b)
-2. Space: O(b)      */
+/* Compress a string such that the number of letters of consecutive letters follows the letter; if the compressed string is longer than the original, return the original */
 
 
 function stringCompression(str) {

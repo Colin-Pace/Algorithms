@@ -1,8 +1,4 @@
-/* Replace all spaces in a string with %20
-
-Big O
-1. Time: O(n)
-2. Space: O(n)    */
+/* Replace all spaces in a string with %20 */
 
 
 function URLify(str) {
