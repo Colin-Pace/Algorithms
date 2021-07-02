@@ -1,8 +1,4 @@
-/* Implement a queue via two stacks 
-
-Big O
-1. Time: O(b ^ 2)
-2. Space: O(b)      */
+/* Implement a queue via two stacks  */
 
 
 class Node {

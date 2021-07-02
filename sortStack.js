@@ -1,8 +1,4 @@
-/* Sort a stack such that the smallest item is on top; use an additional, temporary stack
-
-Big O
-1. Time: O(b ^ 2)
-2. Space: O(b)      */
+/* Sort a stack such that the smallest item is on top; use an additional, temporary stack  */
 
 class Node {
   constructor(data, next) {
