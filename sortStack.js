@@ -1,4 +1,8 @@
-// Sort a stack such that the smallest item is on top; use an additional, temporary stack
+/* Sort a stack such that the smallest item is on top; use an additional, temporary stack
+
+Big O
+1. Time: O(b ^ 2)
+2. Space: O(b)      */
 
 class Node {
   constructor(data, next) {
@@ -17,6 +21,7 @@ class Stack {
     if (this.head === null) {
       let node = new Node(item, null);
       this.head = node;
+  
     } else {
       let node = new Node(item, this.head);
       this.head = node;
@@ -26,6 +31,7 @@ class Stack {
   pop() {
     if (this.head === null) {
       throw "Stack is empty";
+  
     } else {
       let node = this.head;
       this.head = node.next;
@@ -34,8 +40,10 @@ class Stack {
   }
 
   sort(buffer) {
-    if (!this.head) return;
-    else {
+    if (!this.head) {
+      return;
+    
+    } else {
       if (!buffer.head) {
         let data = this.pop();
         let node = new Node(data, null);
@@ -43,15 +51,18 @@ class Stack {
 
       } else {
         let temp = this.pop();
+      
         if (temp > buffer.head.data) {
           let node = new Node(temp, buffer.head);
           buffer.head = node;
 
         } else {
+   
           while (temp < buffer.head.data) {
             let node = buffer.pop();
             this.push(node);
           }
+     
           let node = new Node(temp, buffer.head);
           buffer.head = node;
         }
@@ -59,6 +70,7 @@ class Stack {
     }
 
     this.sort(buffer);
+  
     while (buffer.head) {
       let node = buffer.pop();
       this.push(node);
@@ -66,14 +78,10 @@ class Stack {
   }
 }
 
-let numeric = new Stack;
+
+let stack = new Stack;
 let buffer = new Stack;
-numeric.push(7);
-numeric.push(10);
-numeric.push(5);
-numeric.push(12);
-numeric.push(8);
-numeric.push(3);
-numeric.push(1);
-numeric.sort(buffer);
-console.log(numeric.head.data);
+const integers = [7, 10, 5, 12, 8, 3, 1];
+stack.sort(buffer);
+
+console.log(stack.head.data);

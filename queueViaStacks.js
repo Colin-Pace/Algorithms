@@ -1,4 +1,9 @@
-// Implement a queue via two stacks
+/* Implement a queue via two stacks 
+
+Big O
+1. Time: O(b ^ 2)
+2. Space: O(b)      */
+
 
 class Node {
   constructor(data, next) {
@@ -16,6 +21,7 @@ class Stack {
     if (this.head === null) {
       let node = new Node(item, null);
       this.head = node;
+   
     } else {
       let node = new Node(item, this.head);
       this.head = node;
@@ -26,6 +32,7 @@ class Stack {
     if (buffer.head === null) {
       let node = new Node(data, null);
       buffer.head = node;
+   
     } else {
       let node = new Node(data, buffer.head);
       buffer.head = node;
@@ -35,8 +42,10 @@ class Stack {
   pop() {
     if (this.head === null) {
       throw "Stack is empty";
+    
     } else {
       const buffer = new Stack;
+    
       while (this.head.next) {
         let node = this.head;
         this.head = node.next;
@@ -45,22 +54,21 @@ class Stack {
 
       const result = this.head;
       this.head = null;
+    
       while (buffer.head) {
         let node = buffer.head;
         buffer.head = node.next;
         this.push(node.data);
       }
+    
       return result.data;
     }
   }
 }
 
 
-let numeric = new Stack;
-numeric.push(2);
-numeric.push(1);
-numeric.push(4);
-numeric.push(3);
-numeric.push(5);
-let result = numeric.pop();
+let stack = new Stack;
+const integers = [2, 1, 4, 3, 5];
+integers.forEach(integer => stack.push(integer));
+let result = stack.pop();
 console.log(result);
