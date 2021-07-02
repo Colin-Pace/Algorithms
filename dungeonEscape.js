@@ -28,20 +28,19 @@ class Queue {
 
   dequeue() {
     let node;
-    if (!this.head) return null;
-    else if (this.head === this.tail) {
+    if (!this.head) {
+      return null;
+    
+    } else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
+  
     } else {
       node = this.head;
       this.head = this.head.next;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     }
   }
 }
@@ -70,6 +69,7 @@ const end = [4, 3];
 const visited = {};
 const dr = [-1, +1, 0, 0];
 const dc = [0, 0, +1, -1];
+
 let moveCount = 0;
 let nodesLeftInLayer = 1;
 let nodesInNextLayer = 0;

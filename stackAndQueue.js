@@ -46,16 +46,12 @@ class Stack {
       node = this.head;
       this.head = null;
       this.tail = null;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     
     } else {
       node = this.tail;
       this.tail = this.tail.next;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     }
   }
 }
@@ -87,19 +83,26 @@ class Queue {
       node = this.head;
       this.head = null;
       this.tail = null;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     
     } else {
       node = this.head;
       this.head = this.head.next;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     }
   }
 }
 
 const stack = new Stack;
 const queue = new Queue;
+
+const integers = [1, 2, 3, 4, 5];
+integers.forEach(integer => stack.push(integer));
+while (stack.head) {
+  console.log(stack.pop());
+}
+
+integers.forEach(integer => queue.enqueue(integer));
+while (queue.head) {
+  console.log(queue.dequeue());
+}

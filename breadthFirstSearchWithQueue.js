@@ -88,7 +88,6 @@ function bfs(node) {
     return null;
   
   } else {
-    const visited = [];
     const order = [];
     queue.enqueue(node);
     node.visited = true;

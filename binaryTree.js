@@ -15,6 +15,7 @@ class Queue {
     if (!this.head) {
       this.head = new QueueNode(data);
       this.tail = this.head;
+ 
     } else {
       const node = new QueueNode(data);
       this.tail.next = node;
@@ -29,15 +30,12 @@ class Queue {
       node = this.head;
       this.head = null;
       this.tail = null;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
+  
     } else {
       node = this.head;
       this.head = this.head.next;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     }
   }
 }

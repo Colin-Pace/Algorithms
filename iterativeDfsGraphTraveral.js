@@ -26,20 +26,19 @@ class Stack {
 
   pop() {
     let node;
-    if (!this.head) return null;
-    else if (this.head === this.tail) {
+    if (!this.head) {
+      return null;
+    
+    } else if (this.head === this.tail) {
       node = this.head;
       this.head = null;
       this.tail = null;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
+    
     } else {
       node = this.tail;
       this.tail = this.tail.next;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     }
   }
 }

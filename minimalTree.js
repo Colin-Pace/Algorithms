@@ -16,7 +16,7 @@ function minimalTree(array, start, end) {
   } else {
     let mid = Math.floor((start + end) / 2);
     let n = new Node(array[mid]);
-    console.log(mid+1);
+    console.log(mid + 1);
     n.left = minimalTree(array, start, mid - 1);
     n.right = minimalTree(array, mid + 1, end);
   }

@@ -38,12 +38,11 @@ class Stack {
       this.head = null;
       this.tail = null;
       return value;
+  
     } else {
       let node = this.tail;
-      const value = node.data;
       this.tail = this.tail.next;
-      node = null;
-      return value;
+      return node.data;
     }
   }
 }

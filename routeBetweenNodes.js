@@ -39,16 +39,12 @@ class Queue {
       node = this.head;
       this.head = null;
       this.tail = null;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
  
     } else {
       node = this.head;
       this.head = this.head.next;
-      const data = node.data;
-      node = null;
-      return data;
+      return node.data;
     }
   }
 }
