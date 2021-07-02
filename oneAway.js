@@ -1,66 +1,63 @@
 /* Find whether two strings are one edit away from each other; assume ASCII characters
 
 Big O
-1. Time: O(c + p)
+1. Time: O(b), where b is the length of the shorter string,
+                because the algorithm returns false after a
+                traversal of that string if there is more 
+                than one difference with the longer string
 2. Space: O(1)  */
 
 
-function oneAway(strOne, strTwo) {
-  let charactersOne = {};
-  let charactersTwo = {};
-  let differentLetters = 0;
-  
-  if (Math.abs(strOne.length - strTwo.length) > 1) {
-    return false;
+function oneAway(first, second) {
+  if (!first || !second) {
+    return null;
+  } 
+
+  if (first.length === second.length) {
+    return oneEditReplace(first, second);
+  } else if (first.length + 1 === second.length) {
+    return oneEditInsert(first, second);
+  } else if (first.length - 1 === second.length) {
+    return oneEditInsert(second, first);
   }
-  
-  for (let i = 0; i < strOne.length; i++) {
-    if (strOne[i] in charactersOne) {
-      charactersOne[strOne[i]] += 1;
-    } else {
-      charactersOne[strOne[i]] = 1;
-    }
-  }
-  
-  for (let i = 0; i < strTwo.length; i++) {
-    if (strTwo[i] in charactersTwo) {
-      charactersTwo[strTwo[i]] += 1;
-    } else {
-      charactersTwo[strTwo[i]] = 1;
-    }
-  }
-  
-  let shorter;
-  let longer;
-  
-  if (strOne.length === strTwo.length) {
-    shorter = charactersOne;
-    longer = charactersTwo;
-  
-  } else if (strOne.legnth < strTwo.length) {
-    shorter = charactersOne;
-    longer = charactersTwo;
-  
-  } else {
-    shorter = charactersTwo;
-    longer = charactersOne;
-  }
-  
-  for (let i in shorter) {
-    if (Math.abs(shorter[i] - longer[i] > 1)) {
-      return false;
-   
-    } else if (shorter[i] !== longer[i]) {
-      differentLetters++;
-   
-    } else if (differentLetters > 1) {
-      return false;
-    }
-  }
-  
-  return true;
 }
 
+function oneEditReplace(first, second) {
+  let foundDifference = false;
+  for (let i = 0; i < first.length; i++) {
+   
+    if (first[i] !== second[i]) {
+      if (foundDifference === true) {
+        return false;
+   
+      } else {
+        foundDifference = true;
+      }
+    }
+
+    return true;
+  }
+}
+
+function oneEditInsert(first, second) {
+  let idxOne = 0;
+  let idxTwo = 0;
+
+  while (idx2 < second.length && idxOne < first.length) {
+    if (first[idxOne] !== second[idxTwo]) {
+      if (idxOne !== idxTwo) {
+        return false;
+      }
+      idxTwo++;
+   
+    } else {
+      idxOne++;
+      idxTwo++;
+    }
+  }
+
+  return true;
+}
 
 const letters = "pale";
 const additionAway = "ple";
@@ -71,4 +68,4 @@ const notOneAway = "bake";
 console.log(oneAway(letters, additionAway)); // true
 console.log(oneAway(letters, replacementAway)); // true
 console.log(oneAway(letters, deletionAway)); // true
-console.log(oneAway(letters, notOneAway)); // false 
+console.log(oneAway(letters, notOneAway)); // false
