@@ -1,4 +1,8 @@
-// Return the kTh to last element of a linked list
+/* Return the kTh to last element of a linked list
+
+Big O
+1. Time: O(n)
+2. Space: O(1)      */
 
 class Node {
   constructor(data, next) {
@@ -10,42 +14,51 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.tail = null;
+    this.itr = null;
   }
 
   add(data) {
+    if (!data) {
+      return null;
+    }
+
     if (!this.head) {
       this.head = new Node(data);
-      this.tail = this.head;
+      this.itr = this.head;
     } else {
-      let node = new Node(data);
-      this.tail.next = node;
-      this.tail = this.tail.next;
+      this.itr.next = new Node(data);
+      this.itr = this.itr.next;
     }
   }
 
-  kThToLast(number) {
+  kThToLast(integer) {
+    if (!this.head || (!integer && integer !== 0)) {
+      return null;
+    }
+
     let fast = this.head;
     let slow = this.head;
-    let fastCount = 1;
-    let slowCount = 1;
+
     while (fast.next) {
-      fast = fast.next;
-      fastCount++;
+      if (integer === 0) {
+        fast = fast.next;
+        slow = slow.next;
+      } else {
+        fast = fast.next;
+        integer--;
+      }
     }
-    slowCount = fastCount - number;
-    while (slowCount > 1) {
-      slow = slow.next;
-      slowCount--;
+
+    if (integer !== 0) {
+      return null;
+    } else {
+      return slow.data;
     }
-    return slow;
   }
 }
 
-const numbers = new LinkedList;
-numbers.add(1);
-numbers.add(2);
-numbers.add(3);
-numbers.add(4);
-numbers.add(5);
-console.log(numbers.kThToLast(2));
+const list = new LinkedList;
+const integers = [1, 2, 3, 4, 5, 6];
+integers.forEach(integer => list.add(integer));
+
+console.log(list.kThToLast(2));
