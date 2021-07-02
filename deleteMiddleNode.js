@@ -1,5 +1,9 @@
-// Delete the middle node of a singly linked list,
-//    given access only to that node
+/* Delete the middle node of a singly linked list, given access only to that node
+
+Big O
+1. Time: O(1)
+2. Space: O(1)    */
+
 
 class Node {
   constructor(data, next) {
@@ -11,47 +15,48 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.tail = null;
+    this.itr = null;
   }
 
   add(data) {
+    if (!data && data !== 0) {
+      return null;
+    }
+
     if (!this.head) {
       this.head = new Node(data);
-      this.tail = this.head;
+      this.itr = this.head;
     } else {
-      let node = new Node(data);
-      this.tail.next = node;
-      this.tail = this.tail.next;
+      this.itr.next = new Node(data);
+      this.itr = this.itr.next;
     }
   }
 
   deleteMiddleNode(node) {
+    if (!node) {
+      return null;
+    }
+
     node.data = node.next.data;
     node.next = node.next.next;
   }
 
-  collectNodalData() {
-    let storage = [];
-    let pointer = this.head;
-
-    while (pointer) {
-      storage.push(pointer.data);
-      pointer = pointer.next;
+  readAnswer() {
+    if (!this.head) {
+      return null;
     }
 
-    return storage;
+    let itr = this.head;
+    while (itr) {
+      console.log(itr.data);
+      itr = itr.next;
+    }
   }
-
 }
 
-let letters = new LinkedList;
-letters.add("A");
-letters.add("B");
-letters.add("C");
-letters.add("D");
-letters.add("E");
-console.log(letters.collectNodalData());
+let list = new LinkedList;
+const integers = [1, 2, 3, 4, 5];
+integers.forEach(integer => list.add(integer));
 
-let middleNode = letters.head.next.next;
-letters.deleteMiddleNode(middleNode);
-console.log(letters.collectNodalData());
+list.deleteMiddleNode(list.head.next.next);
+list.readAnswer();
