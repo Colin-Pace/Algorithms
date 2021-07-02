@@ -1,9 +1,9 @@
-// Check if one of two strings is a permutation of the other
+/* Check if one of two strings is a permutation of the other; assume ASCII characters
 
-let inputOne = "permutation";
-let inputTwo = "mutation";
-let inputThree = "notmutation";
-let inputFour = "mutationper";
+Big O
+1. Time: O(c + p), where c and p are the lengths of the strings
+2. Space: O(1), since there is a limit of possible characters   */
+
 
 function isPermutation(one, two) {
   if (one.length !== two.length) {
@@ -12,29 +12,29 @@ function isPermutation(one, two) {
 
     let storage = {};
     for (let itr = 0; itr < one.length; itr++) {
-      let item = one[itr];
-      if (item in storage) {
-        storage[item] += 1;
+      let element = one[itr];
+      if (element in storage) {
+        storage[element] += 1;
       } else {
-        storage[item] = 1;
+        storage[element] = 1;
       }
     }
 
     let storageTwo = {};
     for (let itr = 0; itr < two.length; itr++) {
-      let item = two[itr];
-      if (item in storageTwo) {
-        storageTwo[item] += 1;
-        if (storageTwo[item] > storage[item]) {
+      let element = two[itr];
+      if (element in storageTwo) {
+        storageTwo[element] += 1;
+        if (storageTwo[element] > storage[element]) {
           return false;
         }
       } else {
-        storageTwo[item] = 1;
+        storageTwo[element] = 1;
       }
     }
 
-    for (let item in storage) {
-      if (storage[item] !== storageTwo[item]) {
+    for (let element in storage) {
+      if (storage[element] !== storageTwo[element]) {
         return false;
       }
     }
@@ -43,6 +43,12 @@ function isPermutation(one, two) {
   }
 }
 
-console.log(isPermutation(inputOne, inputTwo));
-console.log(isPermutation(inputOne, inputThree));
-console.log(isPermutation(inputOne, inputFour));
+
+let strOne = "permutation";
+let strTwo = "mutation";
+let strThree = "notmutation";
+let strFour = "mutationper";
+
+console.log(isPermutation(strOne, strTwo)); // false
+console.log(isPermutation(strOne, strThree)); // false
+console.log(isPermutation(strOne, strFour)); // true
