@@ -1,4 +1,9 @@
-// Rotate an NxN matrix by 90 degrees
+/* Rotate an NxN matrix by 90 degrees
+
+Big O
+1. Time: O(b ^ 2)
+2. Space: O(b)         */
+
 
 let matrix = [
   [1, 1, 1, 1, 1],
