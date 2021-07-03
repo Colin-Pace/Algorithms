@@ -41,6 +41,7 @@ function rotateMatrix(matrix) {
 console.log(rotateMatrix(matrix));
 
 /*
+
       Notes:
         1. First is equal to layer
         2. Last is equal to the length minus the layer
