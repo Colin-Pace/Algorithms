@@ -92,7 +92,6 @@ const matrix = [
     [0, 3, 3],
     [0, 4, 4]
   ]
-
 */
 
 console.log(setZeros(matrix));
