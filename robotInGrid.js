@@ -11,9 +11,9 @@ function robotInGrid(maze) {
   
   } else {
     const path = [];
-    const failedPoints = {};
+    //const failedPoints = {};
 
-    if (getPath(maze, maze.length - 1, maze[0].length - 1, path, failedPoints)) {
+    if (getPath(maze, maze.length - 1, maze[0].length - 1, path)) {
       return path;
     }
 
@@ -21,7 +21,7 @@ function robotInGrid(maze) {
   }
 }
 
-function getPath(maze, row, col, path, failedPoints) {
+function getPath(maze, row, col, path) {
   if (col < 0 || 
       row < 0 || 
       !maze[row][col] && maze[row][col] !== 0 ||
@@ -30,20 +30,19 @@ function getPath(maze, row, col, path, failedPoints) {
   }
 
   const p = [row, col];
-  
-  if (p in failedPoints) {
-    return false;
-  }
+  // if (p in failedPoints) {
+  //   return false;
+  // }
 
   const isAtOrigin = (row === 0) && (col === 0);
   if (isAtOrigin || 
-      getPath(maze, row, col - 1, path, failedPoints) ||
-      getPath(maze, row - 1, col, path, failedPoints)) {
+      getPath(maze, row, col - 1, path) ||
+      getPath(maze, row - 1, col, path)) {
         path.push(p);
         return true;
       }
 
-  failedPoints[p] = true;
+  //failedPoints[p] = true;
   return false;
 }
 
