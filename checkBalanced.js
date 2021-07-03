@@ -1,77 +1,94 @@
+/* Check balanced
+
+Prompt: 
+1. Check to see if a binary tree is balanced. 
+2. In a balanced tree, the subtrees of each node have heights 
+   that differ by, no more than one. 
+3. Return true if balanced, false if not
+
+
+Big O
+1. Time: O(b)
+2. Space: O(c)   */
+
+
+class Node {
+  constructor(data, left, right) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+let root = new Node(5, null, null);
+let a = new Node(1, null, null);
+let b = new Node(2, null, null);
+let c = new Node(3, null, null);
+let d = new Node(4, null, null);
+let e = new Node(6, null, null);
+let f = new Node(7, null, null);
+let g = new Node(8, null, null);
+let i = new Node(9, null, null);
+let j = new Node(10, null, null);
+let k = new Node(0, null, null);
+
+// Balanced implementation
+root.left = b; 
+root.right = g;
+b.left = a; 
+b.right = c;
+c.right = d;
+g.left = f; 
+g.right = i;
+f.left = e;
+i.right = j;
+
+// Unbalanced implementation
+// root.left = b; 
+// root.right = g;
+// b.left = a; 
+// b.right = c;
+// c.right = d;
+// g.left = f; 
+// g.right = i;
+// f.left = e;
+// i.right = j;
+// d.right = k;
+
+
 /*
-Check to see if a binary tree is balanced. In a balanced tree, the subtrees of each node have heights that differ by, no more than one. Return true if balanced, false if not
 
-
-Example graphs
-
-  Balanced tree
+  Balanced
                                 5
                           2           8
                         1   3       7   9
                               4   6      10
 
-
-  Unbalanced tree
+  Unbalanced
                                 5
                         2             8
                       1   3         7   9
                             4      6      10
                               0
+
 */
-
-class _TreeNode {
-    constructor(data, left, right) {
-        this.data = data;
-        this.left = left;
-        this.right = right;
-    }
-}
-
-let root = new _TreeNode(5, null, null);
-let a = new _TreeNode(1, null, null);
-let b = new _TreeNode(2, null, null);
-let c = new _TreeNode(3, null, null);
-let d = new _TreeNode(4, null, null);
-let e = new _TreeNode(6, null, null);
-let f = new _TreeNode(7, null, null);
-let g = new _TreeNode(8, null, null);
-let i = new _TreeNode(9, null, null);
-let j = new _TreeNode(10, null, null);
-let k = new _TreeNode(0, null, null);
-
-// Balanced implementation
-root.left = b; root.right = g;
-b.left = a; b.right = c;
-c.right = d;
-g.left = f; g.right = i;
-f.left = e;
-i.right = j;
-
-// Unbalanced implementation
-// root.left = b; root.right = g;
-// b.left = a; b.right = c;
-// c.right = d;
-// g.left = f; g.right = i;
-// f.left = e;
-// i.right = j;
-// d.right = k;
 
 function checkBalanced(root) {
   if (root === null) {
     return -1;
   }
 
-  let leftHeight = checkBalanced(root.left);
+  const leftHeight = checkBalanced(root.left);
   if (leftHeight === Number.MIN_VALUE) {
     return Number.MIN_VALUE;
   }
 
-  let rightHeight = checkBalanced(root.right);
+  const rightHeight = checkBalanced(root.right);
   if (rightHeight === Number.MIN_VALUE) {
     return Number.MIN_VALUE;
   }
 
-  let heightDiff = leftHeight - rightHeight;
+  const heightDiff = leftHeight - rightHeight;
 
   if (Math.abs(heightDiff) > 1) {
     return Number.MIN_VALUE;
@@ -80,7 +97,9 @@ function checkBalanced(root) {
   }
 }
 
+
 function booleanCheck(root) {
-    return checkBalanced(root) !== Number.MIN_VALUE;
+  return checkBalanced(root) !== Number.MIN_VALUE;
 }
+
 console.log(booleanCheck(root));

@@ -1,6 +1,4 @@
-// Check if a binary tree is a binary search tree
-
-/*
+/* Check if a binary tree is a binary search tree
 
                  20
                 /  \
@@ -10,7 +8,9 @@
         /   \     \
       3      7    17
 
-*/
+Big O
+1. Time: O(b)
+2. Space: O(log b)    */
 
 
 class Node {
@@ -44,11 +44,17 @@ class BinarySearchTree {
   }
 
   checkBST(node, min, max) {
-    if (node === null) return true;
+    if (node === null) {
+      return true;
+    }
 
-    if ((min !== null && node.data <= min) || (max !== null && node.data > max)) return false;
+    if ((min !== null && node.data <= min) || (max !== null && node.data > max)) {
+      return false;
+    }
 
-    if (!this.checkBST(node.left, min, node.data) || !this.checkBST(node.right, node.data, max)) return false;
+    if (!this.checkBST(node.left, min, node.data) || !this.checkBST(node.right, node.data, max)) {
+      return false;
+    }
 
     return true;
   }

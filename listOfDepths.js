@@ -145,9 +145,7 @@ class BinarySearchTree {
       }
     }
 
-    if (list.head !== undefined) {
-      lists.push(list);
-    }
+    lists.push(list);
 
     return lists;
   }
