@@ -2,7 +2,7 @@
 
 1. Add
     a. Time: O(log v + e)
-    b. Space: O(1)
+    b. Space: O(b), where b is equal to the number of vertices in the tree
 
 2. Pre order
     a. Time: O(v + e)
