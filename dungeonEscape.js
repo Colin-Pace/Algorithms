@@ -121,4 +121,5 @@ function dungeonEscape() {
 
   return false;
 }
+
 console.log(dungeonEscape());

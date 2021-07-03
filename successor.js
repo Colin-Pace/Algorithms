@@ -101,4 +101,4 @@ console.log(tree.traversal(tree.root.left));
 tree = new BinarySearchTree;
 integers = [10, 15, 20, 25];
 integers.forEach(integer => tree.add(integer));
-console.log(tree.traversal(tree.root.right.right.right));
+console.log(tree.traversal(tree.root.left.right.right));
