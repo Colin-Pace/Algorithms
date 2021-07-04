@@ -1,6 +1,7 @@
 /* Set next pointer to the in order successor
 
 
+
 Big O
 1. Iterative
     1. Time: O(b), where b is the number of nodes in the tree
@@ -19,7 +20,10 @@ Big O
        /      / \
       4      5   6
             / \
-           7   8        */
+           7   8        
+           
+           
+https://www.techiedelight.com/set-next-pointer-inorder-successor-binary-tree/   */
 
 
 class Node {
