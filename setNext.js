@@ -1,14 +1,15 @@
 /* Set next pointer to the in order successor
 
 
-
 Big O
 1. Iterative
     1. Time: O(b), where b is the number of nodes in the tree
     2: Space: O(b)
+
 2. Recursive one
     1. Time: O(b)
     2: Space: O(h), where h is the height of the tree in the call stack
+
 3. Recursive two
     1. Time: O(b)
     2: Space: O(h)
@@ -92,7 +93,7 @@ class BinaryTree {
       node.right && traversal(node.right);
     }
     
-    traversal(node);
+    return traversal(node);
   }
 
   recursiveTwo(current, previous) {
