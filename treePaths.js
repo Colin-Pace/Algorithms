@@ -1,4 +1,4 @@
-/* Tree paths from root to leaf
+/* Tree paths from root to leafs
 
 Big O
 1. Recursive
