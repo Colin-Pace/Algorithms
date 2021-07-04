@@ -41,49 +41,5 @@ function binarySearch(data, value) {
   }
 }
 
-function test() {
-  const integers = [];
-
-  while (integers.length < 10) {
-    const integer = Math.floor(
-      Math.random() * 100
-    ) + 1;
-
-    if (integers.includes(integer)) {
-      continue;
-    } else {
-      integers.push(integer);
-    }
-  }
-
-  integers.sort(function(i, j) {
-    return i - j;
-  });
-
-  const index = Math.floor(
-    Math.random() * 10
-  );
-
-  const result = binarySearch(
-    integers,
-    integers[index]
-  );
-
-  if (integers[result] != integers[index]) {
-    return false;
-
-  } else {
-    return true;
-  }
-}
-
-for (let i = 0; i < 20; i++) {
-  if (test() === false) {
-    console.log(0);
-    break;
-
-  } else if (test() === true &&
-              i === 19) {
-                console.log(1);
-              }
-}
+const integers = [1, 2, 3, 4, 5];
+console.log(binarySearch(integers, 3));

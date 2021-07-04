@@ -12,8 +12,10 @@ class Node {
 function recursiveCompareBinaryTrees(x, y) {
   if (!x && !y) {
     return true;
+  
   } else if ((!x && y) || (x && !y)) {
     return false;
+  
   } else {
     return (x.data === y.data) && 
             recursiveCompareBinaryTrees(x.left, y.left) && 
@@ -24,28 +26,37 @@ function recursiveCompareBinaryTrees(x, y) {
 function iterativeCompareBinaryTrees(x, y) {
   if (!x && !y) {
     return true;
+  
   } else if (!x) {
     return false;
+  
   } else if (!y) {
     return false;
+  
   } else {
     const stack = [];
     stack.push([x, y]);
+   
     while (stack.length) {
       const vertices = stack.pop();
+   
       if (vertices[0] === undefined || vertices[1] === undefined) {
         return false;
+   
       } else if (vertices[0] === undefined && vertices[1] === undefined) {
         continue;
+   
       } else {
         if (vertices[0].data !== vertices[1].data) {
           return false;
+   
         } else { 
           if ((vertices[0].left && !vertices[1].left) || 
               (!vertices[0].left && vertices[1].left) || 
               (vertices[0].right && !vertices[1].right) || 
               (!vertices[0].right && vertices[1].right)) {
             return false;
+   
           } else {
             if (vertices[0].left && vertices[1].left) {
               stack.push([vertices[0].left, vertices[1].left]);
@@ -57,6 +68,7 @@ function iterativeCompareBinaryTrees(x, y) {
         }
       }
     }
+   
     return true;
   }
 }

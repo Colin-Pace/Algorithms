@@ -24,8 +24,10 @@ c.right = e;
 function maximumDepth(node) {
   if (!node) return null;
   let maximum = 0;
+  
   const dfs = function(node) {
     if (!node) return 0;
+  
     else {
       let left = Math.max(0, dfs(node.left) + 1);
       let right = Math.max(0, dfs(node.right) + 1);
@@ -33,7 +35,10 @@ function maximumDepth(node) {
       return Math.max(left, right);
     }
   }
+  
   dfs(node);
   return maximum;
 }
+
+
 console.log(maximumDepth(a));

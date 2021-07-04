@@ -1,5 +1,10 @@
-// Find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure. This is not necessarily a binary search tree. Assume that each node has a link to its parent.
-/*
+/* First common ancestor
+
+1. Prompt: Find the first common ancestor of two nodes in a binary tree. 
+            Avoid storing additional nodes in a data structure. 
+            This is not necessarily a binary search tree.
+             Assume that each node has a link to its parent.
+
 
                  20
                 /  \
@@ -7,9 +12,7 @@
             /   \
           5     15
         /   \     \
-      3      7    17
-
-*/
+      3      7    17                              */
 
 
 class Node {
@@ -61,10 +64,14 @@ class BinaryTree {
   }
 }
 
-const numbers = new BinaryTree;
+const tree = new BinaryTree;
 const integers = [20, 10, 5, 3, 7, 15, 17, 30];
-integers.forEach(integer => numbers.add(integer));
-const root = numbers.root;
-const p = numbers.root.left.left.right;
-const q = numbers.root.left.right.right;
-console.log(numbers.commonAncestor(root, p, q));
+integers.forEach(integer => tree.add(integer));
+const root = tree.root;
+const p = tree.root.left.left.right;
+const q = tree.root.left.right.right;
+
+console.log(tree.commonAncestor(root, p, q));
+
+
+
