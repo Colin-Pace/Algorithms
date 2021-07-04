@@ -1,14 +1,24 @@
-/*
-Given a binary tree, return all the root to leaf paths in a two dimensional array.
+/* Tree paths from root to leaf
 
+Big O
+1. Recursive
+    1. Time: O(b), where b is the number of nodes in the tree
+    2. Space: O(b) 
+2. Iterative
+    1. Time: O(b)
+    2. Space: O(b)
 
 Tree
           1
-    4           4
-      2       2
-    1       6    8
-                1  3
-*/
+       /     \
+      4       4
+       \      /
+       2     2
+      /    /  \   
+     1    6    8
+              /  \
+             1    3       */
+
 
 class Node {
   constructor(data, left, right) {
@@ -18,7 +28,7 @@ class Node {
   }
 }
 
-let treeRoot = new Node(1);
+let root = new Node(1);
 let firstLeft = new Node(4);
 let firstRight = new Node(4);
 let secondLeft = new Node(2);
@@ -29,8 +39,8 @@ let thirdRightTwo = new Node(8);
 let fourthRightOne = new Node(1);
 let fourthRightTwo = new Node(3);
 
-treeRoot.left = firstLeft;
-treeRoot.right = firstRight;
+root.left = firstLeft;
+root.right = firstRight;
 firstLeft.right = secondLeft;
 firstRight.left = secondRight;
 secondLeft.left = thirdLeft;
@@ -45,28 +55,74 @@ class TreePaths {
     this.paths = [];
   }
 
-  fromRoot(root, listPath) {
+  treePaths(root) {
     let temp = [];
     temp.push(root.data);
-    if (!root.left && !root.right) this.paths.push(temp);
-    else {
-      if (root.left) this.search(root.left, temp.slice());
-      if (root.right) this.search(root.right, temp);
+    if (!root.left && !root.right) {
+      this.paths.push(temp);
+    
+    } else {
+      if (root.left) {
+        this.search(root.left, temp.slice());
+      
+      } if (root.right) {
+        this.search(root.right, temp);
+      }
     }
+    
     return this.paths;
   }
 
-  search(Node, temp) {
-    temp.push(Node.data);
-    if (!Node.left && !Node.right) this.paths.push(temp);
-    else {
-      if (Node.left) this.search(Node.left, temp.slice());
-      if (Node.right) this.search(Node.right, temp.slice());
+  search(node, temp) {
+    temp.push(node.data);
+    if (!node.left && !node.right) {
+      return this.paths.push(temp);
+    
+    } else {
+      if (node.left) {
+        this.search(node.left, temp.slice());
+      
+      } if (node.right) {
+        this.search(node.right, temp.slice());
+      }
     }
+  }
+
+  iterative(node) {
+    const stack = [];
+    const lists = [[]];
+    let idx = 0;
+
+    stack.push(node);
+    while (stack.length) {
+      const vertex = stack.pop();
+      lists[idx].push(vertex.data);
+
+      if (vertex.left === undefined && vertex.right === undefined) {
+        idx++;
+        continue;
+      }
+
+      if (vertex.left && vertex.right) {
+        const list = lists[idx].slice();
+        lists.push(list);
+      }
+
+      if (vertex.right) {
+        stack.push(vertex.right);
+      }
+
+      if (vertex.left) {
+        stack.push(vertex.left);
+      }
+    }
+
+    return lists;
   }
 }
 
 
-let searchTreeForPath = new TreePaths;
+let tree = new TreePaths;
 
-console.log(searchTreeForPath.fromRoot(treeRoot));
+console.log(tree.treePaths(root));
+console.log(tree.iterative(root));
