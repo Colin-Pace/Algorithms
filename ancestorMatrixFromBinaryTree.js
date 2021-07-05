@@ -2,11 +2,11 @@
 
 Big O
 1. Iterative
-    1. Time: O(b ^ 2), where b is the size of the binary tree ,
-                          and if the binary tree is balanced
+    1. Time: O(b ^ 2), where b is the size of the binary tree;
+                         O(b log b) if the binary tree is balanced
     2. Space: O(b ^ 2)
 2. Recursive
-    1. Time: O(b ^ 2)
+    1. Time: O(b ^ 2), or O(b log b) if the binary tree is balanced
     2. Space: O(b ^ 2)
     
 https://www.techiedelight.com/construct-ancestor-matrix-from-binary-tree/   */
