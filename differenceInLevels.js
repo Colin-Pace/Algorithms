@@ -104,7 +104,7 @@ class BinaryTree {
             / \
            7   8
 
-difference = 4                */
+difference = -4                */
 
 
 const root = new Node(1);
